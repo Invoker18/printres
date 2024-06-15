@@ -1,7 +1,9 @@
 <template>
-    <div class="bg-primary-950 min-h-screen">
-        <Navbar ></Navbar>
-        <slot />
+    <div class="max-w-screen-2xl mx-auto">
+        <Navbar></Navbar>
+        <div class=" pt-[70px] sm:pt-[140px] h-screen">
+            <slot />
+        </div>
     </div>
 </template>
 
