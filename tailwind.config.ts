@@ -5,6 +5,7 @@ export default <Partial<Config>>{
     theme: {
         extend: {
             colors: {
+                secondary: 'coral',
                 'ultramarine': {
                     '50': '#f1f6ff',
                     '100': '#e5ecff',
@@ -44,12 +45,7 @@ export default <Partial<Config>>{
                     '900': '#0b4a6f',
                     '950': '#072f4a',
                 },
-                
-                
             }
         },
-        colors: {
-            secondary: 'coral'
-        }
     }
 }

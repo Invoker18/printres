@@ -1,18 +1,11 @@
 <template>
-  <div class="grid h-full mt-32">
-    <div class="flex flex-col font-semibold text-7xl lg:text-[150px]  text-primary">
-      <div class="text-gray-100">Publicidad de</div>
-      <div class="text-secondary">alto impacto</div>
-    </div>
+  <div>
+    <Hero class="max-w-screen-2xl mx-auto px-3"></Hero>
+    <VideoSection></VideoSection>
+    <About class="max-w-screen-2xl mx-auto"></About>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-
-<style>
-
-
-</style>
+<style></style>

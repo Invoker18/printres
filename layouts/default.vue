@@ -1,16 +1,12 @@
 <template>
-    <div class="max-w-screen-2xl mx-auto">
-        <Navbar></Navbar>
-        <div class=" pt-[70px] sm:pt-[140px] h-screen">
-            <slot />
-        </div>
+  <div class="">
+    <Navbar class="px-5 max-w-screen-2xl mx-auto py-8 bg-primary-950"></Navbar>
+    <div>
+      <slot />
     </div>
+  </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
