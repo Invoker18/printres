@@ -1,19 +1,23 @@
 <template>
   <div
     id="nav"
-    class="sticky top-0 z-50 opacity-0 -translate-y-full transition-all ease-in duration-500"
+    class="sticky top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
   >
-    <header class="flex items-center justify-between w-full">
+    <header
+      class="flex items-center justify-between w-full px-5 max-w-screen-2xl mx-auto py-8"
+    >
       <NuxtImg src="/images/logoprintres2.svg" class="w-20 lg:w-40" />
       <ul
         class="flex justify-center items-center self-end gap-3 sm:gap-20 text-sm sm:text-base"
       >
         <li
+          @click="scrollTo('Home')"
           class="hover:cursor-pointer hover:scale-105 transition-all ease-linear duration-300 hover:text-secondary"
         >
           Inicio
         </li>
         <li
+          @click="scrollTo('aboutUs')"
           class="hover:cursor-pointer hover:scale-105 transition-all ease-linear duration-300 hover:text-secondary"
         >
           Nosotros
@@ -59,14 +63,19 @@
 </template>
 
 <script lang="ts" setup>
-import logo from '@/assets/logoprintres.svg';
 import gsap from 'gsap';
-onMounted(() => {
-  let tween = gsap.to('#nav', {
-    opacity: 1,
-    y: 'full',
-    ease: 'power1.out',
+const scrollTo = (section: string) => {
+  gsap.to(window, {
+    duration: 2,
+    scrollTo: { y: `#${section}` },
   });
+};
+onMounted(() => {
+  // let tween = gsap.to('#nav', {
+  //   opacity: 1,
+  //   y: 'full',
+  //   ease: 'power1.out',
+  // });
 });
 </script>
 
