@@ -1,5 +1,5 @@
 <template>
-  <section class="h-screen sticky top-0 px-5 pt-16 gap-10 section" id="aboutUs">
+  <section class="h-screen sticky top-0 px-5 pt-16 gap-10 pin" id="aboutUs">
     <div class="relative w-fit text-5xl flex items-center mb-10">
       <h3>Nosotros</h3>
       <div
@@ -102,6 +102,6 @@ img {
 }
 
 :deep(.swiper-pagination) {
-  @apply flex justify-start !important;
+  @apply flex justify-start mx-4 !important;
 }
 </style>
