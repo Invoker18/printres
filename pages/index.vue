@@ -49,7 +49,7 @@ onMounted(() => {
             scrollTrigger: {
                 trigger: section,
                 start: '20% top',
-                markers: true,
+                // markers: true,
                 scrub: 1,
                 // toggleActions: 'play pause resume reverse',
             },

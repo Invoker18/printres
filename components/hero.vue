@@ -1,7 +1,7 @@
 <template>
-    <section class="h-screen relative -z-10" id="heroText">
+    <section class="hover-cursor" id="heroText">
         <div
-            class="flex flex-col font-semibold text-primary leading-none h-full justify-center"
+            class="h-screen relative -z-10 flex flex-col font-semibold text-primary leading-none hover-cursor justify-start mt-40"
         >
             <div
                 class="text-gray-100 flex text-[150px] 2xl:text-[200px]"
@@ -36,33 +36,31 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
     gsap.to('#text1 div', {
-        y: 'random(150, 500)',
+        y: '+=600',
         rotation: 'random(100, -100)',
         scrollTrigger: {
             trigger: '#heroText',
             scrub: true,
-            start: '40% center',
-            end: '100% center',
+            start: '25% center',
+            end: '100% top',
         },
         stagger: {
-            from: 'start',
+            from: 'random',
             amount: 0.3,
         },
         ease: 'power1.out',
     })
     gsap.to('#text2 div', {
-        y: 'random(150, 400)',
+        y: '+=500',
         rotation: 'random(100, -100)',
         scrollTrigger: {
             trigger: '#heroText',
             scrub: true,
-            start: '40% center',
-            end: '100% center',
-            pin: true,
-            pinSpacing: true,
+            start: '25% center',
+            end: '100% top',
         },
         stagger: {
-            from: 'center',
+            from: 'random',
             amount: 0.3,
         },
         ease: 'power1.out',
