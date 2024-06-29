@@ -5,7 +5,7 @@
         <div class="follower"></div>
         <NuxtLoadingIndicator />
         <NuxtLayout>
-            <NuxtPage />
+            <NuxtPage/>
         </NuxtLayout>
     </div>
 </template>
@@ -38,7 +38,6 @@ onMounted(() => {
         }
     }
 
-    // console.log(isMobile(), 'isMobile')
 
     const createCursorFollower = () => {
         const $el = document.querySelector('.cursor-follower')
@@ -49,19 +48,20 @@ onMounted(() => {
             const { target, x, y } = e
             // Check if target is inside a link or button
             const isTargetLinkOrBtn = target.classList.contains('hover-cursor')
-            if (e.target.tagName !== 'DIV') {
-                console.log('fire')
-            }
+            const hoverCursor2 = target.classList.contains('hover-cursor2')
+            const scale = hoverCursor2 ? 3 : 1.5
+            const changeCursor =
+                isTargetLinkOrBtn || hoverCursor2 ? true : false
             // GSAP config
             gsap.to($el, {
                 x: x - 10,
                 y: y - 10,
                 duration: 0.5,
                 ease: 'power4', // More easing options here: https://gsap.com/docs/v3/Eases/
-                opacity: isTargetLinkOrBtn ? 0.6 : 1,
-                transform: `scale(${isTargetLinkOrBtn ? 1.5 : 1})`,
-                backgroundColor: isTargetLinkOrBtn ? '#f87c56' : '#0091dc',
-                mixBlendMode: isTargetLinkOrBtn ? 'difference' : 'normal',
+                opacity: changeCursor ? 0.6 : 1,
+                transform: `scale(${changeCursor ? scale : 1})`,
+                backgroundColor: changeCursor ? '#f87c56' : '#0091dc',
+                mixBlendMode: changeCursor ? 'difference' : 'normal',
             })
         })
         // Hidding the cursor element when the mouse cursor
@@ -74,45 +74,14 @@ onMounted(() => {
         })
     }
     // // Only invoke the function if isn't a touch device
-    // if (!isMobile) {
-    //     createCursorFollower()
-    // }
-
-    // const createCursorFollower = () => {
-    //     gsap.set('.follower', { xPercent: -50, yPercent: -50 })
-    //     const follow = document.querySelector('.follower')
-    //     const cursor = document.querySelector('.cursor')
-
-    //     window.addEventListener('mousemove', (e) => {
-    //         // gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.2 })
-    //         const isTargetLinkOrBtn =
-    //             follow.closest('li') || follow.closest('#logo')
-    //         console.log(follow.closest('#logo'))
-    //         gsap.to(follow, {
-    //             x: e.clientX - 16,
-    //             y: e.clientY - 16,
-    //             duration: 0.5,
-    //             opacity: 1,
-    //             opacity: isTargetLinkOrBtn ? 0.7 : 1,
-    //             transform: `scale(${isTargetLinkOrBtn ? 3 : 1})`,
-    //             background: isTargetLinkOrBtn ? '#f87c56' : '#0091dc',
-    //         })
-    //     })
-
-    //     document.addEventListener('mouseleave', (e) => {
-    //         gsap.to(follow, {
-    //             duration: 0.7,
-    //             opacity: 0,
-    //         })
-    //     })
-    // }
-
-    createCursorFollower()
+    if (!isMobile()) {
+        createCursorFollower()
+    }
 })
 </script>
 <style>
 body {
-    /* cursor: none; */
+    cursor: none;
 }
 .follower {
     position: fixed;

@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Hero class="max-w-screen-2xl mx-auto px-3"></Hero>
+        <Hero class="max-w-screen-2xl mx-auto px-5"></Hero>
         <div
             id="scrollText"
             class="flex items-center text-4xl gap-2 absolute bottom-12 right-6 2xl:right-48"
@@ -11,8 +11,8 @@
                 class="text-secondary size-8"
             ></UIcon>
         </div>
-        <VideoSection></VideoSection>
-        <About class="max-w-screen-2xl mx-auto"></About>
+        <VideoSection class="overflow-hidden"></VideoSection>
+        <About class="max-w-screen-2xl mx-auto px-5"></About>
         <Projects></Projects>
         <Events></Events>
         <Contact></Contact>
@@ -40,7 +40,7 @@ onMounted(() => {
         duration: 0.5,
     })
 
-    const sections = document.querySelectorAll('.pin')
+    const sections = Array.from(document.querySelectorAll('.pin'))
 
     sections.forEach((section, index) => {
         const isLast = index === sections.length - 1

@@ -1,6 +1,9 @@
 <template>
-    <section class="h-screen sticky top-0 px-5 py-32 gap-10 pin" id="aboutUs">
-        <div class="relative w-fit text-5xl flex items-center mb-10">
+    <section
+        class="h-[120vh] sticky top-0 left-0 px-5 pt-10 lg:py-32 pin flex flex-col gap-10 overflow-hidden"
+        id="aboutUs"
+    >
+        <div class="relative w-fit text-5xl flex items-center">
             <h3>Nosotros</h3>
             <div
                 class="bg-secondary absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%]"
@@ -10,50 +13,33 @@
                 class="text-secondary self-end"
             ></UIcon>
         </div>
-        <div class="grid grid-flow-col auto-cols-fr place-content-start gap-5">
-            <div class="grid grid-flow-row place-content-start gap-10 max-w-xl">
-                <p class="text-lg">
+        <div
+            class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-2 place-content-start gap-5 xl:gap-x-20"
+        >
+            <div class="flex flex-col">
+                <p class="text-lg hover-cursor text-pretty">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Fuga porro velit quidem placeat, modi in quos error. Quasi
                     iure vitae ipsam eos, magnam, labore mollitia non architecto
-                    dignissimos atque fugiat. Inventore, labore dolores minus
-                    tempore saepe libero quod ab alias voluptatibus earum cumque
-                    blanditiis quas numquam dolore nihil suscipit. Fuga eius
-                    recusandae ex provident facilis est! Accusamus explicabo
-                    illum cupiditate. At fuga officiis dicta similique porro ad
-                    perspiciatis fugit obcaecati iure laudantium! Explicabo sint
-                    libero sapiente recusandae debitis minus reprehenderit
-                    ducimus consectetur officia unde nesciunt, ullam praesentium
-                    reiciendis suscipit error.
+                    dignissimos atque fugiat.
+                    <br />
+                    Inventore, labore dolores minus tempore saepe libero quod ab
+                    alias voluptatibus earum cumque blanditiis quas numquam
+                    dolore nihil suscipit. Fuga eius recusandae ex provident
+                    facilis est! Accusamus explicabo illum cupiditate.
                 </p>
-                <div class="flex items-center gap-5">
-                    <UButton
-                        :ui="{ rounded: 'rounded-full' }"
-                        color="white"
-                        variant="outline"
-                        class="uppercase"
-                        >ver mas</UButton
-                    >
-                    <UButton
-                        :ui="{
-                            rounded: 'rounded-full',
-                            variant: {
-                                solid: 'bg-secondary dark:bg-secondary dark:text-gray-100 text-gray-100',
-                            },
-                        }"
-                        class="uppercase"
-                        variant="solid"
-                        >ver mas 2</UButton
-                    >
-                </div>
+                <div class="hidden w-full h-full border xl:flex justify-start items-end">imagenes</div>
             </div>
-            <div class="w-full h-[34rem] lg:-mt-20 relative">
+            <div
+                class="h-full w-full gap-3 flex relative min-h-[400px] sm:min-h-[500px] md:col-span-2 md:min-h-[550px]"
+            >
+                <!-- <div class="hidden lg:block w-12 bg-secondary"></div>
+                <div class="hidden lg:block w-12 bg-curious-blue-600"></div> -->
                 <Swiper
                     :modules="[SwiperPagination, SwiperAutoplay]"
-                    class="flex h-full w-full"
+                    class="h-full w-full min-w-0"
                     :loop="true"
                     :autoplay="true"
-                    :space-between="20"
                     :pagination="{
                         el: '.custom-pagination',
                         clickable: true,
@@ -63,12 +49,12 @@
                     }"
                     :lazy="true"
                 >
-                    <SwiperSlide v-for="n in 6" :key="n" class="">
+                    <SwiperSlide v-for="n in 6" :key="n">
                         <img
                             loading="lazy"
                             :src="`https://picsum.photos/1920/1080?random=${n}`"
                             alt=""
-                            class="w-full h-[95%] object-cover"
+                            class="w-full h-full object-cover hover-cursor"
                         />
                         <div
                             class="swiper-lazy-preloader swiper-lazy-preloader-white"
@@ -76,25 +62,23 @@
                     </SwiperSlide>
                 </Swiper>
                 <div
-                    class="custom-pagination absolute bottom-16 w-full h-fit"
-                ></div>
-                <div
-                    class="absolute right-10 bottom-6 size-28 bg-secondary z-50 rounded-full"
+                    class="size-24 xl:size-32 bg-secondary rounded-full absolute right-0 bottom-0 z-10"
                 ></div>
             </div>
+            <div class="custom-pagination md:col-start-2 md:col-span-2"></div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
+import empanadas from '@/assets/images/empanadas.png'
 // import people from '@/assets/images/people.jpeg';
 </script>
 
 <style scoped>
-.swiper {
-    -webkit-mask: url('@/assets/images/empanadas.png') center/contain no-repeat;
-    mask: url('@/assets/images/empanadas.png') center/contain no-repeat;
-    position: relative;
+img {
+    -webkit-mask: url('@/assets/images/empanadas.png') left/contain no-repeat;
+    mask: url('@/assets/images/empanadas.png') left/contain no-repeat;
 }
 
 :deep(.swiper-pagination-bullet-active) {
@@ -113,6 +97,6 @@
 }
 
 :deep(.swiper-pagination) {
-    @apply flex justify-start mx-4 !important;
+    @apply flex justify-start mx-4 border !important;
 }
 </style>

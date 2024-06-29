@@ -8,11 +8,11 @@
         >
             <NuxtImg
                 src="/images/logoprintres2.svg"
-                class="w-20 lg:w-40 hover-cursor"
+                class="w-24 md:w-32 lg:w-40 hover-cursor"
                 id="logo"
             />
             <ul
-                class="flex justify-center items-center self-end gap-3 sm:gap-20 text-sm sm:text-base"
+                class="hidden md:flex justify-center items-center self-end gap-8 xl:gap-20 text-sm sm:text-base"
             >
                 <li
                     @click="scrollTo('Home')"
@@ -43,7 +43,7 @@
                 </li>
             </ul>
             <div class="flex items-center gap-2">
-                <NuxtImg src="/images/3.svg" class="size-3 lg:size-5" />
+                <NuxtImg src="/images/3.svg" class="size-5" />
                 <!-- <UIcon name="i-marketeq-menu" class="size-8"></UIcon> -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

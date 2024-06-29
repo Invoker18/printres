@@ -1,22 +1,31 @@
 <template>
-    <section class="hover-cursor" id="heroText">
+    <section class="" id="heroText">
         <div
-            class="h-screen relative -z-10 flex flex-col font-semibold text-primary leading-none hover-cursor justify-start mt-40"
+            class="h-screen relative flex flex-col overflow-hidden font-semibold text-primary leading-none justify-start mt-40 select-none"
         >
             <div
-                class="text-gray-100 flex text-[150px] 2xl:text-[200px]"
+                class="text-gray-100 flex text-[125px] lg:text-[150px] 2xl:text-[200px]"
                 id="text1"
             >
-                <div v-for="(letter, index) in text1" :key="index" class="">
+                <div
+                    v-for="(letter, index) in text1"
+                    :key="index"
+                    class="hover-cursor2"
+                >
                     <span v-if="letter == ' '" class="ml-10"></span>
                     {{ letter }}
                 </div>
             </div>
             <div
-                class="text-secondary flex text-[150px] 2xl:text-[200px]"
+                class="flex text-[125px] lg:text-[150px] 2xl:text-[200px]"
                 id="text2"
             >
-                <div v-for="(letter, index) in text2" :key="index" class="">
+                <div
+                    v-for="(letter, index) in text2"
+                    :key="index"
+                    class="hover-cursor2"
+                    :class="index > 4 ? 'text-secondary' : 'text-white'"
+                >
                     <span v-if="letter == ' '" class="ml-10"></span>
                     {{ letter }}
                 </div>
@@ -36,7 +45,7 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
     gsap.to('#text1 div', {
-        y: '+=600',
+        y: '+=850',
         rotation: 'random(100, -100)',
         scrollTrigger: {
             trigger: '#heroText',
@@ -51,7 +60,7 @@ onMounted(() => {
         ease: 'power1.out',
     })
     gsap.to('#text2 div', {
-        y: '+=500',
+        y: '+=750',
         rotation: 'random(100, -100)',
         scrollTrigger: {
             trigger: '#heroText',

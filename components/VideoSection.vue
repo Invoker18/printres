@@ -1,13 +1,13 @@
 <template>
     <section>
-        <div class="h-[80vh] bg-white brightness-75">
+        <div class=" bg-white brightness-90 hover-cursor2">
             <!-- <img :src="videoImg" alt="" class="h-full w-full object-cover" /> -->
             <video
                 id="video"
                 :src="video1"
                 width="1920"
                 height="1080"
-                class="h-full object-cover w-full max-w-screen-2xl mx-auto"
+                class="h-full object-cover w-full hover-cursor2"
                 loop
                 autoplay
                 muted
@@ -17,8 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import videoImg from '@/assets/images/video.png'
-import video1 from '@/assets/videos/H264.mp4'
+import video1 from '@/assets/videos/videoHome.mp4'
 </script>
 
 <style scoped></style>
