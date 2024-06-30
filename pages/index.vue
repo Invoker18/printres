@@ -31,11 +31,11 @@ onMounted(() => {
         opacity: 0,
         scrollTrigger: {
             trigger: '#heroText',
-            start: 'center center',
-            end: '100% center',
+            start: '40% center',
+            end: 'center center',
             toggleActions: 'play pause resume reset',
+            scrub: true,
         },
-        stagger: 0.1,
         ease: 'power2.out',
         duration: 0.5,
     })
