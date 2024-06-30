@@ -71,14 +71,13 @@
 </template>
 
 <script lang="ts" setup>
-import empanadas from '@/assets/images/empanadas.png'
 // import people from '@/assets/images/people.jpeg';
 </script>
 
 <style scoped>
 img {
-    -webkit-mask: url('@/assets/images/empanadas.png') left/contain no-repeat;
-    mask: url('@/assets/images/empanadas.png') left/contain no-repeat;
+    -webkit-mask: url('@/assets/images/shapes/empanadas.png') left/contain no-repeat;
+    mask: url('@/assets/images/shapes/empanadas.png') left/contain no-repeat;
 }
 
 :deep(.swiper-pagination-bullet-active) {

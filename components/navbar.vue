@@ -1,10 +1,10 @@
 <template>
     <div
         id="nav"
-        class="sticky top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
+        class="fixed w-full top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
     >
         <header
-            class="flex items-center justify-between w-full px-5 max-w-screen-2xl mx-auto py-8"
+            class="flex items-center justify-between w-full px-20 py-8"
         >
             <NuxtImg
                 src="/images/logoprintres2.svg"

@@ -1,9 +1,9 @@
 <template>
-    <div class="">
-        <Hero class="max-w-screen-2xl mx-auto px-5"></Hero>
+    <div>
+        <Hero></Hero>
         <div
             id="scrollText"
-            class="flex items-center text-4xl gap-2 absolute bottom-12 right-6 2xl:right-48"
+            class="flex items-center text-4xl gap-2 absolute bottom-12 right-6 2xl:right-24"
         >
             <span class="font-semibold">Scroll</span>
             <UIcon
@@ -12,7 +12,7 @@
             ></UIcon>
         </div>
         <VideoSection class="overflow-hidden"></VideoSection>
-        <About class="max-w-screen-2xl mx-auto px-5"></About>
+        <About></About>
         <Projects></Projects>
         <Events></Events>
         <Contact></Contact>
@@ -31,7 +31,7 @@ onMounted(() => {
         opacity: 0,
         scrollTrigger: {
             trigger: '#heroText',
-            start: '40% center',
+            start: 'center center',
             end: '100% center',
             toggleActions: 'play pause resume reset',
         },

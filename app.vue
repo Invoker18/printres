@@ -1,17 +1,22 @@
 <template>
     <div>
         <div class="cursor-follower"></div>
-        <div class="cursor"></div>
-        <div class="follower"></div>
         <NuxtLoadingIndicator />
         <NuxtLayout>
-            <NuxtPage/>
+            <NuxtPage />
         </NuxtLayout>
+        <div
+            v-if="isLoading"
+            class="fixed top-0 left-0 h-screen w-full bg-primary-950 z-[9999] text-5xl grid place-content-center"
+        >
+            ...loading
+        </div>
     </div>
 </template>
 <script setup>
 import Lenis from 'lenis'
 import gsap from 'gsap'
+const isLoading = ref(true)
 onMounted(() => {
     const lenis = new Lenis()
 
@@ -37,7 +42,6 @@ onMounted(() => {
             return false
         }
     }
-
 
     const createCursorFollower = () => {
         const $el = document.querySelector('.cursor-follower')
@@ -77,23 +81,13 @@ onMounted(() => {
     if (!isMobile()) {
         createCursorFollower()
     }
+
+    isLoading.value = false
 })
 </script>
 <style>
 body {
     cursor: none;
-}
-.follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #0091dc;
-    opacity: 0;
-    z-index: 1000;
-    pointer-events: none;
 }
 .cursor-follower {
     position: fixed;
