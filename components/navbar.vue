@@ -1,43 +1,43 @@
 <template>
     <div
         id="nav"
-        class="fixed w-full top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
+        class="fixed w-full left-0 top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
     >
         <header
-            class="flex items-center justify-between w-full px-20 py-8"
+            class="flex items-center justify-between w-full px-3 sm:px-5 2xl:px-20 py-8"
         >
             <NuxtImg
                 src="/images/logoprintres2.svg"
-                class="w-24 md:w-32 lg:w-40 hover-cursor"
+                class="w-28 md:w-32 lg:w-44 hover-cursor"
                 id="logo"
             />
             <ul
-                class="hidden md:flex justify-center items-center self-end gap-8 xl:gap-20 text-sm sm:text-base"
+                class="hidden md:flex justify-center items-center self-end gap-8 xl:gap-20 text-sm sm:text-base xl:text-lg hover-cursor"
             >
                 <li
-                    @click="scrollTo('Home')"
-                    class="hover:scale-105 transition-all ease-in duration-200 hover:text-secondary hover:cursor-pointer hover-cursor"
+                    @click="scrollToTop()"
+                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Inicio
                 </li>
                 <li
                     @click="scrollTo('aboutUs')"
-                    class="hover:scale-105 transition-all ease-in duration-200 hover:text-secondary hover:cursor-pointer hover-cursor"
+                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Nosotros
                 </li>
                 <li
-                    class="hover:scale-105 transition-all ease-in duration-200 hover:text-secondary hover:cursor-pointer hover-cursor"
+                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Servicios
                 </li>
                 <li
-                    class="hover:scale-105 transition-all ease-in duration-200 hover:text-secondary hover:cursor-pointer hover-cursor"
+                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Eventos
                 </li>
                 <li
-                    class="hover:scale-105 transition-all ease-in duration-200 hover:text-secondary hover:cursor-pointer hover-cursor"
+                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Proyectos
                 </li>
@@ -72,6 +72,12 @@ const scrollTo = (section: string) => {
     gsap.to(window, {
         duration: 2,
         scrollTo: { y: `#${section}` },
+    })
+}
+const scrollToTop = () => {
+    gsap.to(window, {
+        duration: 2,
+        scrollTo: 'top',
     })
 }
 onMounted(() => {

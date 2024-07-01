@@ -1,15 +1,10 @@
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: 'Stara', 'sans-serif', 'serif';
     @apply bg-primary-950;
-    /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
-            10 10,
-        auto; */
 }
-/* li:hover {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" stroke="%23f87c56" fill="%23f87c56" width="64px" height="64px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
-            20 20,
-        auto !important;
-} */
 
 html.lenis,
 html.lenis body {

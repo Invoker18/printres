@@ -1,11 +1,9 @@
 <template>
-  <div class="" id="Home">
-    <Navbar></Navbar>
-    <div>
-      <slot />
+    <div id="Home">
+        <Navbar></Navbar>
+        <slot />
+        <Footer></Footer>
     </div>
-    <Footer></Footer>
-  </div>
 </template>
 
 <script setup></script>

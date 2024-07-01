@@ -3,7 +3,7 @@
         <Hero></Hero>
         <div
             id="scrollText"
-            class="flex items-center text-4xl gap-2 absolute bottom-12 right-6 2xl:right-24"
+            class="flex items-center text-4xl gap-2 absolute bottom-12 right-6 md:right-16 2xl:right-24"
         >
             <span class="font-semibold">Scroll</span>
             <UIcon
@@ -11,7 +11,7 @@
                 class="text-secondary size-8"
             ></UIcon>
         </div>
-        <VideoSection class="overflow-hidden"></VideoSection>
+        <VideoSection></VideoSection>
         <About></About>
         <Projects></Projects>
         <Events></Events>
@@ -59,15 +59,14 @@ onMounted(() => {
                 ease: 'none',
                 startAt: { filter: 'brightness(100%) blur(0px)' },
                 filter: isLast ? 'none' : 'brightness(50%) blur(10px)',
-                // scale: 0.9,
-                // borderRadius: 40,
-                // onComplete: () => {
-                //     console.log('beep boop')
-                //     section.classList.remove('sticky')
-                // },
-                // onReverseComplete: () => {
-                //     section.classList.add('sticky')
-                // },
+
+                onComplete: () => {
+                    console.log('beep boop')
+                    section.classList.remove('sticky')
+                },
+                onReverseComplete: () => {
+                    section.classList.add('sticky')
+                },
             },
             '<'
         )
