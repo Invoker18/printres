@@ -74,8 +74,7 @@ onMounted(() => {
             duration: 0.5,
         })
         gsap.to('#text1 div', {
-            y: '+=225',
-            immediateRender: false,
+            yPercent: '+=225',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',
@@ -90,7 +89,7 @@ onMounted(() => {
             ease: 'power1.out',
         })
         gsap.to('#text2 div', {
-            y: '+=150',
+            yPercent: '+=150',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',
@@ -121,7 +120,6 @@ onMounted(() => {
         })
         gsap.to('#text1 div', {
             y: '+=425',
-            immediateRender: false,
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',

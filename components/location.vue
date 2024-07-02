@@ -1,6 +1,6 @@
 <template>
     <div
-        class="h-screen grid place-content-center text-5xl relative z-20 bg-primary-950"
+        class="h-screen grid place-content-center relative z-50 bg-primary-950 text-5xl"
     >
         Location
     </div>

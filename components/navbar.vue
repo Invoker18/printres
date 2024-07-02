@@ -4,7 +4,7 @@
         class="fixed w-full left-0 top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
     >
         <header
-            class="flex items-center justify-between w-full px-5 lg:px-10 2xl:px-20 py-8"
+            class="flex items-center justify-between w-full px-5 lg:px-10 2xl:px-20 py-6"
         >
             <NuxtImg
                 src="/images/logoprintres2.svg"
@@ -12,7 +12,7 @@
                 id="logo"
             />
             <ul
-                class="hidden md:flex justify-center items-center self-end gap-8 xl:gap-20 text-sm sm:text-base xl:text-lg hover-cursor"
+                class="hidden md:flex justify-center items-center gap-8 xl:gap-20 text-sm sm:text-base xl:text-lg hover-cursor"
             >
                 <li
                     @click="scrollToTop()"
@@ -33,6 +33,7 @@
                     Trabajos
                 </li>
                 <li
+                    @click="scrollTo('events')"
                     class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Eventos

@@ -108,7 +108,7 @@ import shape from '@/assets/images/shapes/aboutShape.png'
     @apply bg-secondary text-primary opacity-100 !important;
 }
 :deep(.swiper-pagination-bullet) {
-    @apply bg-white rounded-tl-full opacity-60 size-3;
+    @apply bg-white rounded-tl-full opacity-60 size-2 lg:size-3;
 }
 
 :deep(.swiper-pagination-bullet:nth-child(2n-1)) {

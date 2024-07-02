@@ -1,8 +1,10 @@
 <template>
     <div>
-        <div class="fixed z-[999] top-0 right-0">
-            w/{{ width }} h/{{ height }}
-        </div>
+        <ClientOnly>
+            <div class="fixed z-[999] top-0 right-0">
+                w/{{ width }} h/{{ height }}
+            </div>
+        </ClientOnly>
         <Hero></Hero>
         <VideoSection></VideoSection>
         <About></About>
@@ -32,15 +34,16 @@ onMounted(() => {
                 trigger: section,
                 start: '20% top',
                 // markers: true,
-                scrub: 1,
+                scrub: true,
                 // toggleActions: 'play pause resume reverse',
+                fastScrollEnd: true,
             },
         }).to(
             section,
             {
                 ease: 'none',
-                startAt: { filter: 'brightness(100%) blur(0px)' },
-                filter: isLast ? 'none' : 'brightness(50%) blur(10px)',
+                // startAt: { filter: 'brightness(100%) blur(0px)' },
+                // filter: isLast ? 'none' : 'brightness(50%) blur(10px)',
 
                 // onComplete: () => {
                 //     console.log('beep boop')
