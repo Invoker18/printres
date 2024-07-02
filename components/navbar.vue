@@ -4,7 +4,7 @@
         class="fixed w-full left-0 top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
     >
         <header
-            class="flex items-center justify-between w-full px-3 sm:px-5 2xl:px-20 py-8"
+            class="flex items-center justify-between w-full px-5 lg:px-10 2xl:px-20 py-8"
         >
             <NuxtImg
                 src="/images/logoprintres2.svg"
@@ -27,9 +27,10 @@
                     Nosotros
                 </li>
                 <li
+                    @click="scrollTo('projects')"
                     class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
-                    Servicios
+                    Trabajos
                 </li>
                 <li
                     class="hover:scale-105 hover:text-secondary hover:cursor-pointer"

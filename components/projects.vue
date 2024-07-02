@@ -1,8 +1,13 @@
 <template>
-    <section class="h-[120vh] bg-[#D9D9D9] z-10 sticky top-0 text-black pin">
-        <div class="w-full h-full pt-32 px-3 sm:px-5 2xl:px-20 border">
+    <section
+        id="projects"
+        class="h-[120vh] bg-[#D9D9D9] z-10 sticky top-0 text-primary-950 pin"
+    >
+        <div
+            class="w-full h-full pt-28 md:pt-32 px-5 lg:px-10 2xl:px-20 border"
+        >
             <button
-                class="relative w-fit text-3xl lg:text-4xl flex items-center group"
+                class="relative w-fit text-3xl lg:text-4xl flex items-center group hover-cursor"
             >
                 <h3>Trabajos</h3>
                 <div
@@ -13,81 +18,73 @@
                     class="text-secondary self-end group-hover:block hidden"
                 ></UIcon>
             </button>
-            <div class="grid grid-cols-2 mt-8 h-full gap-40">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 mt-8 w-full h-full md:gap-20 text-[#010C4A]"
+            >
                 <div class="flex flex-col gap-5">
-                    <p class="text-pretty">
+                    <p class="text-pretty hover-cursor">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Dignissimos nam provident illum fugiat. Recusandae non
                         molestiae cum placeat aliquid magnam omnis amet fugit
                         perspiciatis ratione, dignissimos consequatur nemo
                         veniam voluptatum.
                     </p>
-                    <div>
-                        <Swiper
-                            :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full w-full min-w-0 rounded-md shadow-xl shadow-gray-800"
-                            :loop="true"
-                            :autoplay="true"
-                            :pagination="{
-                                el: '.custom-pagination2',
-                                clickable: true,
-                                renderBullet: function (index, className) {
-                                    return `<span class='${className}'></span>`
-                                },
-                            }"
-                            :lazy="true"
-                        >
-                            <SwiperSlide v-for="n in 6" :key="n">
-                                <img
-                                    loading="lazy"
-                                    :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                    alt=""
-                                    class="w-full h-full object-cover hover-cursor max-h-96"
-                                />
-                                <div
-                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                                ></div>
-                            </SwiperSlide>
-                        </Swiper>
-                    </div>
-                    <div class="custom-pagination2"></div>
+                    <Swiper
+                        :modules="[SwiperPagination, SwiperAutoplay]"
+                        class="h-full w-full min-w-0 rounded-md max-h-80"
+                        :loop="true"
+                        :autoplay="true"
+                        :pagination="{
+                            el: '.custom-pagination2',
+                            clickable: true,
+                            renderBullet: function (index, className) {
+                                return `<span class='${className}'></span>`
+                            },
+                        }"
+                        :lazy="true"
+                    >
+                        <SwiperSlide v-for="n in 6" :key="n">
+                            <img
+                                loading="lazy"
+                                :src="`https://picsum.photos/1920/1080?random=${n}`"
+                                alt=""
+                                class="w-full h-full object-cover hover-cursor max-h-80"
+                            />
+                            <div
+                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                            ></div>
+                        </SwiperSlide>
+                    </Swiper>
+                    <div class="custom-pagination2 hover-cursor"></div>
                 </div>
-                <div class="flex flex-col gap-5">
-                    <div>
-                        <Swiper
-                            :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full w-full min-w-0 rounded-md shadow-xl shadow-gray-800"
-                            :loop="true"
-                            :autoplay="true"
-                            :pagination="{
-                                el: '.custom-pagination2',
-                                clickable: true,
-                                renderBullet: function (index, className) {
-                                    return `<span class='${className}'></span>`
-                                },
-                            }"
-                            :lazy="true"
-                        >
-                            <SwiperSlide v-for="n in 6" :key="n">
-                                <img
-                                    loading="lazy"
-                                    :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                    alt=""
-                                    class="w-full h-full object-cover hover-cursor max-h-96"
-                                />
-                                <div
-                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                                ></div>
-                            </SwiperSlide>
-                        </Swiper>
-                    </div>
-                    <p class="text-pretty">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dignissimos nam provident illum fugiat. Recusandae non
-                        molestiae cum placeat aliquid magnam omnis amet fugit
-                        perspiciatis ratione, dignissimos consequatur nemo
-                        veniam voluptatum.
-                    </p>
+                <div class="md:flex flex-col gap-5 hidden">
+                    <Swiper
+                        :modules="[SwiperPagination, SwiperAutoplay]"
+                        class="h-full w-full min-w-0 rounded-md max-h-80"
+                        :loop="true"
+                        :autoplay="true"
+                        :pagination="{
+                            el: '.custom-pagination3',
+                            clickable: true,
+                            renderBullet: function (index, className) {
+                                return `<span class='${className}'></span>`
+                            },
+                        }"
+                        :lazy="true"
+                    >
+                        <SwiperSlide v-for="n in 6" :key="n">
+                            <img
+                                loading="lazy"
+                                :src="`https://picsum.photos/1920/1080?random=${n}`"
+                                alt=""
+                                class="w-full h-full object-cover hover-cursor max-h-96"
+                            />
+                            <div
+                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                            ></div>
+                        </SwiperSlide>
+                    </Swiper>
+                    <div class="custom-pagination3 hover-cursor ml-auto"></div>
                 </div>
             </div>
         </div>
@@ -113,6 +110,10 @@
 }
 
 :deep(.swiper-pagination) {
-    @apply flex justify-start mx-4 !important;
+    @apply flex justify-start mx-4;
+}
+
+.custom-pagination3 {
+    @apply flex justify-end !important;
 }
 </style>

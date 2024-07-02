@@ -1,6 +1,6 @@
 <template>
     <section
-        class="h-[120vh] sticky overflow-hidden top-0 left-0 px-3 sm:px-5 2xl:px-20 pt-24 lg:pt-28 pin flex flex-col gap-8 2xl:gap-x-20"
+        class="h-[120vh] md:h-[90vh] lg:h-[120vh] sticky overflow-hidden top-0 left-0 px-5 lg:px-10 2xl:px-20 pt-24 lg:pt-28 pin flex flex-col gap-8 2xl:gap-x-20"
         id="aboutUs"
     >
         <div
@@ -15,36 +15,47 @@
                 class="text-secondary self-end"
             ></UIcon>
         </div>
-        <div class="grid grid-cols-12 place-content-start gap-5 xl:gap-x-20">
+        <div
+            class="grid grid-cols-12 place-content-start gap-5 md:gap-y-10 xl:gap-x-20"
+        >
             <div
-                class="flex flex-col col-span-full md:col-span-5 xl:col-span-6 gap-5"
+                class="col-span-full flex flex-col md:col-span-5 xl:col-span-6 gap-5 lg:text-lg text-base hover-cursor text-pretty"
             >
-                <p class="lg:text-lg text-base hover-cursor text-pretty">
+                <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Fuga porro velit quidem placeat, modi in quos error. Quasi
                     iure vitae ipsam eos, magnam, labore mollitia non architecto
-                    dignissimos atque fugiat.
+                    dignissimos atque fugiat. lorem ipsum dolor sit amet
                     <br />
                     Inventore, labore dolores minus tempore saepe libero quod ab
                     alias voluptatibus earum cumque blanditiis quas numquam
                     dolore nihil suscipit. Fuga eius recusandae ex provident
                     facilis est! Accusamus explicabo illum cupiditate.
                 </p>
-                <div
-                    class="hidden w-full h-full border md:flex justify-start items-end"
-                >
-                    imagenes
-                    <img :src="vector1" alt="" />
+                <div class="h-full w-full hidden lg:block">
+                    <img
+                        :src="shape"
+                        id="shape"
+                        alt=""
+                        class="object-cover max-h-48 xl:max-h-56 hover-cursor float-left"
+                    />
+                    <!-- <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Rerum, delectus labore est voluptate voluptas
+                        ipsum neque, enim id, excepturi repellat tempore
+                        laboriosam fuga veniam doloremque? Quo assumenda eos
+                        perspiciatis ratione! Dolore, omnis odit dignissimos
+                        deserunt voluptate magnam pariatur nisi rerum iusto
+                        assumenda iste a lorem ipsum dolor sit amet
+                    </p> -->
                 </div>
             </div>
             <div
-                class="h-full w-full gap-3 flex relative col-span-full md:col-span-7 xl:col-span-6"
+                class="h-full w-full gap-5 flex flex-col place-content-center col-span-full md:col-span-7 xl:col-span-6"
             >
-                <!-- <div class="hidden lg:block w-12 bg-secondary"></div>
-                <div class="hidden lg:block w-12 bg-curious-blue-600"></div> -->
                 <Swiper
                     :modules="[SwiperPagination, SwiperAutoplay]"
-                    class="h-full w-full min-w-0 rounded-lg shadow-lg shadow-primary-700"
+                    class="h-full w-full min-w-0 min-h-64 max-h-96"
                     :loop="true"
                     :autoplay="true"
                     :pagination="{
@@ -61,34 +72,37 @@
                             loading="lazy"
                             :src="`https://picsum.photos/1920/1080?random=${n}`"
                             alt=""
-                            class="w-full h-full object-cover hover-cursor"
+                            class="w-full h-full object-cover hover-cursor maskImg"
                         />
                         <div
                             class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
                         ></div>
                     </SwiperSlide>
                 </Swiper>
+                <div class="custom-pagination hover-cursor"></div>
             </div>
-            <div
-                class="custom-pagination md:col-start-6 xl:col-start-7 col-span-full hover-cursor"
-            ></div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
 // import people from '@/assets/images/people.jpeg';
-import vector1 from '@/assets/images/shapes/Vector1.png'
+import shape from '@/assets/images/shapes/aboutShape.png'
 </script>
 
 <style scoped>
-/* .maskImg {
+#shape {
+    shape-outside: url('@/assets/images/shapes/aboutShape.png');
+    clip-path: url('@/assets/images/shapes/aboutShape.png');
+    shape-margin: 0.5rem;
+}
+.maskImg {
     -webkit-mask-image: url('@/assets/images/shapes/empanadas.png');
     mask-image: url('@/assets/images/shapes/empanadas.png');
-    mask-repeat: no-repeat;
+    mask-repeat: round;
     mask-size: contain;
     mask-position: left/center;
-} */
+}
 
 :deep(.swiper-pagination-bullet-active) {
     @apply bg-secondary text-primary opacity-100 !important;
