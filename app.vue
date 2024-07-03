@@ -16,9 +16,34 @@
 <script setup>
 import Lenis from 'lenis'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+
 const isLoading = ref(true)
 onMounted(() => {
-    const lenis = new Lenis()
+    // ScrollTrigger.normalizeScroll(true)
+    // const lenis = new Lenis({
+    //     syncTouch: true,
+    //     syncTouchLerp: 0.04,
+    //     touchInertiaMultiplier: 20,
+    //     touchMultiplier: 0.9,
+    // })
+
+    // lenis.on('scroll', (e) => {})
+
+    // lenis.on('scroll', ScrollTrigger.update)
+
+    // gsap.ticker.add((time) => {
+    //     lenis.raf(time * 1000)
+    // })
+
+    // gsap.ticker.lagSmoothing(0)
+
+    const lenis = new Lenis({
+        syncTouch: true,
+        syncTouchLerp: 0.04,
+        touchInertiaMultiplier: 20,
+        touchMultiplier: 0.9,
+    })
 
     lenis.on('scroll', (e) => {
         // console.log(e);

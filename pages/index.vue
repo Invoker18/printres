@@ -1,10 +1,10 @@
 <template>
     <div>
-        <ClientOnly>
+        <!-- <ClientOnly>
             <div class="fixed z-[999] top-0 right-0">
                 w/{{ width }} h/{{ height }}
             </div>
-        </ClientOnly>
+        </ClientOnly> -->
         <Hero></Hero>
         <VideoSection></VideoSection>
         <About></About>
@@ -22,6 +22,7 @@ import { ScrollTrigger, ScrollToPlugin } from 'gsap/all'
 const { width, height } = useWindowSize()
 
 onMounted(() => {
+    // ScrollTrigger.normalizeScroll(true)
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
     const sections = Array.from(document.querySelectorAll('.pin'))
@@ -31,12 +32,10 @@ onMounted(() => {
 
         gsap.timeline({
             scrollTrigger: {
-                immediateRender: false,
                 trigger: section,
                 start: '20% top',
                 // markers: true,
                 scrub: true,
-                anticipatePin: 1,
                 // toggleActions: 'play pause resume reverse',
                 fastScrollEnd: true,
                 preventOverlaps: true,
