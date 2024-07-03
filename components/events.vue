@@ -1,11 +1,9 @@
 <template>
     <section
         id="events"
-        class="h-[120vh] bg-[#D9D9D9] z-10 sticky top-0 left-0 text-primary-950 pin"
+        class="h-full z-30 relative bg-[#D9D9D9] text-primary-950"
     >
-        <div
-            class="w-full h-full pt-16 md:pt-20 lg:pt-24 px-5 lg:px-10 2xl:px-20"
-        >
+        <div class="w-full h-full py-10 md:pb-16 px-5 lg:px-10 2xl:px-20">
             <div
                 class="grid grid-cols-1 md:grid-cols-2 mt-8 w-full h-full gap-5 lg:gap-10 xl:gap-32 text-[#010C4A]"
             >

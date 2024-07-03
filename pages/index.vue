@@ -31,27 +31,34 @@ onMounted(() => {
 
         gsap.timeline({
             scrollTrigger: {
+                immediateRender: false,
                 trigger: section,
                 start: '20% top',
                 // markers: true,
                 scrub: true,
+                anticipatePin: 1,
                 // toggleActions: 'play pause resume reverse',
                 fastScrollEnd: true,
+                preventOverlaps: true,
+                onEnterBack: () => {
+                    section.classList.add('z-30')
+                },
             },
         }).to(
             section,
             {
                 ease: 'none',
-                // startAt: { filter: 'brightness(100%) blur(0px)' },
-                // filter: isLast ? 'none' : 'brightness(50%) blur(10px)',
-
-                // onComplete: () => {
-                //     console.log('beep boop')
-                //     section.classList.remove('sticky')
-                // },
-                // onReverseComplete: () => {
-                //     section.classList.add('sticky')
-                // },
+                startAt: { filter: 'brightness(100%) blur(0px)' },
+                filter: 'brightness(90%) blur(10px)',
+                onComplete: () => {
+                    // console.log('beep boop')
+                    // section.classList.remove('sticky')
+                    section.classList.remove('z-30')
+                },
+                onReverseComplete: () => {
+                    // section.classList.add('sticky')
+                    // section.classList.add('z-20')
+                },
             },
             '<'
         )

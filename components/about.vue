@@ -1,6 +1,6 @@
 <template>
     <section
-        class="h-[120vh] md:h-[90vh] lg:h-[120vh] sticky overflow-hidden top-0 left-0 px-5 lg:px-10 2xl:px-20 pt-24 lg:pt-28 pin flex flex-col gap-8 2xl:gap-x-20"
+        class="h-screen z-30 bg-primary-950 md:h-[90vh] pin sticky overflow-hidden top-0 left-0 px-5 lg:px-10 2xl:px-20 py-10 flex flex-col gap-8 2xl:gap-x-20"
         id="aboutUs"
     >
         <div

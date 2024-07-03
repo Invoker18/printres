@@ -1,6 +1,6 @@
 <template>
     <div
-        class="h-screen grid place-content-center relative z-50 bg-primary-950 text-5xl"
+        class="h-screen grid place-content-center sticky bottom-0 left-0 z-20 bg-curious-blue-600 text-5xl"
     >
         Contact
     </div>

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="bg-white brightness-90 hover-cursor2">
+        <div class="bg-white brightness-90 hover-cursor2 relative z-40">
             <!-- <img :src="videoImg" alt="" class="h-full w-full object-cover" /> -->
             <video
                 id="video"

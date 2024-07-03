@@ -1,6 +1,6 @@
 <template>
     <section
-        class="flex justify-between w-full mt-24 h-[50dvh] md:h-screen relative"
+        class="flex justify-between w-full mt-24 h-[50dvh] md:h-screen relative z-30 bg-primary-950"
         id="heroText"
     >
         <div

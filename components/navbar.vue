@@ -45,7 +45,7 @@
                 </li>
             </ul>
             <div class="flex items-center gap-2">
-                <NuxtImg src="/images/3.svg" class="size-5" />
+                <NuxtImg src="/images/3.svg" class="size-5 hidden md:block" />
                 <!-- <UIcon name="i-marketeq-menu" class="size-8"></UIcon> -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
