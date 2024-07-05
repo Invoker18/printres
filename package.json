@@ -12,6 +12,8 @@
   "dependencies": {
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
+    "@tresjs/cientos": "^3.9.0",
+    "@tresjs/nuxt": "^3.0.0",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
     "gsap": "^3.12.5",
@@ -20,5 +22,9 @@
     "nuxt-swiper": "^1.2.2",
     "vue": "^3.4.27",
     "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5"
   }
 }

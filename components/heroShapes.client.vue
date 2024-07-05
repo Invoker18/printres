@@ -1,9 +1,9 @@
 <template>
     <div
-        class="bg-[#0424D9] h-full lg:flex justify-start pt-[10vh] items-start hidden"
+        class="hidden h-full flex-1 items-start justify-center bg-[#0424D9] pt-[10vh] lg:flex"
     >
         <div
-            class="px-10 2xl:px-20 grid-rows-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
+            class="grid grid-cols-1 grid-rows-3 px-10 lg:grid-cols-2 xl:grid-cols-3 2xl:px-20"
             id="vectors"
         >
             <div
@@ -46,7 +46,8 @@ const { width, height } = useWindowSize()
 
 const vectorsComputed = computed(() => {
     if (width.value < 1024) return [vector1, vector6, vector3]
-    if (width.value < 1280) return vectors.value.slice(0, 6)
+    if (width.value < 1280)
+        return [vector1, vector2, vector3, vector6, vector4, vector5]
     return vectors.value
 })
 onMounted(() => {

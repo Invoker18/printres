@@ -7,7 +7,7 @@
         </NuxtLayout>
         <div
             v-if="isLoading"
-            class="fixed top-0 left-0 h-[100dvh] w-full bg-primary-950 z-[9999] text-5xl grid place-content-center"
+            class="bg-primary-950 fixed left-0 top-0 z-[9999] grid h-[100dvh] w-full place-content-center text-5xl"
         >
             ...loading
         </div>
@@ -40,9 +40,8 @@ onMounted(() => {
 
     const lenis = new Lenis({
         syncTouch: true,
-        syncTouchLerp: 0.04,
-        touchInertiaMultiplier: 20,
-        touchMultiplier: 0.9,
+        syncTouchLerp: 0.03,
+        touchMultiplier: 0.8,
     })
 
     lenis.on('scroll', (e) => {
@@ -97,7 +96,7 @@ onMounted(() => {
             // const isTargetLinkOrBtn = target.classList.contains('hover-cursor')
             const isTargetLinkOrBtn = target.closest('.hover-cursor')
             const hoverCursor2 = target.classList.contains('hover-cursor2')
-            const scale = hoverCursor2 ? 4 : 2
+            const scale = hoverCursor2 ? 4.5 : 2.5
             const changeCursor =
                 isTargetLinkOrBtn || hoverCursor2 ? true : false
             // GSAP config
@@ -106,14 +105,20 @@ onMounted(() => {
                 y: clientY - 11,
                 duration: 0,
                 ease: 'power4', // More easing options here: https://gsap.com/docs/v3/Eases/
-                opacity: changeCursor ? 0.6 : 1,
+                opacity: changeCursor ? '0.7' : 1,
                 transform: `scale(${changeCursor ? scale : 1})`,
                 backgroundColor: changeCursor ? '#f87c56' : '#0091dc',
-                mixBlendMode: changeCursor ? 'difference' : 'normal',
+                mixBlendMode: changeCursor ? 'multiply' : 'normal',
             })
         })
         // Hidding the cursor element when the mouse cursor
         // is moved out of the page
+        document.querySelector('iframe').addEventListener('mouseenter', () => {
+            gsap.to($el, {
+                duration: 0.7,
+                opacity: 0,
+            })
+        })
         document.addEventListener('mouseleave', (e) => {
             gsap.to($el, {
                 duration: 0.7,
@@ -131,7 +136,7 @@ onMounted(() => {
 </script>
 <style>
 body {
-    /* cursor: none; */
+    cursor: none;
     /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
             10 10,
         auto; */

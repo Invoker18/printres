@@ -1,51 +1,53 @@
 <template>
     <div
         id="nav"
-        class="fixed w-full left-0 top-0 z-50 transition-all ease-in duration-500 backdrop-blur-sm bg-opacity-80 bg-primary-950"
+        class="bg-primary-950 fixed left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
     >
         <header
-            class="flex items-center justify-between w-full px-5 lg:px-10 2xl:px-20 py-6"
+            class="flex w-full items-center justify-between px-5 py-6 lg:px-10 2xl:px-28"
         >
             <NuxtImg
+                @click="scrollToTop()"
                 src="/images/logoprintres2.svg"
-                class="w-28 md:w-32 lg:w-44 hover-cursor"
+                class="hover-cursor w-28 md:w-32 lg:w-40"
                 id="logo"
             />
             <ul
-                class="hidden md:flex justify-center items-center gap-8 xl:gap-20 text-sm sm:text-base xl:text-lg hover-cursor"
+                class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
             >
-                <li
+                <!-- <li
                     @click="scrollToTop()"
                     class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
                 >
                     Inicio
-                </li>
+                </li> -->
                 <li
                     @click="scrollTo('aboutUs')"
-                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
+                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Nosotros
                 </li>
                 <li
                     @click="scrollTo('projects')"
-                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
+                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Trabajos
                 </li>
                 <li
                     @click="scrollTo('events')"
-                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
+                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Eventos
                 </li>
                 <li
-                    class="hover:scale-105 hover:text-secondary hover:cursor-pointer"
+                    @click="scrollTo('contact')"
+                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
-                    Proyectos
+                    Contacto
                 </li>
             </ul>
             <div class="flex items-center gap-2">
-                <NuxtImg src="/images/3.svg" class="size-5 hidden md:block" />
+                <NuxtImg src="/images/3.svg" class="hidden size-5 md:block" />
                 <!-- <UIcon name="i-marketeq-menu" class="size-8"></UIcon> -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

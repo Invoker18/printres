@@ -1,13 +1,13 @@
 <template>
     <section
-        class="flex justify-between w-full mt-24 h-[50dvh] md:h-screen relative z-30 bg-primary-950"
+        class="bg-primary-950 relative z-30 mt-24 flex h-[45dvh] w-full justify-between md:h-screen"
         id="heroText"
     >
         <div
-            class="relative flex flex-col items-start justify-start pt-10 md:pt-[20vh] font-semibold select-none px-5 lg:px-10 2xl:px-20 h-full w-full flex-1"
+            class="relative flex h-full w-full flex-1 select-none flex-col items-center justify-start px-5 pt-16 font-semibold sm:items-start sm:pt-10 md:pt-[20vh] lg:px-10 2xl:px-28"
         >
             <div
-                class="text-gray-100 flex text-7xl sm:text-8xl md:text-[8rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
+                class="flex text-7xl text-gray-100 sm:text-8xl md:text-[8.5rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text1"
             >
                 <div
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div
-                class="flex text-7xl sm:text-8xl md:text-[8rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
+                class="flex text-7xl sm:text-8xl md:text-[8.5rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text2"
             >
                 <div
@@ -37,12 +37,12 @@
         <HeroShapes></HeroShapes>
         <div
             id="scrollText"
-            class="flex items-center text-2xl sm:text-4xl gap-2 absolute bottom-12 md:bottom-32 right-6 md:right-8 2xl:right-24 z-50"
+            class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-32 md:right-8 2xl:right-24"
         >
             <span class="font-semibold">Scroll</span>
             <UIcon
                 name="i-ph-arrow-down-right-bold"
-                class="text-secondary size-8"
+                class="size-8 text-secondary"
             ></UIcon>
         </div>
     </section>
