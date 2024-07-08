@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-primary-950 relative z-30 mt-24 flex h-[45dvh] w-full justify-between md:h-screen"
+        class="bg-primary-950 relative z-30 mt-[5.4rem] flex h-[45dvh] w-full justify-between md:h-screen"
         id="heroText"
     >
         <div

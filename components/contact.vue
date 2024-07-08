@@ -2,18 +2,33 @@
     <div
         class="hover-cursor sticky bottom-0 z-20 grid h-[110vh] place-content-center bg-curious-blue-600 pt-56 md:pt-24"
     >
-        <TresCanvas window-size render-mode="on-demand" class="absolute">
+        <TresCanvas
+            shadows
+            alpha
+            window-size
+            power-preference="high-performance"
+            class="-z-10"
+        >
+            <OrbitControls :enable-zoom="false" />
             <TresPerspectiveCamera
-                :position="[4, 4, 4]"
+                :position="[1, 2, 5]"
                 :fov="45"
-                :look-at="[0, 0, 0]"
+                :aspect="1"
+                :near="0.1"
+                :far="1000"
             />
-            <OrbitControls></OrbitControls>
-            <TresMesh :position="[2, 0, 0]">
-                <TresSphereGeometry args />
-                <TresMeshBasicMaterial color="#001489" />
+            <!-- <Suspense>
+                <TexturedBall />
+            </Suspense> -->
+            <TresMesh>
+                <TresSphereGeometry :args="[15, 32, 16]"></TresSphereGeometry>
+                <TresMeshBasicMaterial color="red" />
             </TresMesh>
-            <TresAmbientLight :intensity="1" />
+            <TresDirectionalLight
+                :position="[0, 2, 4]"
+                :intensity="2"
+                cast-shadow
+            />
         </TresCanvas>
         <div class="grid h-full w-full gap-5 px-5">
             <div class="mb-3 text-center text-2xl">
@@ -45,6 +60,12 @@
 
 <script lang="ts" setup>
 import { OrbitControls, Smoke } from '@tresjs/cientos'
+
+// Half a sphere
+const phiStart = ref(0)
+const phiEnd = ref(Math.PI * 2)
+const thetaStart = ref(0)
+const thetaEnd = ref(Math.PI / 2)
 </script>
 
 <style></style>
