@@ -17,7 +17,6 @@
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
-
 const isLoading = ref(true)
 onMounted(() => {
     // ScrollTrigger.normalizeScroll(true)
@@ -113,7 +112,7 @@ onMounted(() => {
         })
         // Hidding the cursor element when the mouse cursor
         // is moved out of the page
-        document.querySelector('iframe').addEventListener('mouseenter', () => {
+        document.querySelector('iframe')?.addEventListener('mouseenter', () => {
             gsap.to($el, {
                 duration: 0.7,
                 opacity: 0,

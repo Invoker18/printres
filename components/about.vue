@@ -16,10 +16,10 @@
             ></UIcon>
         </div>
         <div
-            class="grid grid-cols-12 place-content-start gap-5 md:gap-y-10 xl:gap-x-20"
+            class="grid grid-cols-12 place-content-center items-center gap-5 md:gap-y-10 xl:gap-x-20"
         >
             <div
-                class="col-span-full flex flex-col gap-5 text-pretty text-base md:col-span-5 lg:text-lg xl:col-span-6 xl:gap-10"
+                class="col-span-full flex flex-col gap-5 text-pretty text-base md:col-span-5 lg:text-lg xl:col-span-6 xl:gap-14"
             >
                 <p class="hover-cursor">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

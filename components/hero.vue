@@ -156,7 +156,7 @@ onMounted(() => {
             opacity: 0,
             scrollTrigger: {
                 trigger: '#heroText',
-                start: '40% center',
+                start: '45% center',
                 end: 'center center',
                 toggleActions: 'play pause resume reset',
                 scrub: true,
@@ -165,12 +165,12 @@ onMounted(() => {
             duration: 0.5,
         })
         gsap.to('#text1 div', {
-            y: '+=625',
+            y: '+=675',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',
                 scrub: true,
-                start: '40% center',
+                start: '45% center',
                 end: '100% top',
             },
             stagger: {
@@ -180,13 +180,14 @@ onMounted(() => {
             ease: 'power1.out',
         })
         gsap.to('#text2 div', {
-            y: '+=450',
+            y: '+=800',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',
                 scrub: true,
-                start: '40% center',
+                start: '45% center',
                 end: '100% top',
+                markers: true,
             },
             stagger: {
                 from: 'random',

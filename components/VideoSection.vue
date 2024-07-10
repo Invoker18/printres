@@ -1,8 +1,12 @@
 <template>
     <section>
-        <div class="bg-white brightness-90 hover-cursor2 relative z-40">
-            <!-- <img :src="videoImg" alt="" class="h-full w-full object-cover" /> -->
-            <video
+        <div class="hover-cursor2 relative z-40 bg-white brightness-90">
+            <img
+                src="https://picsum.photos/1920/1080?random=10"
+                alt=""
+                class="h-full w-full object-cover"
+            />
+            <!-- <video
                 id="video"
                 :src="video1"
                 width="1920"
@@ -13,7 +17,7 @@
                 muted
                 playsinline
                 preload="auto"
-            ></video>
+            ></video> -->
         </div>
     </section>
 </template>

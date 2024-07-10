@@ -27,12 +27,12 @@
                 >
                     Nosotros
                 </li>
-                <li
-                    @click="scrollTo('projects')"
+                <NuxtLink
+                    to="work"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Trabajos
-                </li>
+                </NuxtLink>
                 <li
                     @click="scrollTo('events')"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"

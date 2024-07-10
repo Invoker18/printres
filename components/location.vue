@@ -10,37 +10,37 @@
                     class="hover-cursor group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer"
                 >
                     Facebook
-                    <UIcon
+                    <!-- <UIcon
                         name="i-ph-arrow-up-right-bold"
                         class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon>
+                    ></UIcon> -->
                 </li>
                 <li
                     class="hover-cursor group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer"
                 >
                     Instagram
-                    <UIcon
+                    <!-- <UIcon
                         name="i-ph-arrow-up-right-bold"
                         class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon>
+                    ></UIcon> -->
                 </li>
                 <li
                     class="hover-cursor group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer"
                 >
                     Whatsapp
-                    <UIcon
+                    <!-- <UIcon
                         name="i-ph-arrow-up-right-bold"
                         class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon>
+                    ></UIcon> -->
                 </li>
                 <li
                     class="hover-cursor group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer"
                 >
                     Behance
-                    <UIcon
+                    <!-- <UIcon
                         name="i-ph-arrow-up-right-bold"
                         class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon>
+                    ></UIcon> -->
                 </li>
                 <!-- <li
                     class="hover-cursor w-fit transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer group"
