@@ -19,40 +19,35 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 const isLoading = ref(true)
 onMounted(() => {
-    // ScrollTrigger.normalizeScroll(true)
+    gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.normalizeScroll(true) // enable
+    let normalizer = ScrollTrigger.normalizeScroll()
+    const lenis = new Lenis({})
+
+    lenis.on('scroll', ScrollTrigger.update)
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000)
+    })
+
+    gsap.ticker.lagSmoothing(0)
+
     // const lenis = new Lenis({
-    //     syncTouch: true,
-    //     syncTouchLerp: 0.04,
-    //     touchInertiaMultiplier: 20,
-    //     touchMultiplier: 0.9,
+    //     // syncTouch: true,
+    //     // syncTouchLerp: 0.03,
+    //     // touchMultiplier: 0.8,
     // })
 
-    // lenis.on('scroll', (e) => {})
-
-    // lenis.on('scroll', ScrollTrigger.update)
-
-    // gsap.ticker.add((time) => {
-    //     lenis.raf(time * 1000)
+    // lenis.on('scroll', (e) => {
+    //     // console.log(e);
     // })
 
-    // gsap.ticker.lagSmoothing(0)
+    // function raf(time) {
+    //     lenis.raf(time)
+    //     requestAnimationFrame(raf)
+    // }
 
-    const lenis = new Lenis({
-        syncTouch: true,
-        syncTouchLerp: 0.03,
-        touchMultiplier: 0.8,
-    })
-
-    lenis.on('scroll', (e) => {
-        // console.log(e);
-    })
-
-    function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
+    // requestAnimationFrame(raf)
 
     const isMobile = () => {
         if (
@@ -68,37 +63,14 @@ onMounted(() => {
 
     const createCursorFollower = () => {
         const $el = document.querySelector('.cursor-follower')
-        // gsap.set('.cursor-follower', {
-        //     xPercent: -50,
-        //     yPercent: -50,
-        //     opacity: 1,
-        // })
-
-        // let xTo = gsap.quickTo('.cursor-follower', 'x', {
-        //         duration: 0.1,
-        //         ease: 'power3',
-        //     }),
-        //     yTo = gsap.quickTo('.cursor-follower', 'y', {
-        //         duration: 0.1,
-        //         ease: 'power3',
-        //     })
-
-        // window.addEventListener('mousemove', (e) => {
-        //     const { clientX, clientY } = e
-        //     xTo(clientX)
-        //     yTo(clientY)
-        // })
 
         window.addEventListener('mousemove', (e) => {
             const { target, clientX, clientY } = e
-            // Check if target is inside a link or button
-            // const isTargetLinkOrBtn = target.classList.contains('hover-cursor')
             const isTargetLinkOrBtn = target.closest('.hover-cursor')
             const hoverCursor2 = target.classList.contains('hover-cursor2')
             const scale = hoverCursor2 ? 4.5 : 2.5
             const changeCursor =
                 isTargetLinkOrBtn || hoverCursor2 ? true : false
-            // GSAP config
             gsap.to($el, {
                 x: clientX - 11,
                 y: clientY - 11,
@@ -110,8 +82,6 @@ onMounted(() => {
                 mixBlendMode: changeCursor ? 'multiply' : 'normal',
             })
         })
-        // Hidding the cursor element when the mouse cursor
-        // is moved out of the page
         document.querySelector('iframe')?.addEventListener('mouseenter', () => {
             gsap.to($el, {
                 duration: 0.7,
@@ -164,4 +134,14 @@ body {
     -moz-transition: all 1s ease;
     mix-blend-mode: difference;
 } */
+
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    filter: blur(1rem);
+}
 </style>

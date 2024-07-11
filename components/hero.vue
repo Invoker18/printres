@@ -187,7 +187,6 @@ onMounted(() => {
                 scrub: true,
                 start: '45% center',
                 end: '100% top',
-                markers: true,
             },
             stagger: {
                 from: 'random',

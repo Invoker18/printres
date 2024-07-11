@@ -55,12 +55,12 @@ onMounted(() => {
 
     nextTick(() => {
         gsap.to('#vectors div', {
-            y: '+=600',
+            y: '+=800',
             rotation: 'random(200, -200)',
             scrollTrigger: {
                 trigger: '#heroText',
                 scrub: true,
-                start: '40% center',
+                start: '45% center',
                 end: '100% top',
             },
             stagger: {

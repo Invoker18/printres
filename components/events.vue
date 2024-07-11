@@ -1,50 +1,52 @@
 <template>
     <section
         id="events"
-        class="h-full relative z-40 bg-[#D9D9D9] text-primary-950"
+        class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
     >
-        <div class="w-full h-full py-10 md:pb-16 px-5 lg:px-10 2xl:px-28">
+        <div class="h-full w-full px-5 py-10 md:pb-16 lg:px-10 2xl:px-28">
             <div
-                class="grid grid-cols-1 md:grid-cols-2 mt-8 w-full h-full gap-5 lg:gap-10 xl:gap-32 text-[#010C4A]"
+                class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 xl:gap-32"
             >
-                <div class="md:flex flex-col gap-8 hidden">
-                    <Swiper
-                        :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="h-full w-full min-w-0 rounded-md max-h-80"
-                        :loop="true"
-                        :autoplay="true"
-                        :pagination="{
-                            el: '.custom-pagination4',
-                            clickable: true,
-                            renderBullet: function (index, className) {
-                                return `<span class='${className}'></span>`
-                            },
-                        }"
-                        :lazy="true"
-                    >
-                        <SwiperSlide v-for="n in 6" :key="n">
-                            <img
-                                loading="lazy"
-                                :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                alt=""
-                                class="w-full h-full object-cover hover-cursor"
-                            />
-                            <div
-                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                            ></div>
-                        </SwiperSlide>
-                    </Swiper>
+                <div class="hidden flex-col gap-8 md:flex">
+                    <ClientOnly>
+                        <Swiper
+                            :modules="[SwiperPagination, SwiperAutoplay]"
+                            class="h-full max-h-80 w-full min-w-0 rounded-md"
+                            :loop="true"
+                            :autoplay="true"
+                            :pagination="{
+                                el: '.custom-pagination4',
+                                clickable: true,
+                                renderBullet: function (index, className) {
+                                    return `<span class='${className}'></span>`
+                                },
+                            }"
+                            :lazy="true"
+                        >
+                            <SwiperSlide v-for="n in 6" :key="n">
+                                <img
+                                    loading="lazy"
+                                    :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}}`"
+                                    alt=""
+                                    class="hover-cursor h-full w-full object-cover"
+                                />
+                                <div
+                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                                ></div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </ClientOnly>
 
                     <div
-                        class="flex flex-col lg:flex-row justify-between w-full items-start"
+                        class="flex w-full flex-col items-start justify-between lg:flex-row"
                     >
                         <div class="flex flex-shrink-0 items-center gap-5">
                             <div
-                                class="border border-primary-950 rounded-full h-fit p-1 hover:cursor-pointer hover-cursor"
+                                class="border-primary-950 hover-cursor h-fit rounded-full border p-1 hover:cursor-pointer"
                             >
                                 <UIcon
                                     name="i-ph-arrow-up-left-bold"
-                                    class="text-primary-950 group-hover:block hidden size-6 2xl:size-10"
+                                    class="text-primary-950 hidden size-6 group-hover:block 2xl:size-10"
                                 ></UIcon>
                             </div>
                             <div
@@ -62,63 +64,65 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-5 text-right">
-                    <div class="flex justify-between items-center gap-5">
+                    <div class="flex items-center justify-between gap-5">
                         <div class="max-w-full md:hidden">
                             <img
                                 :src="shape"
                                 id="shape"
                                 alt=""
-                                class="hover-cursor object-cover max-h-20"
+                                class="hover-cursor max-h-20 object-cover"
                             />
                         </div>
                         <button class="ml-auto">
                             <h3
-                                class="relative w-fit text-3xl lg:text-4xl flex items-center group hover-cursor text-primary-950"
+                                class="hover-cursor text-primary-950 group relative flex w-fit items-center text-3xl lg:text-4xl"
                             >
                                 <UIcon
                                     name="i-ph-arrow-up-left-bold"
-                                    class="text-secondary self-end group-hover:block hidden"
+                                    class="hidden self-end text-secondary group-hover:block"
                                 ></UIcon>
                                 Events
                                 <span
-                                    class="bg-secondary absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%]"
+                                    class="absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%] bg-secondary"
                                 ></span>
                             </h3>
                         </button>
                     </div>
-                    <p class="text-pretty hover-cursor">
+                    <p class="hover-cursor text-pretty">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Dignissimos nam provident illum fugiat. Recusandae non
                         molestiae cum placeat aliquid magnam omnis amet fugit
                         perspiciatis ratione, dignissimos consequatur nemo
                         veniam voluptatum.
                     </p>
-                    <Swiper
-                        :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="h-full w-full min-w-0 rounded-md max-h-80 lg:max-h-96"
-                        :loop="true"
-                        :autoplay="true"
-                        :pagination="{
-                            el: '.custom-pagination5',
-                            clickable: true,
-                            renderBullet: function (index, className) {
-                                return `<span class='${className}'></span>`
-                            },
-                        }"
-                        :lazy="true"
-                    >
-                        <SwiperSlide v-for="n in 6" :key="n">
-                            <img
-                                loading="lazy"
-                                :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                alt=""
-                                class="w-full h-full object-cover hover-cursor"
-                            />
-                            <div
-                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                            ></div>
-                        </SwiperSlide>
-                    </Swiper>
+                    <ClientOnly>
+                        <Swiper
+                            :modules="[SwiperPagination, SwiperAutoplay]"
+                            class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96"
+                            :loop="true"
+                            :autoplay="true"
+                            :pagination="{
+                                el: '.custom-pagination5',
+                                clickable: true,
+                                renderBullet: function (index, className) {
+                                    return `<span class='${className}'></span>`
+                                },
+                            }"
+                            :lazy="true"
+                        >
+                            <SwiperSlide v-for="n in 6" :key="n">
+                                <img
+                                    loading="lazy"
+                                    :src="`https://picsum.photos/1920/1080?random=${n}`"
+                                    alt=""
+                                    class="hover-cursor h-full w-full object-cover"
+                                />
+                                <div
+                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                                ></div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </ClientOnly>
 
                     <div class="custom-pagination5 hover-cursor"></div>
                 </div>
@@ -134,10 +138,10 @@ import eventsShape from '@/assets/images/shapes/eventsShape.png'
 
 <style scoped>
 :deep(.swiper-pagination-bullet-active) {
-    @apply bg-secondary text-primary opacity-100 !important;
+    @apply text-primary bg-secondary opacity-100 !important;
 }
 :deep(.swiper-pagination-bullet) {
-    @apply bg-primary-950 rounded-tl-full opacity-100 size-2 xl:size-3;
+    @apply bg-primary-950 size-2 rounded-tl-full opacity-100 xl:size-3;
 }
 
 :deep(.swiper-pagination-bullet:nth-child(2n-1)) {

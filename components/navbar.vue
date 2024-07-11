@@ -6,8 +6,9 @@
         <header
             class="flex w-full items-center justify-between px-5 py-6 lg:px-10 2xl:px-28"
         >
+            <!-- @click="scrollToTop()" -->
             <NuxtImg
-                @click="scrollToTop()"
+                @click="goHome()"
                 src="/images/logoprintres2.svg"
                 class="hover-cursor w-28 md:w-32 lg:w-40"
                 id="logo"
@@ -83,6 +84,10 @@ const scrollToTop = () => {
         duration: 2,
         scrollTo: 'top',
     })
+}
+
+const goHome = async () => {
+    await navigateTo('/')
 }
 onMounted(() => {
     // let tween = gsap.to('#nav', {

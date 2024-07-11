@@ -3,7 +3,6 @@
         <ClientOnly>
             <div class="fixed right-0 top-0 z-[999]">
                 w/{{ width }} h/{{ height }}
-                {{ zIndex }}
             </div>
         </ClientOnly>
         <Hero></Hero>
@@ -13,24 +12,23 @@
         <Events></Events>
         <!-- fix for sticky bottom0 -->
         <div id="contact"></div>
-        <Contact :class="zIndex"></Contact>
+        <Contact></Contact>
         <Location></Location>
     </div>
 </template>
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollTrigger, ScrollToPlugin } from 'gsap/all'
+import { ScrollTrigger } from 'gsap/all'
 
 const { width, height } = useWindowSize()
 
 const { x, y } = useWindowScroll()
 
-const zIndex = ref('')
-
 onMounted(() => {
-    // ScrollTrigger.normalizeScroll(true)
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+    // ScrollTrigger.normalizeScroll(true); // enable
+    // let normalizer = ScrollTrigger.normalizeScroll();
+    gsap.registerPlugin(ScrollTrigger)
 
     // if (y.value > 2800)
     //     document.querySelector('#aboutUs')?.classList.remove('z-30')
@@ -46,7 +44,6 @@ onMounted(() => {
                 trigger: section,
                 start: '20% top',
                 scrub: true,
-                markers: true,
                 toggleActions: 'play none none reset',
                 onEnterBack: () => {
                     section.classList.add('z-30')
@@ -63,7 +60,9 @@ onMounted(() => {
         })
     })
 
-    ScrollTrigger.refresh(true)
+    nextTick(() => {
+        ScrollTrigger.refresh(true)
+    })
 })
 </script>
 

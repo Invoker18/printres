@@ -9,4 +9,7 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@tresjs/nuxt',
     ],
+    app: {
+        pageTransition: { name: 'page', mode: 'out-in' },
+    },
 })
