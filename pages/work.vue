@@ -1,19 +1,15 @@
 <template>
     <div class="text-primary-950 relative z-20 mt-24 bg-gray-200">
         <div class="space-y-10 px-5 py-5 lg:px-10 2xl:px-28">
-            <div class="grid grid-cols-3">
+            <div class="grid grid-cols-3 items-center">
                 <div class="col-span-full flex flex-col gap-6 md:col-span-2">
                     <h3
                         class="hover-cursor text-primary-950 group relative flex w-fit items-center text-3xl lg:text-4xl"
                     >
                         Trabajos
                         <span
-                            class="absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%] bg-secondary"
+                            class="absolute -bottom-0.5 right-0 mt-1 h-0.5 w-[50%] bg-secondary"
                         ></span>
-                        <UIcon
-                            name="i-ph-arrow-up-right-bold"
-                            class="hidden self-end text-secondary group-hover:block"
-                        ></UIcon>
                     </h3>
                     <p class="hover-cursor">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -49,7 +45,7 @@
                     </p>
                 </div>
                 <div class="hidden md:block">
-                    <img :src="workShape" alt="" class="mx-auto w-48" />
+                    <img :src="workShape" alt="" class="w-40 mx-auto" />
                 </div>
             </div>
             <div

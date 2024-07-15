@@ -58,7 +58,7 @@
                                 :src="eventsShape"
                                 id="shape"
                                 alt=""
-                                class="hover-cursor object-contain"
+                                class="hover-cursor max-h-40 object-contain"
                             />
                         </div>
                     </div>

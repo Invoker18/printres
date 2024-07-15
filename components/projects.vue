@@ -3,7 +3,7 @@
         id="projects"
         class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
     >
-        <div class="h-full w-full px-5 py-3 md:py-10 lg:px-10 2xl:px-28">
+        <div class="h-full w-full px-5 py-3 md:pt-40 lg:px-10 2xl:px-28">
             <div
                 class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 xl:gap-32"
             >
@@ -19,7 +19,7 @@
                                 ></span>
                                 <UIcon
                                     name="i-ph-arrow-up-right-bold"
-                                    class="hidden self-end text-secondary group-hover:block"
+                                    class="hidden self-end text-secondary group-hover:block size-8"
                                 ></UIcon>
                             </h3>
                         </button>
@@ -108,7 +108,7 @@
                                 :src="shape"
                                 id="shape"
                                 alt=""
-                                class="hover-cursor object-contain"
+                                class="hover-cursor max-h-36 object-contain"
                             />
                         </div>
                         <div

@@ -47,31 +47,17 @@
                     Contacto
                 </li>
             </ul>
-            <div class="flex items-center gap-2">
-                <NuxtImg src="/images/3.svg" class="hidden size-5 md:block" />
-                <!-- <UIcon name="i-marketeq-menu" class="size-8"></UIcon> -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="2em"
-                    height="2em"
-                    viewBox="0 0 50 50"
-                >
-                    <g
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="6"
-                    >
-                        <path stroke="#0091dc" d="M6.25 25h37.5" />
-                        <path stroke="#f87c56" d="M6.25 12.5h25m-12.5 25h25z" />
-                    </g>
-                </svg>
+            <div class="flex items-center gap-3">
+                <img :src="tresImg" alt="" class="size-10 hover-cursor cursor-pointer" />
+                <img :src="menuImg" alt="" class="size-6 hover-cursor cursor-pointer md:hidden" />
             </div>
         </header>
     </div>
 </template>
 
 <script lang="ts" setup>
+import tresImg from '@/assets/images/shapes/3oscuro.svg'
+import menuImg from '@/assets/images/shapes/menuOscuro.svg'
 import gsap from 'gsap'
 const scrollTo = (section: string) => {
     gsap.to(window, {
