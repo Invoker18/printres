@@ -1,5 +1,5 @@
 <template>
-    <div class="text-primary-950 relative z-20 pt-24 bg-gray-200">
+    <div class="text-primary-950 relative z-20 bg-gray-200 pt-24">
         <div class="space-y-10 px-5 py-5 lg:px-10 2xl:px-28">
             <div class="grid grid-cols-3 items-center">
                 <div class="col-span-full flex flex-col gap-6 md:col-span-2">
@@ -45,15 +45,15 @@
                     </p>
                 </div>
                 <div class="hidden md:block">
-                    <img :src="workShape" alt="" class="w-40 mx-auto" />
+                    <img :src="workShape" alt="" class="mx-auto w-40" />
                 </div>
             </div>
             <div
-                class="grid grid-cols-1 place-content-center items-center gap-10 sm:grid-cols-2 md:grid-cols-3"
+                class="grid grid-cols-2 place-content-center items-center gap-10 gap-x-3 md:grid-cols-3 md:gap-x-10"
             >
                 <ClientOnly>
                     <div
-                        class="h-full min-h-56 w-full rounded-md"
+                        class="h-full min-h-40 w-full rounded-md"
                         v-for="n in 10"
                         :key="n"
                     >
@@ -62,17 +62,39 @@
                             :src="`https://picsum.photos/1920/1080?random=${n * activeCategory}`"
                             alt=""
                             class="hover-cursor h-full w-full rounded-md object-cover"
+                            @click="
+                                showImage(
+                                    `https://picsum.photos/1920/1080?random=${n * activeCategory}`
+                                )
+                            "
                         />
                     </div>
                 </ClientOnly>
             </div>
         </div>
+        <UModal
+            :ui="{
+                container: 'items-center',
+                width: 'w-full max-w-2xl sm:max-w-screen-md',
+            }"
+            v-model="isOpen"
+        >
+            <img :src="currentImg" alt="" class="h-full w-full rounded-md" />
+        </UModal>
     </div>
 </template>
 
 <script lang="ts" setup>
 import workShape from '@/assets/images/shapes/workPage.png'
+
+const currentImg = ref('')
+const isOpen = ref(false)
 const activeCategory = ref(1)
+
+const showImage = (url: string) => {
+    currentImg.value = url
+    isOpen.value = true
+}
 </script>
 
 <style></style>

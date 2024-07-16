@@ -34,13 +34,13 @@
                     Nosotros
                 </li>
                 <NuxtLink
-                    to="work"
+                    to="/work"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Trabajos
                 </NuxtLink>
                 <NuxtLink
-                    to="events"
+                    to="/events"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Eventos
@@ -61,7 +61,7 @@
                 <img
                     :src="route.path === '/' ? menuImg2 : menuImg"
                     alt=""
-                    class="hover-cursor size-6 cursor-pointer "
+                    class="hover-cursor size-6 cursor-pointer md:hidden"
                     @click="openSlideover()"
                 />
             </div>

@@ -36,13 +36,13 @@
                 </li>
                 <NuxtLink
                     to="work"
-                    class="w-full border-b py-6 text-right"
+                    class="w-full border-b py-6 text-right focus-within:outline-none"
                     @click="slideover.close()"
                     >Trabajos</NuxtLink
                 >
                 <NuxtLink
                     to="events"
-                    class="w-full border-b py-6 text-right"
+                    class="w-full border-b py-6 text-right focus-within:outline-none"
                     @click="slideover.close()"
                     >Eventos</NuxtLink
                 >
