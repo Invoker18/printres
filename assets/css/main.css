@@ -3,7 +3,6 @@
 }
 body {
     font-family: 'Stara', 'sans-serif', 'serif';
-    @apply bg-primary-950;
 }
 
 html.lenis,

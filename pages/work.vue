@@ -1,5 +1,5 @@
 <template>
-    <div class="text-primary-950 relative z-20 mt-24 bg-gray-200">
+    <div class="text-primary-950 relative z-20 pt-24 bg-gray-200">
         <div class="space-y-10 px-5 py-5 lg:px-10 2xl:px-28">
             <div class="grid grid-cols-3 items-center">
                 <div class="col-span-full flex flex-col gap-6 md:col-span-2">

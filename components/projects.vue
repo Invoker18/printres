@@ -74,7 +74,7 @@
                     <ClientOnly>
                         <Swiper
                             :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full max-h-80 w-full min-w-0 rounded-md"
+                            class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96"
                             :loop="true"
                             :autoplay="true"
                             :pagination="{

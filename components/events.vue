@@ -3,7 +3,7 @@
         id="events"
         class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
     >
-        <div class="h-full w-full px-5 py-10 md:pb-16 lg:px-10 2xl:px-28">
+        <div class="h-full w-full px-5 py-20 md:pb-28 lg:px-10 2xl:px-28">
             <div
                 class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 xl:gap-32"
             >
@@ -11,7 +11,7 @@
                     <ClientOnly>
                         <Swiper
                             :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full max-h-80 w-full min-w-0 rounded-md"
+                            class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96"
                             :loop="true"
                             :autoplay="true"
                             :pagination="{

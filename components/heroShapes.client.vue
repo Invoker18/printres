@@ -60,7 +60,7 @@ onMounted(() => {
             scrollTrigger: {
                 trigger: '#heroText',
                 scrub: true,
-                start: '45% center',
+                start: 'center center',
                 end: '100% top',
             },
             stagger: {

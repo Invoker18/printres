@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-primary-950 pin sticky left-0 top-0 z-30 flex h-[110vh] flex-col gap-8 px-5 pt-20 md:pt-28 lg:px-10 2xl:gap-x-20 2xl:px-28"
+        class="bg-primary-950 pin sticky left-0 top-0 z-30 flex h-screen flex-col gap-8 px-5 pb-56 pt-20 md:h-full md:pt-28 lg:px-10 2xl:gap-x-20 2xl:px-28"
         id="aboutUs"
     >
         <div
@@ -46,7 +46,7 @@
             >
                 <Swiper
                     :modules="[SwiperPagination, SwiperAutoplay]"
-                    class="h-full max-h-96 min-h-64 w-full min-w-0 xl:max-h-full"
+                    class="maskImg h-full max-h-96 min-h-64 w-full min-w-0 xl:max-h-full"
                     :loop="true"
                     :autoplay="true"
                     :pagination="{
@@ -63,7 +63,7 @@
                             loading="lazy"
                             :src="`https://picsum.photos/1920/1080?random=${n}`"
                             alt=""
-                            class="hover-cursor maskImg h-full w-full object-cover"
+                            class="hover-cursor h-full w-full object-cover"
                         />
                         <div
                             class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"

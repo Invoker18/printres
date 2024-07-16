@@ -1,7 +1,7 @@
 <template>
     <div>
         <ClientOnly>
-            <div class="fixed right-0 top-0 z-[999]">
+            <div class="fixed right-0 top-0 z-50">
                 w/{{ width }} h/{{ height }}
             </div>
         </ClientOnly>
@@ -47,6 +47,7 @@ onMounted(() => {
                 toggleActions: 'play none none reset',
                 onEnterBack: () => {
                     section.classList.add('z-30')
+                    section.classList.add('sticky')
                 },
             },
         }).to(section, {
@@ -55,6 +56,7 @@ onMounted(() => {
             filter: 'brightness(90%) blur(10px)',
             onComplete: () => {
                 section.classList.remove('z-30')
+                section.classList.remove('sticky')
             },
             onReverseComplete: () => {},
         })

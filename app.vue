@@ -5,6 +5,7 @@
         <NuxtLayout class="overflow-clip">
             <NuxtPage />
         </NuxtLayout>
+        <USlideovers />
         <div
             v-if="isLoading"
             class="bg-primary-950 fixed left-0 top-0 z-[9999] grid h-[100dvh] w-full place-content-center text-5xl"
@@ -19,9 +20,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 const isLoading = ref(true)
 onMounted(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    ScrollTrigger.normalizeScroll(true) // enable
-    let normalizer = ScrollTrigger.normalizeScroll()
+    // gsap.registerPlugin(ScrollTrigger)
+    // ScrollTrigger.normalizeScroll(true) // enable
+    // let normalizer = ScrollTrigger.normalizeScroll()
     const lenis = new Lenis({})
 
     lenis.on('scroll', ScrollTrigger.update)

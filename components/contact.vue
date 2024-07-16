@@ -1,6 +1,6 @@
 <template>
     <div
-        class="hover-cursor sticky bottom-0 z-20 grid h-[110vh] place-content-center bg-curious-blue-600 pt-56 md:pt-24"
+        class="hover-cursor sticky bottom-0 z-20 grid h-[110vh] place-content-center bg-curious-blue-600 pt-40 md:pt-24"
     >
         <!-- <TresCanvas
             shadows
