@@ -4,7 +4,7 @@
             class="flex h-full w-full flex-col justify-center gap-5 px-5 md:flex-row md:items-center lg:px-10 2xl:px-28 2xl:pt-16"
         >
             <ul
-                class="order-2 mt-auto flex flex-row justify-center gap-10 justify-self-center text-lg md:order-1 md:mt-0 md:flex-col md:text-4xl hover-cursor"
+                class="order-2 mt-auto flex flex-row justify-center gap-3 md:gap-10 justify-self-center text-lg md:order-1 md:mt-0 md:flex-col md:text-4xl hover-cursor"
             >
                 <li
                     class="group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-110 hover:cursor-pointer"
