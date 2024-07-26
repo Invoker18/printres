@@ -15,7 +15,7 @@
                 <img
                     :src="eventShape"
                     alt=""
-                    class="-top-2 right-28 max-h-20"
+                    class="-top-2 right-28 max-h-32"
                 />
             </div>
             <p>

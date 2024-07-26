@@ -1,6 +1,52 @@
 <template>
-    <div class="bg-primary-950 relative z-40 h-[70vh] pb-5 xl:h-[90vh]">
+    <div
+        class="bg-primary-950 relative z-40 flex pt-16 flex-col xl:h-[90vh]"
+        id="location"
+    >
         <div
+            class="flex h-full w-full flex-col gap-5 xl:gap-x-24 p-5 md:flex-row md:items-center lg:px-10 2xl:px-28"
+        >
+            <div class="hidden flex-col gap-5 text-xl md:flex md:max-w-xs">
+                <h5 class="text-3xl">Hablemos</h5>
+                <div>+507 6251-3093</div>
+                <hr class="border-secondary" />
+                <div>ventas.printres@gmail.com</div>
+                <hr class="border-curious-blue-600" />
+                <p>Casa F16, Calle F, Panamá, Panama City, Panama</p>
+            </div>
+            <div
+                class="mx-auto flex h-[24rem] sm:h-[26rem] md:h-[28rem] xl:h-[32rem] 2xl:h-[36rem] w-full max-w-5xl gap-2 2xl:max-h-[60vh]"
+            >
+                <div class="h-full w-12 flex-shrink-0 rounded-md bg-[#0424D9]"></div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3174403739504!2d-79.5209539889663!3d9.03477979098933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca94d3cdfa713%3A0xd9978d65b54dafb!2sPrintres!5e0!3m2!1ses!2sve!4v1720189304037!5m2!1ses!2sve"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    loading="lazy"
+                    class="rounded-md"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+                <img
+                    :src="locationShape"
+                    alt=""
+                    class="hover-cursor hidden h-full object-contain lg:block"
+                />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:hidden">
+                <div class="flex flex-col">
+                    <h5 class="text-secondary text-lg">Direccion</h5>
+                    <p>Casa F16, Calle F, Panamá, Panama City, Panama</p>
+                </div>
+                <div class=" flex flex-col sm:text-right">
+                    <h5 class="text-secondary text-lg">Contacto</h5>
+                    <div>+507 6251-3093</div>
+                    <div>ventas.printres@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <hr class="border-gray-200 dark:border-gray-200 mt-4" />
+        <!-- <div
             class="flex h-full w-full flex-col justify-center gap-5 px-5 md:flex-row md:items-center lg:px-10 2xl:px-28 2xl:pt-16"
         >
             <ul
@@ -10,45 +56,22 @@
                     class="group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-110 hover:cursor-pointer"
                 >
                     Facebook
-                    <!-- <UIcon
-                        name="i-ph-arrow-up-right-bold"
-                        class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon> -->
                 </li>
                 <li
                     class="group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-110 hover:cursor-pointer"
                 >
                     Instagram
-                    <!-- <UIcon
-                        name="i-ph-arrow-up-right-bold"
-                        class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon> -->
                 </li>
                 <li
                     class="group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-110 hover:cursor-pointer"
                 >
                     Whatsapp
-                    <!-- <UIcon
-                        name="i-ph-arrow-up-right-bold"
-                        class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon> -->
                 </li>
                 <li
                     class="group flex w-fit items-center transition-all duration-300 ease-linear hover:scale-110 hover:cursor-pointer"
                 >
                     Behance
-                    <!-- <UIcon
-                        name="i-ph-arrow-up-right-bold"
-                        class="invisible self-end text-secondary transition-all duration-100 ease-in-out group-hover:visible"
-                    ></UIcon> -->
                 </li>
-                <!-- <li
-                    class="hover-cursor w-fit transition-all duration-300 ease-linear hover:scale-105 hover:cursor-pointer group"
-                >
-                    LinkedIn
-                    <                    <UIcon name="i-ph-arrow-up-right-bold"
-                class="invisible group-hover transition-all ease-linear duration-300:100 outease-in-out text-secondary group"></UIcon>
-                </li> -->
             </ul>
             <div
                 class="order-1 mt-auto flex h-96 w-full items-center justify-center gap-3 self-center md:order-2 md:mt-0 md:justify-end xl:h-[29rem] 2xl:h-[32rem]"
@@ -80,13 +103,44 @@
                     />
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script lang="ts" setup>
 import naranja from '@/assets/images/shapes/empanadaNaranja.png'
 import azul from '@/assets/images/shapes/empanadaAzul.png'
+import locationShape from '@/assets/images/shapes/locationShape.png'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+
+onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    nextTick(() => {
+        gsap.to('#location', {
+            scrollTrigger: {
+                immediateRender: false,
+                trigger: '#location',
+                start: 'top bottom',
+                end: '100% top',
+                onEnter: () => {
+                    let contactDom = document.getElementById('contactContainer')
+                    contactDom.classList.remove('bottom-0')
+                    contactDom.classList.add('top-0')
+                    console.log('onEnter', contactDom)
+                },
+                onLeaveBack: () => {
+                    let contactDom = document.getElementById('contactContainer')
+                    contactDom.classList.add('bottom-0')
+                    contactDom.classList.remove('top-0')
+                    console.log('onLeaveBack', contactDom)
+                },
+            },
+        })
+        ScrollTrigger.refresh(true)
+    })
+})
 </script>
 
 <style scoped>

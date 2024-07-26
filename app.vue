@@ -65,7 +65,7 @@ onMounted(() => {
     const createCursorFollower = () => {
         const $el = document.querySelector('.cursor-follower')
 
-        window.addEventListener('mousemove', (e) => {
+        window.addEventListener('pointermove', (e) => {
             const { target, clientX, clientY } = e
             const isTargetLinkOrBtn = target.closest('.hover-cursor')
             const hoverCursor2 = target.classList.contains('hover-cursor2')
@@ -83,6 +83,7 @@ onMounted(() => {
                 mixBlendMode: changeCursor ? 'multiply' : 'normal',
             })
         })
+
         document.querySelector('iframe')?.addEventListener('mouseenter', () => {
             gsap.to($el, {
                 duration: 0.7,
@@ -98,7 +99,7 @@ onMounted(() => {
     }
     // // Only invoke the function if isn't a touch device
     if (!isMobile()) {
-        createCursorFollower()
+        // createCursorFollower()
     }
 
     isLoading.value = false
@@ -106,11 +107,11 @@ onMounted(() => {
 </script>
 <style>
 body {
-    cursor: none;
+    /* cursor: none; */
     /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
             10 10,
         auto; */
-    @apply text-gray-200 dark:text-gray-200;
+    @apply bg-primary-950 text-gray-200 dark:text-gray-200;
 }
 .cursor-follower {
     position: fixed;

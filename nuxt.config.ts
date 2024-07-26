@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     css: ['~/assets/css/main.css'],
     modules: [
         '@nuxt/ui',
@@ -9,6 +9,9 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@tresjs/nuxt',
     ],
+    // tres: {
+    //     devtools: true,
+    // },
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },
     },

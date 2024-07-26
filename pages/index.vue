@@ -1,10 +1,10 @@
 <template>
     <div>
-        <ClientOnly>
+        <!-- <ClientOnly>
             <div class="fixed right-0 top-0 z-50">
                 w/{{ width }} h/{{ height }}
             </div>
-        </ClientOnly>
+        </ClientOnly> -->
         <Hero></Hero>
         <VideoSection></VideoSection>
         <About></About>
@@ -30,9 +30,6 @@ onMounted(() => {
     // let normalizer = ScrollTrigger.normalizeScroll();
     gsap.registerPlugin(ScrollTrigger)
 
-    // if (y.value > 2800)
-    //     document.querySelector('#aboutUs')?.classList.remove('z-30')
-
     const sections = Array.from(document.querySelectorAll('.pin'))
 
     sections.forEach((section, index) => {
@@ -46,6 +43,7 @@ onMounted(() => {
                 scrub: true,
                 toggleActions: 'play none none reset',
                 onEnterBack: () => {
+                    console.log('onEnterBack')
                     section.classList.add('z-30')
                     section.classList.add('sticky')
                 },
@@ -55,13 +53,14 @@ onMounted(() => {
             startAt: { filter: 'brightness(100%) blur(0px)' },
             filter: 'brightness(90%) blur(10px)',
             onComplete: () => {
+                console.log('onComplete')
+
                 section.classList.remove('z-30')
                 section.classList.remove('sticky')
             },
             onReverseComplete: () => {},
         })
     })
-
     nextTick(() => {
         ScrollTrigger.refresh(true)
     })

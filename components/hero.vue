@@ -4,7 +4,7 @@
         id="heroText"
     >
         <div
-            class="relative flex h-full w-full flex-1 select-none flex-col items-center justify-start px-5 pt-16 font-semibold sm:items-start sm:pt-10 md:pt-[20vh] lg:px-10 2xl:px-28"
+            class="relative flex h-full w-full flex-1 select-none flex-col items-center justify-start px-5 pt-16 font-semibold sm:items-start sm:pt-10 md:pt-[18vh] lg:px-10 2xl:px-28"
         >
             <div
                 class="flex text-7xl text-gray-100 sm:text-8xl md:text-[8.5rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
@@ -37,7 +37,7 @@
         <HeroShapes></HeroShapes>
         <div
             id="scrollText"
-            class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-32 md:right-8 2xl:right-24"
+            class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-24 md:right-16 2xl:right-24"
         >
             <span class="font-semibold">Scroll</span>
             <UIcon
@@ -186,4 +186,5 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

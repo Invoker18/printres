@@ -1,65 +1,61 @@
 <template>
     <div
-        class="hover-cursor sticky bottom-0 z-20 grid h-[110vh] place-content-center bg-curious-blue-600 pt-40 md:pt-24"
+        class="hover-cursor sticky bottom-0 z-20 h-screen select-none bg-curious-blue-600 p-5"
+        id="contactContainer"
     >
-        <!-- <TresCanvas
-            shadows
-            alpha
-            window-size
-            power-preference="high-performance"
+        <!-- <div id="shapesContainer">
+            <div v-for="n in 3" :key="n">
+                <div v-for="(vector, index) in vectors" :key="vector">
+                    <img
+                        :src="vector"
+                        alt=""
+                        class="img absolute size-24 object-contain md:size-28"
+                    />
+                </div>
+            </div>
+        </div> -->
+        <div
+            class="relative z-40 mx-auto grid h-full w-full max-w-xl items-center"
         >
-            <OrbitControls :enable-zoom="false" />
-            <TresPerspectiveCamera
-                :position="[1, 2, 5]"
-                :fov="45"
-                :aspect="1"
-                :near="0.1"
-                :far="1000"
-            />
-            <TresMesh
-                :position="[2, 0, 0]"
-                :rotation="[7, 0, 0]"
-                :material="DoubleSide"
-            >
-                <TresSphereGeometry
-                    :args="[1, 16, 32, 0, 2 * Math.PI, 0, 0.5 * Math.PI]"
-                    :material="DoubleSide"
-                ></TresSphereGeometry>
-                <TresMeshBasicMaterial :material="DoubleSide" />
-            </TresMesh>
-            <TresAxesHelper></TresAxesHelper>
-            <TresDirectionalLight
-                :position="[0, 2, 4]"
-                :intensity="2"
-                cast-shadow
-            />
-        </TresCanvas> -->
-        <div class="grid h-full w-full gap-5 px-5">
-            <div class="mb-3 text-center text-2xl">
-                ¿Necesitas ayuda con tus Proyectos?
-            </div>
+
             <div
-                class="text-primary-950 dark:text-primary-950 text-center text-8xl uppercase md:text-9xl"
+                class="relative z-40 mx-auto mt-auto sm:mt-0 flex h-fit w-full max-w-xl flex-col gap-5 rounded-md p-8"
             >
-                ¡Di
-                <br />
-                Hola!
-            </div>
-            <div class="mx-auto">
-                <UButton
-                    @click="isOpen = true"
-                    variant="outline"
-                    color="white"
-                    icon="i-ph-arrow-up-right-bold"
-                    trailing
-                    size="xl"
-                    class="text-2xl"
+                <div class="mb-3 text-center text-2xl">
+                    ¿Necesitas ayuda con tus Proyectos?
+                </div>
+                <div
+                    class=" text-center text-8xl uppercase md:text-9xl"
                 >
-                    Contactanos
-                </UButton>
+                    ¡Di
+                    <br />
+                    Hola!
+                </div>
+                <div class="mx-auto mt-48 sm:mt-0">
+                    <UButton
+                        @click="isOpen = true"
+                        variant="outline"
+                        color="white"
+                        icon="i-ph-arrow-up-right-bold"
+                        trailing
+                        size="xl"
+                        class="text-2xl"
+                        :ui="{
+                            rounded: 'rounded-xl',
+                            padding: {
+                                xl: 'px-8',
+                            },
+                        }"
+                    >
+                        Contactanos
+                    </UButton>
+                </div>
+                <hr class="border-primary-950 mt-12" />
             </div>
-            <hr class="border-primary-950 mt-10" />
         </div>
+        <LazyThreejs class="hidden md:block"></LazyThreejs>
+        <LazyThreejsMobile class="block md:hidden"></LazyThreejsMobile>
+        <!-- <Test></Test> -->
 
         <UModal
             v-model="isOpen"
@@ -67,35 +63,160 @@
                 container:
                     'items-start sm:items-center justify-center text-center',
                 inner: 'overflow-hidden',
+                background: 'bg-primary-950/90 dark:bg-primary-950/90',
+                overlay: {
+                    background: 'bg-gray-800/50 dark:bg-gray-800/50',
+                },
             }"
         >
-            <UCard
-                :ui="{
-                    ring: '',
-                    divide: 'divide-y divide-gray-100 dark:divide-gray-800',
-                    background: 'bg-primary-950 dark:bg-primary-950',
-                }"
+            <div
+                class="bg-primary-950/90 gap-3 rounded-3xl p-8 backdrop-blur-md"
             >
-                <template #header> header </template>
-
-                Body
-                <template #footer> Footer </template>
-            </UCard>
+                <div class="mb-10 flex items-end justify-between gap-5">
+                    <h3 class="text-2xl">
+                        Contacto
+                        <hr
+                            class="ml-2 w-2/3 rounded-md border-[1.5px] border-secondary"
+                        />
+                    </h3>
+                    <div class="max-w-full">
+                        <img :src="contactShape" alt="" class="" />
+                    </div>
+                </div>
+                <form action="" class="grid grid-flow-row gap-3">
+                    <input
+                        type="text"
+                        placeholder="Nombre Completo..."
+                        class="rounded-md border border-gray-400 bg-transparent p-2.5 text-gray-100 placeholder-gray-200"
+                    />
+                    <input
+                        type="email"
+                        placeholder="Correo..."
+                        class="rounded-md border border-gray-400 bg-transparent p-2.5 text-gray-100 placeholder-gray-200"
+                    />
+                    <textarea
+                        name="mensaje"
+                        id=""
+                        placeholder="Mensaje..."
+                        rows="6"
+                        class="rounded-md bg-curious-blue-600 p-2.5 text-gray-100 placeholder-gray-200"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        class="mt-3 rounded-md bg-secondary p-2.5 text-gray-200"
+                    >
+                        Enviar
+                    </button>
+                </form>
+            </div>
         </UModal>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { OrbitControls, Smoke } from '@tresjs/cientos'
-import { DoubleSide } from 'three'
+import vector1 from '@/assets/images/shapes/Vector1.png'
+import vector2 from '@/assets/images/shapes/Vector2.png'
+import vector3 from '@/assets/images/shapes/Vector3.png'
+import vector4 from '@/assets/images/shapes/Vector4.png'
+import vector5 from '@/assets/images/shapes/Vector5.png'
+import vector6 from '@/assets/images/shapes/Vector6.png'
+import vector7 from '@/assets/images/shapes/Vector7.png'
+import vector8 from '@/assets/images/shapes/Vector8.png'
+import vector9 from '@/assets/images/shapes/Vector9.png'
+import vector10 from '@/assets/images/shapes/Vector10.png'
+import contactShape from '@/assets/images/shapes/contactShape.png'
+
+// import gsap from 'gsap'
+// import { ScrollTrigger } from 'gsap/all'
 
 const isOpen = ref(false)
 
-// Half a sphere
-const phiStart = ref(0)
-const phiEnd = ref(Math.PI * 2)
-const thetaStart = ref(0)
-const thetaEnd = ref(Math.PI / 2)
+const vectors = ref([
+    vector1,
+    // vector2,
+    vector3,
+    vector4,
+    vector5,
+    // vector6,
+    vector7,
+    vector8,
+    vector9,
+    vector10,
+] as Array<string>)
+
+const randomIntFromInterval = (min, max) => {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+const moveShapes = () => {
+    const shapesContainer = document.getElementById('shapesContainer')
+    const divImgs = Array.from(shapesContainer.querySelectorAll('img'))
+    divImgs.forEach((element) => {
+        const width = randomIntFromInterval(0, window.innerWidth)
+        const height = randomIntFromInterval(0, window.innerHeight)
+        element.style.transform = `translate3d(${width}px,${height}px,0)`
+
+        // gsap.to(element, {
+        //     x: `random(0,${window.innerWidth})`, //chooses a random number between 0 and 20 for each target, rounding to the closest 5!
+        //     y: `random(0, ${window.innerHeight})`,
+        //     rotation: '+=200',
+        //     duration: 20,
+        //     ease: "power1.inOut",
+        //     repeat: -1,
+        //     repeatRefresh: true,
+        // })
+    })
+
+    const tl = gsap.timeline()
+    tl.to('.img', {
+        x: `random(0,${window.innerWidth})`, //chooses a random number between 0 and 20 for each target, rounding to the closest 5!
+        y: `random(-100, ${window.innerHeight})`,
+        rotation: '+=100',
+        duration: 20,
+        ease: 'none',
+        repeat: -1,
+        repeatRefresh: true,
+    })
+    // .to('.img', {
+    //     y: '+=100',
+    //     scrollTrigger: {
+    //         trigger: '#contact',
+    //         scrub: true,
+    //         start: 'center bottom',
+    //         // end: 'center top',
+    //         end: '+=1000',
+    //         markers: true,
+    //     },
+    //     ease: 'power1.out',
+    // })
+    // gsap.to('#shapesContainer img', {
+    //     y: '+=350',
+    //     rotation: 'random(200, -200)',
+    //     scrollTrigger: {
+    //         trigger: '#contact',
+    //         scrub: true,
+    //         start: 'center bottom',
+    //         // end: 'center top',
+    //         end: '+=1000',
+    //         markers: true,
+    //     },
+    //     ease: 'power1.out',
+    // })
+}
+
+onMounted(() => {
+    // gsap.registerPlugin(ScrollTrigger)
+    // moveShapes()
+
+    // window.addEventListener('resize', () => {
+    //     moveShapes()
+    // })
+})
 </script>
 
-<style></style>
+<style scoped>
+#shapesContainer img {
+    filter: drop-shadow(0px 0px 0.5px #0091dc);
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
     <div
         id="nav"
-        class="fixed left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
+        class="fixed left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in "
         :class="navbarColor"
     >
         <header
