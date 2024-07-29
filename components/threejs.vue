@@ -60,6 +60,7 @@
             </TresMesh>
             <!-- FIRST SPEHERE -->
             <TresMesh
+                ref="firstSphere"
                 :receive-shadow="true"
                 cast-shadow
                 :position="[-4, 1, 0]"
@@ -124,7 +125,7 @@
 
 <script lang="ts" setup>
 import { OrbitControls } from '@tresjs/cientos'
-import { DoubleSide, BackSide, TextureLoader } from 'three'
+import { DoubleSide } from 'three'
 
 // Half a sphere
 const phiStart = ref(0)
@@ -133,12 +134,14 @@ const thetaStart = ref(0)
 const thetaEnd = ref(Math.PI / 2)
 
 const camera = shallowRef()
+const firstSphere = shallowRef()
 
 // const { onLoop } = useRenderLoop()
 
 useRenderLoop().onLoop(({ delta }) => {
     // yRotation.value += 0.02 * delta
 })
+
 </script>
 
 <style scoped>

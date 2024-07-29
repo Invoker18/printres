@@ -11,11 +11,11 @@ html.lenis body {
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+    overscroll-behavior: smooth;
 }
 
 .lenis.lenis-stopped {

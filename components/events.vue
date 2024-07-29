@@ -23,7 +23,7 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n">
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-full min-h-60">
                                 <img
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}}`"
@@ -110,7 +110,7 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n">
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-full min-h-60">
                                 <img
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n}`"
@@ -123,7 +123,6 @@
                             </SwiperSlide>
                         </Swiper>
                     </ClientOnly>
-
                     <div class="custom-pagination5 hover-cursor"></div>
                 </div>
             </div>

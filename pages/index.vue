@@ -54,15 +54,11 @@ onMounted(() => {
             filter: 'brightness(90%) blur(10px)',
             onComplete: () => {
                 console.log('onComplete')
-
                 section.classList.remove('z-30')
                 section.classList.remove('sticky')
             },
             onReverseComplete: () => {},
         })
-    })
-    nextTick(() => {
-        ScrollTrigger.refresh(true)
     })
 })
 </script>

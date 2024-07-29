@@ -1,6 +1,6 @@
 <template>
     <div
-        class="hover-cursor sticky bottom-0 z-20 h-screen select-none bg-curious-blue-600 p-5"
+        class="hover-cursor sticky bottom-0 z-20 grid h-full md:min-h-screen select-none place-content-center bg-curious-blue-600 px-5"
         id="contactContainer"
     >
         <!-- <div id="shapesContainer">
@@ -14,24 +14,19 @@
                 </div>
             </div>
         </div> -->
-        <div
-            class="relative z-40 mx-auto grid h-full w-full max-w-xl items-center"
-        >
-
+        <div class="relative z-40 w-full max-w-xl py-16">
             <div
-                class="relative z-40 mx-auto mt-auto sm:mt-0 flex h-fit w-full max-w-xl flex-col gap-5 rounded-md p-8"
+                class="mx-auto flex h-fit w-full max-w-xl flex-col gap-5 rounded-md"
             >
                 <div class="mb-3 text-center text-2xl">
                     ¿Necesitas ayuda con tus Proyectos?
                 </div>
-                <div
-                    class=" text-center text-8xl uppercase md:text-9xl"
-                >
+                <div class="text-center text-8xl uppercase md:text-9xl">
                     ¡Di
                     <br />
                     Hola!
                 </div>
-                <div class="mx-auto mt-48 sm:mt-0">
+                <div class="mx-auto mt-5">
                     <UButton
                         @click="isOpen = true"
                         variant="outline"
@@ -54,9 +49,7 @@
             </div>
         </div>
         <LazyThreejs class="hidden md:block"></LazyThreejs>
-        <LazyThreejsMobile class="block md:hidden"></LazyThreejsMobile>
-        <!-- <Test></Test> -->
-
+        <!-- <LazyThreejsMobile class="block md:hidden"></LazyThreejsMobile> -->
         <UModal
             v-model="isOpen"
             :ui="{
@@ -126,8 +119,8 @@ import vector9 from '@/assets/images/shapes/Vector9.png'
 import vector10 from '@/assets/images/shapes/Vector10.png'
 import contactShape from '@/assets/images/shapes/contactShape.png'
 
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/all'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 
 const isOpen = ref(false)
 
@@ -144,15 +137,15 @@ const vectors = ref([
     vector10,
 ] as Array<string>)
 
-const randomIntFromInterval = (min, max) => {
+const randomIntFromInterval = (min: number, max: number) => {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 const moveShapes = () => {
-    const shapesContainer = document.getElementById('shapesContainer')
+    const shapesContainer: any = document.getElementById('shapesContainer')
     const divImgs = Array.from(shapesContainer.querySelectorAll('img'))
-    divImgs.forEach((element) => {
+    divImgs.forEach((element: any) => {
         const width = randomIntFromInterval(0, window.innerWidth)
         const height = randomIntFromInterval(0, window.innerHeight)
         element.style.transform = `translate3d(${width}px,${height}px,0)`
@@ -206,9 +199,34 @@ const moveShapes = () => {
 }
 
 onMounted(() => {
-    // gsap.registerPlugin(ScrollTrigger)
-    // moveShapes()
+    let contactDom: any = document.getElementById('contactContainer')
 
+    let mm = gsap.matchMedia()
+
+    mm.add('(min-width: 768px)', () => {
+        gsap.to('#location', {
+            scrollTrigger: {
+                immediateRender: false,
+                trigger: '#location',
+                start: 'top bottom',
+                end: '100% top',
+                preventOverlaps: true,
+                markers: true,
+                onEnter: () => {
+                    contactDom.classList.remove('bottom-0')
+                    contactDom.classList.add('top-0')
+                    console.log('onEnter', contactDom)
+                },
+                onLeaveBack: () => {
+                    contactDom.classList.add('bottom-0')
+                    contactDom.classList.remove('top-0')
+                    console.log('onLeaveBack', contactDom)
+                },
+            },
+        })
+    })
+
+    // moveShapes()
     // window.addEventListener('resize', () => {
     //     moveShapes()
     // })

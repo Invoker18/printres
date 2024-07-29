@@ -10,7 +10,7 @@
             v-if="isLoading"
             class="bg-primary-950 fixed left-0 top-0 z-[9999] grid h-[100dvh] w-full place-content-center text-5xl"
         >
-            ...loading
+            <div class="loader"></div>
         </div>
     </div>
 </template>
@@ -20,9 +20,11 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 const isLoading = ref(true)
 onMounted(() => {
-    // gsap.registerPlugin(ScrollTrigger)
-    // ScrollTrigger.normalizeScroll(true) // enable
-    // let normalizer = ScrollTrigger.normalizeScroll()
+    gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.config({ ignoreMobileResize: true })
+    // ScrollTrigger.normalizeScroll(true)
+    // let normalizer = ScrollTrigger.normalizeScroll({})
+
     const lenis = new Lenis({})
 
     lenis.on('scroll', ScrollTrigger.update)
@@ -38,17 +40,6 @@ onMounted(() => {
     //     // syncTouchLerp: 0.03,
     //     // touchMultiplier: 0.8,
     // })
-
-    // lenis.on('scroll', (e) => {
-    //     // console.log(e);
-    // })
-
-    // function raf(time) {
-    //     lenis.raf(time)
-    //     requestAnimationFrame(raf)
-    // }
-
-    // requestAnimationFrame(raf)
 
     const isMobile = () => {
         if (
@@ -146,4 +137,92 @@ body {
     opacity: 0;
     filter: blur(1rem);
 }
+
+/* HTML: <div class="loader"></div> */
+.loader,
+.loader:before,
+.loader:after {
+    width: 35px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 3px inset #fff;
+    position: relative;
+    animation: 1.5s infinite 0.5s;
+    animation-name: l7-1, l7-2;
+}
+.loader:before,
+.loader:after {
+    content: '';
+    position: absolute;
+    left: calc(100% + 5px);
+    animation-delay: 1s, 0s;
+}
+.loader:after {
+    left: -40px;
+    animation-delay: 0s, 1s;
+}
+@keyframes l7-1 {
+    0%,
+    55%,
+    100% {
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    20%,
+    30% {
+        border-top-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+}
+@keyframes l7-2 {
+    0%,
+    55%,
+    100% {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    20%,
+    30% {
+        border-bottom-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+}
+/* HTML: <div class="loader"></div> */
+/* .loader {
+    width: 75px;
+    aspect-ratio: 1;
+    display: grid;
+}
+.loader:before,
+.loader:after {
+    content: '';
+    grid-area: 1/1;
+    width: 35px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 3px #fff inset;
+    filter: drop-shadow(40px 40px 0 #fff);
+    animation: l8 2s infinite alternate;
+}
+.loader:after {
+    margin: 0 0 0 auto;
+    filter: drop-shadow(-40px 40px 0 #fff);
+    animation-delay: -1s;
+}
+@keyframes l8 {
+    0%,
+    10% {
+        border-radius: 0;
+    }
+    30%,
+    40% {
+        border-radius: 50% 0;
+    }
+    60%,
+    70% {
+        border-radius: 50%;
+    }
+    90%,
+    100% {
+        border-radius: 0 50%;
+    }
+} */
 </style>

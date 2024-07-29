@@ -19,7 +19,7 @@
                                 ></span>
                                 <UIcon
                                     name="i-ph-arrow-up-right-bold"
-                                    class="hidden self-end text-secondary group-hover:block size-8"
+                                    class="hidden size-8 self-end text-secondary group-hover:block"
                                 ></UIcon>
                             </h3>
                         </button>
@@ -54,7 +54,7 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n">
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-full min-h-60">
                                 <img
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n}`"
@@ -86,7 +86,7 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n">
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-full min-h-60">
                                 <img
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}`"
