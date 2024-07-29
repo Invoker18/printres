@@ -99,7 +99,7 @@ onMounted(() => {
     }
     // // Only invoke the function if isn't a touch device
     if (!isMobile()) {
-        // createCursorFollower()
+        createCursorFollower()
     }
 
     isLoading.value = false
@@ -107,7 +107,7 @@ onMounted(() => {
 </script>
 <style>
 body {
-    /* cursor: none; */
+    cursor: none;
     /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
             10 10,
         auto; */
