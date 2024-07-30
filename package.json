@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/three": "^0.166.0",
+    "nuxt-mongoose": "^1.0.6",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5"
   }

@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         'nuxt-swiper',
         '@vueuse/nuxt',
         '@tresjs/nuxt',
+        'nuxt-mongoose',
     ],
     // tres: {
     //     devtools: true,
