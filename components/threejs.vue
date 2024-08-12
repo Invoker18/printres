@@ -1,8 +1,7 @@
 <template>
     <div>
         <TresCanvas
-            shadows
-            alpha
+            preset="realistic"
             window-size
             power-preference="high-performance"
             class="relative z-50"
@@ -19,11 +18,11 @@
             <!-- <TresGridHelper :args="[10, 10]" /> -->
             <!-- <OrbitControls :enable-zoom="false" /> -->
 
-            <TresAmbientLight :intensity="1.8" />
+            <TresAmbientLight :intensity="1" />
             <TresDirectionalLight
                 cast-shadow
                 :position="[0, 10, 0]"
-                :intensity="1"
+                :intensity="0.5"
             />
 
             <!-- SMOKE -->
@@ -41,11 +40,7 @@
             <Suspense>
                 <TexturedBall></TexturedBall>
             </Suspense>
-            <!-- ORANGE SPHERE -->
-            <!-- <TresMesh ref="sphereRef" cast-shadow :position="[0, 0, 0]">
-                <TresSphereGeometry :args="[0.5, 32, 32]" />
-                <TresMeshStandardMaterial />
-            </TresMesh> -->
+
             <!-- CIRCLE TO SPHERE -->
             <TresMesh
                 :receive-shadow="true"
@@ -54,7 +49,7 @@
             >
                 <TresCircleGeometry :args="[1, 32]"></TresCircleGeometry>
                 <TresMeshPhongMaterial
-                    color="#051bd2"
+                    color="#0424D9"
                     :side="DoubleSide"
                 ></TresMeshPhongMaterial>
             </TresMesh>
@@ -75,7 +70,7 @@
                 <TresMeshPhongMaterial
                     TresMeshPhongMaterial
                     :side="DoubleSide"
-                    color="#051bd2"
+                    color="#0424D9"
                 ></TresMeshPhongMaterial>
             </TresMesh>
             <!-- CIRCLE TO SPHERE -->
@@ -86,7 +81,7 @@
             >
                 <TresCircleGeometry :args="[1, 32]"></TresCircleGeometry>
                 <TresMeshPhongMaterial
-                    color="#051bd2"
+                    color="#0424D9"
                     :side="DoubleSide"
                 ></TresMeshPhongMaterial>
             </TresMesh>
@@ -105,20 +100,18 @@
                 ></TresSphereGeometry>
                 <TresMeshPhongMaterial
                     :side="DoubleSide"
-                    color="#051bd2"
+                    color="#0424D9"
                 ></TresMeshPhongMaterial>
             </TresMesh>
             <!-- PLANE -->
-            <!-- <TresMesh
+            <TresMesh
                 receive-shadow
                 :position="[0, 0, 0]"
                 :rotation="[-Math.PI / 2, 0, 0]"
             >
-                <TresPlaneGeometry :args="[100, 10, 1, 1]" />
-                <TresMeshPhongMaterial
-                    color="#0091dc"
-                />
-            </TresMesh> -->
+                <TresPlaneGeometry :args="[50, 10, 1, 1]" />
+                <TresMeshStandardMaterial color="#001489" />
+            </TresMesh>
         </TresCanvas>
     </div>
 </template>
@@ -141,7 +134,6 @@ const firstSphere = shallowRef()
 useRenderLoop().onLoop(({ delta }) => {
     // yRotation.value += 0.02 * delta
 })
-
 </script>
 
 <style scoped>

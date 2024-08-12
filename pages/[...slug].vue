@@ -1,19 +1,24 @@
 <template>
-    <div>
-        <!-- <ClientOnly>
+    <!-- <ClientOnly>
             <div class="fixed right-0 top-0 z-50">
                 w/{{ width }} h/{{ height }}
             </div>
         </ClientOnly> -->
-        <Hero></Hero>
-        <VideoSection></VideoSection>
-        <About></About>
-        <Projects></Projects>
-        <Events></Events>
+    <div>
+        <StoryblokComponent
+            v-if="story"
+            :blok="story.content"
+            style="padding-left: 0px !important; padding-right: 0px !important"
+        />
+        <!-- <Hero></Hero> -->
+        <!-- <VideoSection></VideoSection> -->
+        <!-- <About></About> -->
+        <!-- <Projects></Projects> -->
+        <!-- <Events></Events> -->
         <!-- fix for sticky bottom0 -->
-        <div id="contact"></div>
-        <Contact></Contact>
-        <Location></Location>
+        <!-- <div id="contact"></div> -->
+        <!-- <Contact></Contact> -->
+        <!-- <Location></Location> -->
     </div>
 </template>
 
@@ -21,9 +26,16 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
-const { width, height } = useWindowSize()
+const { slug } = useRoute().params as any
 
-const { x, y } = useWindowScroll()
+const story = await useAsyncStoryblok(
+    slug && slug.length > 0 ? slug.join('/') : 'home',
+    { version: 'draft' }
+)
+
+// const component = resolveComponent(story.value.content.component)
+
+console.log(story.value, 'story')
 
 onMounted(() => {
     // ScrollTrigger.normalizeScroll(true); // enable

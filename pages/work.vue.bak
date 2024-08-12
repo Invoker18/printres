@@ -75,7 +75,7 @@
         <UModal
             :ui="{
                 container: 'items-center',
-                width: 'w-full max-w-2xl sm:max-w-screen-md',
+                width: 'w-full max-w-2xl sm:max-w-screen-lg',
             }"
             v-model="isOpen"
         >

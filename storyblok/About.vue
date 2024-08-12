@@ -1,12 +1,13 @@
 <template>
     <section
+        v-editable="blok"
         class="bg-primary-950 pin sticky left-0 top-0 z-30 flex h-screen flex-col gap-8 px-5 pb-56 pt-20 md:h-full md:pt-28 lg:px-10 2xl:gap-x-20 2xl:px-28"
         id="aboutUs"
     >
         <div
             class="hover-cursor relative flex w-fit items-center text-3xl lg:text-4xl"
         >
-            <h3>Nosotros</h3>
+            <h3>{{ blok.title }}</h3>
             <div
                 class="absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%] bg-secondary"
             ></div>
@@ -22,17 +23,11 @@
                 class="col-span-full flex flex-col gap-5 text-pretty text-base md:col-span-5 lg:text-lg xl:col-span-6 xl:gap-14"
             >
                 <p class="hover-cursor">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fuga porro velit quidem placeat, modi in quos error. Quasi
-                    iure vitae ipsam eos, magnam, labore mollitia non architecto
-                    dignissimos atque fugiat. lorem ipsum dolor sit amet
+                    {{ blok.Texto1 }}
                     <br />
-                    Inventore, labore dolores minus tempore saepe libero quod ab
-                    alias voluptatibus earum cumque blanditiis quas numquam
-                    dolore nihil suscipit. Fuga eius recusandae ex provident
-                    facilis est! Accusamus explicabo illum cupiditate.
+                    {{ blok.Texto2 }}
                 </p>
-                <div class="hidden h-full w-full lg:block">
+                <div class="hidden h-full w-full md:block">
                     <img
                         :src="shape"
                         id="shape"
@@ -46,7 +41,7 @@
             >
                 <Swiper
                     :modules="[SwiperPagination, SwiperAutoplay]"
-                    class="maskImg h-full max-h-96 min-h-64 w-full min-w-0 xl:max-h-full"
+                    class="maskImg h-full min-h-64 w-full min-w-0 select-none"
                     :loop="true"
                     :autoplay="true"
                     :pagination="{
@@ -58,10 +53,14 @@
                     }"
                     :lazy="true"
                 >
-                    <SwiperSlide v-for="n in 6" :key="n" class="">
+                    <SwiperSlide
+                        v-for="slide in blok.Slider"
+                        :key="slide.id"
+                        class=""
+                    >
                         <img
                             loading="lazy"
-                            :src="`https://picsum.photos/1920/1080?random=${n}`"
+                            :src="slide.filename"
                             alt=""
                             class="hover-cursor h-full w-full object-cover"
                         />
@@ -76,13 +75,15 @@
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 // import people from '@/assets/images/people.jpeg';
 import shape from '@/assets/images/shapes/aboutShape.png'
 import leaf from '@/assets/images/shapes/leaf.png'
 import people2 from '@/assets/images/people/about.jpg'
 import people from '@/assets/images/people/0V3A0074.jpg'
 import image from '@/assets/images/shapes/image.png'
+
+defineProps({ blok: Object })
 </script>
 
 <style scoped>
@@ -112,6 +113,13 @@ import image from '@/assets/images/shapes/image.png'
     mask-repeat: round;
     mask-size: contain;
     mask-position: left/center;
+    max-height: 24rem;
+}
+
+@media (min-width: 1280px) {
+    .maskImg {
+        max-height: 32rem;
+    }
 }
 
 :deep(.swiper-pagination-bullet-active) {
