@@ -1,7 +1,6 @@
 <template>
-    <main id="Home">
+    <div>
         <div class="cursor-follower"></div>
-        <USlideovers />
         <div
             v-if="isLoading"
             class="bg-primary-950 fixed left-0 top-0 z-[9999] grid h-[100dvh] w-full place-content-center text-5xl"
@@ -11,7 +10,7 @@
         <Navbar></Navbar>
         <slot />
         <Footer></Footer>
-    </main>
+    </div>
 </template>
 
 <script setup>
@@ -26,7 +25,12 @@ onMounted(() => {
     let normalizer = ScrollTrigger.normalizeScroll({})
 
     const initLenis = () => {
-        const lenis = new Lenis({})
+        // const lenis = new Lenis({})
+        const lenis = new Lenis({
+            syncTouch: true,
+            syncTouchLerp: 0.03,
+            touchMultiplier: 0.8,
+        })
 
         lenis.on('scroll', ScrollTrigger.update)
 
@@ -36,12 +40,6 @@ onMounted(() => {
 
         gsap.ticker.lagSmoothing(0)
     }
-
-    // const lenis = new Lenis({
-    //     // syncTouch: true,
-    //     // syncTouchLerp: 0.03,
-    //     // touchMultiplier: 0.8,
-    // })
 
     const isMobile = () => {
         if (
@@ -56,7 +54,7 @@ onMounted(() => {
     }
 
     const createCursorFollower = () => {
-        const $el = document.querySelector('.cursor-follower')
+        const cursor = document.querySelector('.cursor-follower')
 
         window.addEventListener('pointermove', (e) => {
             const { target, clientX, clientY } = e
@@ -65,7 +63,7 @@ onMounted(() => {
             const scale = hoverCursor2 ? 4.5 : 2.5
             const changeCursor =
                 isTargetLinkOrBtn || hoverCursor2 ? true : false
-            gsap.to($el, {
+            gsap.to(cursor, {
                 x: clientX - 11,
                 y: clientY - 11,
                 duration: 0,
@@ -77,14 +75,8 @@ onMounted(() => {
             })
         })
 
-        document.querySelector('iframe')?.addEventListener('mouseenter', () => {
-            gsap.to($el, {
-                duration: 0.7,
-                opacity: 0,
-            })
-        })
         document.addEventListener('mouseleave', (e) => {
-            gsap.to($el, {
+            gsap.to(cursor, {
                 duration: 0.7,
                 opacity: 0,
             })
@@ -93,21 +85,23 @@ onMounted(() => {
     // // Only invoke the function if isn't a touch device
     if (!isMobile()) {
         createCursorFollower()
-        initLenis()
     }
+    initLenis()
 
     isLoading.value = false
+    document.body.style.cursor = 'none'
 })
 </script>
 
 <style>
 body {
-    cursor: none;
+    /* cursor: none; */
     /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
             10 10,
         auto; */
     @apply bg-primary-950 text-gray-200 dark:text-gray-200;
 }
+
 .cursor-follower {
     position: fixed;
     top: 0;
@@ -120,6 +114,7 @@ body {
     user-select: none;
     pointer-events: none;
     @apply bg-curious-blue-600;
+    /* mix-blend-mode: multiply; */
 }
 
 /* li:hover,

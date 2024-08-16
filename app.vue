@@ -5,11 +5,9 @@
             <NuxtPage />
             <WhatsappWidget></WhatsappWidget>
             <UModals></UModals>
+            <USlideovers />
         </NuxtLayout>
     </div>
 </template>
-<script setup>
-const route = useRoute()
-</script>
-<style>
-</style>
+<script setup></script>
+<style></style>

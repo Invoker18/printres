@@ -34,7 +34,11 @@
                         </div>
                     </div>
                     <p class="hover-cursor text-pretty">
-                        {{ blok.Text1 }}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dignissimos nam provident illum fugiat. Recusandae non
+                        molestiae cum placeat aliquid magnam omnis amet fugit
+                        perspiciatis ratione, dignissimos consequatur nemo
+                        veniam voluptatum.
                     </p>
                     <ClientOnly>
                         <Swiper
@@ -138,7 +142,7 @@
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import shape from '@/assets/images/shapes/projectsShape.png'
 import eventsShape from '@/assets/images/shapes/eventsShape.png'
 
@@ -152,7 +156,7 @@ defineProps({
 
 <style scoped>
 :deep(.swiper-pagination-bullet-active) {
-    @apply text-primary bg-secondary opacity-100 !important;
+    @apply bg-secondary text-primary opacity-100 !important;
 }
 :deep(.swiper-pagination-bullet) {
     @apply bg-primary-950 size-2 rounded-tl-full opacity-100 xl:size-3;

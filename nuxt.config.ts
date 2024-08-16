@@ -22,6 +22,13 @@ export default defineNuxtConfig({
             layout: 'fullscreen',
         },
     },
+
+    image: {
+        storyblok: {
+            baseURL: 'https://a-us.storyblok.com',
+        },
+    },
+
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },
         head: {
@@ -30,4 +37,6 @@ export default defineNuxtConfig({
                 'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0',
         },
     },
+
+    compatibilityDate: '2024-08-13',
 })

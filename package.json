@@ -6,7 +6,7 @@
         "build": "nuxt build",
         "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --host",
         "generate": "nuxt generate",
-        "preview": "nuxt preview",
+        "preview": "nuxt preview NODE_TLS_REJECT_UNAUTHORIZED=0 --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
@@ -30,10 +30,14 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "@tailwindcss/forms": "^0.5.7",
         "@types/bcrypt": "^5.0.2",
         "@types/jsonwebtoken": "^9.0.6",
         "@types/three": "^0.166.0",
+        "autoprefixer": "^10.4.20",
+        "postcss": "^8.4.41",
         "prettier": "^3.3.2",
-        "prettier-plugin-tailwindcss": "^0.6.5"
+        "prettier-plugin-tailwindcss": "^0.6.5",
+        "tailwindcss": "^3.4.9"
     }
 }

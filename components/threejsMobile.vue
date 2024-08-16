@@ -1,11 +1,10 @@
 <template>
     <div>
         <TresCanvas
-            shadows
-            alpha
+            preset="realistic"
             window-size
             power-preference="high-performance"
-            class="relative z-50"
+            class="relative"
         >
             <TresPerspectiveCamera
                 ref="camera"
@@ -20,10 +19,11 @@
 
             <ContactShadows :blur="0.5" :resolution="512" :opacity="0.2" />
 
-            <TresAmbientLight :intensity="1.5" />
+                        <TresAmbientLight :intensity="1" />
             <TresDirectionalLight
+                cast-shadow
                 :position="[0, 10, 0]"
-                :intensity="1"
+                :intensity="0.5"
             />
 
             <Suspense>
@@ -41,10 +41,7 @@
                 <TresMeshPhongMaterial color="#f87c56" />
             </TresMesh> -->
             <!-- CIRCLE TO SPHERE -->
-            <TresMesh
-                :position="[0, 1, 0]"
-                :rotation="[1.655, 0, 0]"
-            >
+            <TresMesh :position="[0, 1, 0]" :rotation="[1.655, 0, 0]">
                 <TresCircleGeometry :args="[1, 32]"></TresCircleGeometry>
                 <TresMeshPhongMaterial
                     color="#051bd2"
@@ -66,18 +63,14 @@
                 ></TresMeshPhongMaterial>
             </TresMesh>
             <!-- PLANE -->
-            <!-- <TresMesh
+            <TresMesh
                 receive-shadow
                 :position="[0, 0, 0]"
                 :rotation="[-Math.PI / 2, 0, 0]"
             >
                 <TresPlaneGeometry :args="[20, 20, 1, 1]" />
-                <TresMeshPhongMaterial
-                    :transparent="true"
-                    color="#0091dc"
-                    :opacity="0.5"
-                />
-            </TresMesh> -->
+                <TresMeshStandardMaterial color="#001489" />
+            </TresMesh>
         </TresCanvas>
     </div>
 </template>

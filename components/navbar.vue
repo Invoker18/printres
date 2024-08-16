@@ -1,7 +1,7 @@
 <template>
     <header
         id="nav"
-        class="fixed left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
+        class="sticky left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
         :class="navbarColor"
     >
         <div
@@ -33,7 +33,7 @@
                     Nosotros
                 </li>
                 <NuxtLink
-                    to="/jobs"
+                    to="/portfolio"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Trabajos
@@ -80,7 +80,7 @@ const openModal = () => {
 import { SlideMenu } from '#components'
 const slideover = useSlideover()
 const openSlideover = () => {
-    slideover.open(SlideMenu)
+    slideover.open(SlideMenu, { onClose: slideover.close })
 }
 
 const isOpen = ref(false)

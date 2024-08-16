@@ -2,11 +2,21 @@ import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default <Partial<Config>>{
+    content: [
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './storyblok/**/*.{js,ts,jsx,tsx,mdx,vue,css,html}',
+
+        // Or if using `src` directory:
+        './src/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
     theme: {
         extend: {
             colors: {
+                primary: 'ultramarine',
                 secondary: 'coral',
-                'ultramarine': {
+                ultramarine: {
                     '50': '#f1f6ff',
                     '100': '#e5ecff',
                     '200': '#cedcff',
@@ -19,7 +29,7 @@ export default <Partial<Config>>{
                     '900': '#0618ac',
                     '950': '#001489', //this
                 },
-                'coral': {
+                coral: {
                     '50': '#fff3ed',
                     '100': '#fee4d6',
                     '200': '#fcc6ac',
@@ -45,7 +55,7 @@ export default <Partial<Config>>{
                     '900': '#0b4a6f',
                     '950': '#072f4a',
                 },
-            }
+            },
         },
-    }
+    },
 }

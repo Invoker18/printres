@@ -27,7 +27,7 @@
                             <SwiperSlide
                                 v-for="n in 6"
                                 :key="n"
-                                class="h-full min-h-60"
+                                class="h-60"
                             >
                                 <img
                                     loading="lazy"
@@ -114,7 +114,7 @@
                             <SwiperSlide
                                 v-for="n in 6"
                                 :key="n"
-                                class="h-full min-h-60"
+                                class="h-60"
                             >
                                 <img
                                     loading="lazy"

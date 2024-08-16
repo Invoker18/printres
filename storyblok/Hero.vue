@@ -1,7 +1,7 @@
 <template>
     <section
         v-editable="blok"
-        class="bg-primary-950 relative z-30 flex h-[60dvh] w-full justify-between pt-[5.4rem] md:h-screen"
+        class="bg-primary-950 relative z-40 flex h-[60dvh] w-full justify-between md:h-screen"
         id="heroText"
     >
         <div
@@ -38,7 +38,7 @@
         <HeroShapes></HeroShapes>
         <div
             id="scrollText"
-            class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-24 md:right-16 2xl:right-24"
+            class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-44 md:right-16 2xl:right-24"
         >
             <span class="font-semibold">Scroll</span>
             <UIcon

@@ -141,7 +141,6 @@ const goToWhatsapp = async () => {
 watch(
     () => route.path,
     () => {
-
         const $el: any = document.querySelector('#chat')
         if (route.path !== '/') {
             console.log('if')
@@ -158,17 +157,19 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
     const $el: any = document.querySelector('#chat')
 
-    gsap.to($el, {
-        zIndex: '999',
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-            trigger: '#aboutUs',
-            start: 'top center',
-            end: 'center center',
-            toggleActions: 'play none none reset',
-        },
-    })
+    if (route.path == '/') {
+        gsap.to($el, {
+            zIndex: '999',
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: '#aboutUs',
+                start: 'top center',
+                end: 'center center',
+                toggleActions: 'play none none reset',
+            },
+        })
+    }
 })
 </script>
 

@@ -32,43 +32,46 @@
                         :src="shape"
                         id="shape"
                         alt=""
-                        class="hover-cursor max-h-48 object-cover xl:max-h-fit"
+                        class="hover-cursor max-h-48 object-cover"
                     />
                 </div>
             </div>
             <div
                 class="col-span-full flex h-full w-full flex-col place-content-center gap-5 md:col-span-7 xl:col-span-6"
             >
-                <Swiper
-                    :modules="[SwiperPagination, SwiperAutoplay]"
-                    class="maskImg h-full min-h-64 w-full min-w-0 select-none"
-                    :loop="true"
-                    :autoplay="true"
-                    :pagination="{
-                        el: '.custom-pagination',
-                        clickable: true,
-                        renderBullet: function (index, className) {
-                            return `<span class='${className}'></span>`
-                        },
-                    }"
-                    :lazy="true"
-                >
-                    <SwiperSlide
-                        v-for="slide in blok.Slider"
-                        :key="slide.id"
-                        class=""
+                <ClientOnly>
+                    <Swiper
+                        :modules="[SwiperPagination, SwiperAutoplay]"
+                        class="maskImg h-full min-h-64 w-full min-w-0 select-none"
+                        :loop="true"
+                        :autoplay="true"
+                        :pagination="{
+                            el: '.custom-pagination',
+                            clickable: true,
+                            renderBullet: function (index, className) {
+                                return `<span class='${className}'></span>`
+                            },
+                        }"
+                        :lazy="true"
                     >
-                        <img
-                            loading="lazy"
-                            :src="slide.filename"
-                            alt=""
-                            class="hover-cursor h-full w-full object-cover"
-                        />
-                        <div
-                            class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
-                        ></div>
-                    </SwiperSlide>
-                </Swiper>
+                        <SwiperSlide
+                            v-for="slide in blok.Slider"
+                            :key="slide.id"
+                            class=""
+                        >
+                            <img
+                                loading="lazy"
+                                :src="slide.filename"
+                                alt=""
+                                class="hover-cursor h-full w-full object-cover"
+                            />
+                            <div
+                                class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
+                            ></div>
+                        </SwiperSlide>
+                    </Swiper>
+                </ClientOnly>
+
                 <div class="custom-pagination hover-cursor"></div>
             </div>
         </div>
@@ -114,6 +117,12 @@ defineProps({ blok: Object })
     mask-size: contain;
     mask-position: left/center;
     max-height: 24rem;
+}
+
+@media (max-width: 460px) {
+    .maskImg {
+        max-height: 16rem;
+    }
 }
 
 @media (min-width: 1280px) {
