@@ -35,7 +35,7 @@
                     class="hover-cursor hidden h-full object-contain lg:block"
                 />
             </div>
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden mb-3">
                 <div class="flex flex-col">
                     <h5 class="text-lg text-secondary">Direccion</h5>
                     <p>Casa F16, Calle F, Panamá, Panama City, Panama</p>

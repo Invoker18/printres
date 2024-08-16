@@ -95,16 +95,15 @@ onMounted(() => {
     // MOBILE ANIMATION
     mm.add('(min-width:641px) and (max-width: 767px)', () => {
         gsap.to('#scrollText', {
-            opacity: 0,
+            autoAlpha: 0,
             scrollTrigger: {
                 trigger: '#heroText',
-                start: 'center 30%',
+                start: 'center 29%',
                 end: 'center center',
-                toggleActions: 'play pause resume reset',
-                scrub: true,
+                toggleActions: 'play none none reset',
             },
             ease: 'power2.out',
-            duration: 0.5,
+            duration: 1,
         })
         gsap.to('#text1 div', {
             y: '+=475',
@@ -140,17 +139,29 @@ onMounted(() => {
 
     // DESKTOP ANIAMTION
     mm.add('(min-width: 768px)', () => {
+        // gsap.to('#scrollText', {
+        //     opacity: 0,
+        //     scrollTrigger: {
+        //         trigger: '#heroText',
+        //         start: 'center center',
+        //         end: 'center center',
+        //         // toggleActions: 'play none none reset',
+        //         markers: true,
+        //         // scrub: true,
+        //     },
+        //     ease: 'power2.out',
+        //     duration: 0.5,
+        // })
         gsap.to('#scrollText', {
-            opacity: 0,
+            autoAlpha: 0,
             scrollTrigger: {
-                trigger: '#heroText',
-                start: 'center center',
+                start: '51% center',
                 end: 'center center',
-                toggleActions: 'play pause resume reset',
-                scrub: true,
+                trigger: '#heroText',
+                toggleActions: 'play none none reset',
             },
             ease: 'power2.out',
-            duration: 0.5,
+            duration: 1,
         })
         gsap.to('#text1 div', {
             y: '+=675',
@@ -186,5 +197,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

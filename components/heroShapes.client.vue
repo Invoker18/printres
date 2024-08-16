@@ -3,7 +3,7 @@
         class="hidden h-full flex-1 items-start justify-center bg-[#0424D9] pt-[10vh] lg:flex"
     >
         <div
-            class="grid grid-cols-1 grid-rows-3 px-10 lg:grid-cols-2 xl:grid-cols-3 2xl:px-20"
+            class="grid grid-cols-1 grid-rows-3 px-10 lg:grid-cols-2 xl:grid-cols-3 2xl:px-20 select-none"
             id="vectors"
         >
             <div

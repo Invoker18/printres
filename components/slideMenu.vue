@@ -25,31 +25,40 @@
                 </div>
             </div>
             <ul class="flex flex-col items-end justify-end text-4xl">
-                <li class="w-full border-b py-6 text-right" @click="goHome()">
+                <li
+                    class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
+                    @click="goHome()"
+                >
                     Home
                 </li>
                 <li
-                    class="w-full border-b py-6 text-right"
+                    class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
                     @click="scrollTo('aboutUs')"
                 >
                     Nosotros
                 </li>
                 <NuxtLink
-                    to="work"
-                    class="w-full border-b py-6 text-right focus-within:outline-none"
+                    to="portfolio"
+                    class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Trabajos</NuxtLink
                 >
                 <NuxtLink
                     to="events"
-                    class="w-full border-b py-6 text-right focus-within:outline-none"
+                    class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Eventos</NuxtLink
                 >
-                <li class="w-full border-b py-6 text-right"
-                @click="scrollTo('contact')">Contacto</li>
+                <li
+                    class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
+                    @click="scrollTo('contact')"
+                >
+                    Contacto
+                </li>
             </ul>
-            <ul class="mt-auto flex justify-between gap-3">
+            <ul
+                class="mt-auto flex justify-between gap-3 sm:justify-end sm:gap-5"
+            >
                 <li class="">Facebook</li>
                 <li class="">Instagram</li>
                 <li class="">Whatsapp</li>
