@@ -143,7 +143,6 @@ watch(
     () => {
         const $el: any = document.querySelector('#chat')
         if (route.path !== '/') {
-            console.log('if')
             gsap.to($el, {
                 zIndex: '999',
                 opacity: 1,
@@ -168,6 +167,11 @@ onMounted(() => {
                 end: 'center center',
                 toggleActions: 'play none none reset',
             },
+        })
+    } else {
+        gsap.to($el, {
+            zIndex: '999',
+            opacity: 1,
         })
     }
 })

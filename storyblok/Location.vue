@@ -8,12 +8,12 @@
             class="flex h-full w-full flex-col gap-5 p-5 pt-16 pb-4 md:flex-row md:items-center lg:px-10 xl:gap-x-24 2xl:px-28"
         >
             <div class="hidden flex-col gap-5 text-xl md:flex md:max-w-xs">
-                <h5 class="text-3xl">Hablemos</h5>
-                <div>{{ blok.Number }}</div>
+                <h5 class="text-3xl hover-cursor">Hablemos</h5>
+                <div class="hover-cursor">{{ blok.Number }}</div>
                 <hr class="border-secondary" />
-                <div>{{ blok.Email }}</div>
+                <div class="hover-cursor">{{ blok.Email }}</div>
                 <hr class="border-curious-blue-600" />
-                <p>{{ blok.Address }}</p>
+                <p class="hover-cursor">{{ blok.Address }}</p>
             </div>
             <div
                 class="mx-auto flex h-[24rem] w-full max-w-5xl gap-2 sm:h-[26rem] md:h-[28rem] xl:h-[32rem] 2xl:h-[36rem] 2xl:max-h-[60vh]"
@@ -52,11 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import naranja from '@/assets/images/shapes/empanadaNaranja.png'
-import azul from '@/assets/images/shapes/empanadaAzul.png'
 import locationShape from '@/assets/images/shapes/locationShape.png'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
 
 defineProps({
     blok: {
@@ -65,65 +61,8 @@ defineProps({
     },
 })
 
-// onMounted(() => {
-//     gsap.registerPlugin(ScrollTrigger)
-//     let contactDom: any = document.getElementById('contactContainer')
 
-//     let mm = gsap.matchMedia()
-
-//     mm.add('(min-width: 768px)', () => {
-//         ScrollTrigger.create({
-//             // immediateRender: false,
-//             trigger: '#location',
-//             start: 'top center',
-//             end: '100% top',
-//             // preventOverlaps: true,
-//             markers: true,
-//             onEnter: () => {
-//                 contactDom.classList.remove('bottom-0')
-//                 contactDom.classList.add('top-0')
-//                 console.log('onEnter', contactDom)
-//             },
-//             onLeaveBack: () => {
-//                 contactDom.classList.add('bottom-0')
-//                 contactDom.classList.remove('top-0')
-//                 console.log('onLeaveBack', contactDom)
-//             },
-//         })
-//         // gsap.to('#location', {
-//         //     scrollTrigger: {
-//         //         immediateRender: false,
-//         //         trigger: '#location',
-//         //         start: 'top bottom',
-//         //         end: '100% top',
-//         //         preventOverlaps: true,
-//         //         markers: true,
-//         //         onEnter: () => {
-//         //             contactDom.classList.remove('bottom-0')
-//         //             contactDom.classList.add('top-0')
-//         //             console.log('onEnter', contactDom)
-//         //         },
-//         //         onLeaveBack: () => {
-//         //             contactDom.classList.add('bottom-0')
-//         //             contactDom.classList.remove('top-0')
-//         //             console.log('onLeaveBack', contactDom)
-//         //         },
-//         //     },
-//         // })
-//     })
-// })
 </script>
 
 <style scoped>
-/* .clip-path {
-    clip-path: circle(50% at 50% 50%);
-} */
-
-/* .maskImg {
-    -webkit-mask-image: url('@/assets/images/shapes/empanadas.png');
-    mask-image: url('@/assets/images/shapes/empanadas.png');
-    mask-repeat: round;
-    mask-size: contain;
-    mask-position: left/center;
-} */
 </style>

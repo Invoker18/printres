@@ -2,17 +2,17 @@
     <div id="contact"></div>
     <div
         v-editable="blok"
-        class="hover-cursor sticky bottom-0 grid h-[100dvh] select-none place-content-center bg-curious-blue-600 px-5"
+        class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 sm:sticky sm:h-screen"
         id="contactContainer"
     >
-        <div class="relative z-40 w-full max-w-xl py-16">
+        <div class="relative z-40 w-full max-w-xl -mt-10">
             <div
                 class="mx-auto flex h-fit w-full max-w-xl flex-col gap-5 rounded-md"
             >
                 <div class="mb-3 text-center text-2xl">
                     {{ blok.Title }}
                 </div>
-                <div class="text-center text-8xl uppercase md:text-9xl">
+                <div class="text-center text-8xl uppercase md:text-9xl text-primary-950">
                     {{ blok.Phrase1 }}
                     <br />
                     {{ blok.Phrase2 }}
@@ -39,8 +39,8 @@
                 <hr class="border-primary-950 mt-12" />
             </div>
         </div>
-        <LazyThreejs class="hidden md:block"></LazyThreejs>
-        <!-- <LazyThreejsMobile class="block md:hidden"></LazyThreejsMobile> -->
+        <Threejs class="hidden md:block"></Threejs>
+        <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
 </template>
 
@@ -74,12 +74,13 @@ const openModal = () => {
 }
 
 onMounted(() => {
-    // gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger)
     let contactDom: any = document.getElementById('contactContainer')
 
     let mm = gsap.matchMedia()
 
-    // mm.add('(min-width: 768px)', () => {
+    mm.add('(min-width: 640px)', () => {
+        console.log('entre')
         ScrollTrigger.create({
             trigger: '#location',
             start: 'top bottom',
@@ -92,7 +93,7 @@ onMounted(() => {
                 contactDom.classList.remove('top-0')
             },
         })
-    // })
+    })
 })
 </script>
 

@@ -3,7 +3,7 @@
         class="hidden h-full flex-1 items-start justify-center bg-[#0424D9] pt-[10vh] lg:flex"
     >
         <div
-            class="grid grid-cols-1 grid-rows-3 px-10 lg:grid-cols-2 xl:grid-cols-3 2xl:px-20 select-none"
+            class="grid select-none grid-cols-1 grid-rows-3 px-10 lg:grid-cols-2 xl:grid-cols-3 2xl:px-20"
             id="vectors"
         >
             <div
@@ -73,4 +73,12 @@ onMounted(() => {
 })
 </script>
 
-<style></style>
+<style scoped>
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+</style>

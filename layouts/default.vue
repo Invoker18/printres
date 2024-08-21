@@ -2,8 +2,8 @@
     <div>
         <div class="cursor-follower"></div>
         <div
-            v-if="isLoading"
-            class="bg-primary-950 fixed left-0 top-0 z-[9999] grid h-[100dvh] w-full place-content-center text-5xl"
+            id="loader"
+            class="bg-primary-950 opacity-1 fixed left-0 top-0 z-[9999] grid h-[100vh] w-full place-content-center text-5xl"
         >
             <div class="loader"></div>
         </div>
@@ -20,17 +20,17 @@ import { ScrollTrigger } from 'gsap/all'
 const isLoading = ref(true)
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
-    ScrollTrigger.config({ ignoreMobileResize: true })
+    // ScrollTrigger.config({ ignoreMobileResize: true })
     // ScrollTrigger.normalizeScroll(true)
-    let normalizer = ScrollTrigger.normalizeScroll({})
+    // let normalizer = ScrollTrigger.normalizeScroll({})
 
     const initLenis = () => {
-        // const lenis = new Lenis({})
-        const lenis = new Lenis({
-            syncTouch: true,
-            syncTouchLerp: 0.03,
-            touchMultiplier: 0.8,
-        })
+        const lenis = new Lenis({})
+        // const lenis = new Lenis({
+        //     syncTouch: true,
+        //     syncTouchLerp: 0.03,
+        //     touchMultiplier: 0.8,
+        // })
 
         lenis.on('scroll', ScrollTrigger.update)
 
@@ -64,21 +64,28 @@ onMounted(() => {
             const changeCursor =
                 isTargetLinkOrBtn || hoverCursor2 ? true : false
             gsap.to(cursor, {
-                x: clientX - 11,
-                y: clientY - 11,
+                x: clientX - 12,
+                y: clientY - 12,
                 duration: 0,
-                ease: 'power4', // More easing options here: https://gsap.com/docs/v3/Eases/
-                opacity: changeCursor ? '0.7' : 1,
+                ease: 'none', // More easing options here: https://gsap.com/docs/v3/Eases/
+                autoAlpha: changeCursor ? '0.7' : 1,
                 transform: `scale(${changeCursor ? scale : 1})`,
                 backgroundColor: changeCursor ? '#f87c56' : '#0091dc',
                 mixBlendMode: changeCursor ? 'multiply' : 'normal',
             })
         })
 
-        document.addEventListener('mouseleave', (e) => {
+        document.querySelector('iframe')?.addEventListener('mouseenter', () => {
             gsap.to(cursor, {
                 duration: 0.7,
                 opacity: 0,
+            })
+        })
+
+        document.addEventListener('mouseleave', (e) => {
+            gsap.to(cursor, {
+                duration: 0.7,
+                autoAlpha: 0,
             })
         })
     }
@@ -88,12 +95,20 @@ onMounted(() => {
     }
     initLenis()
 
-    isLoading.value = false
+    gsap.to('.loader', {
+        autoAlpha: 0,
+        duration: 0,
+    })
+    gsap.to('#loader', {
+        autoAlpha: 0,
+        duration: 1,
+    })
     document.body.style.cursor = 'none'
 })
 </script>
 
 <style>
+html,
 body {
     /* cursor: none; */
     /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
@@ -114,7 +129,6 @@ body {
     user-select: none;
     pointer-events: none;
     @apply bg-curious-blue-600;
-    /* mix-blend-mode: multiply; */
 }
 
 /* li:hover,

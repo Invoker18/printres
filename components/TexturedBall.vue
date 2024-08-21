@@ -1,7 +1,8 @@
 <template>
     <TresMesh ref="sphereRef" :scale="1" cast-shadow :rotation="[0, -1.5, 0]">
         <TresSphereGeometry :args="[0.5, 32, 32]" />
-        <TresMeshLambertMaterial v-bind="pbrTexture" color="#f87c56" />
+        <!-- v-bind="pbrTexture" -->
+        <TresMeshLambertMaterial  color="#f87c56" />
     </TresMesh>
 </template>
 <script setup lang="ts">

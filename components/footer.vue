@@ -5,14 +5,14 @@
             class="bg-primary-950 flex flex-col gap-5 px-5 py-6 md:flex-row md:items-start lg:px-10 2xl:px-28"
         >
             <ul
-                class="order-1 flex items-center justify-start gap-3 sm:justify-center sm:gap-5 md:order-2 md:mr-24 md:gap-10 xl:mr-16 2xl:mr-4"
+                class="order-1 flex items-center justify-start gap-3 sm:ml-auto sm:justify-center sm:gap-5 md:order-2 md:mr-24 md:gap-10 xl:mr-20 2xl:mr-4"
             >
-                <li>Facebook</li>
-                <li>Instagram</li>
-                <li>Behance</li>
+                <li class="hover-cursor cursor-pointer">Facebook</li>
+                <li class="hover-cursor cursor-pointer">Instagram</li>
+                <li class="hover-cursor cursor-pointer">Behance</li>
             </ul>
             <div
-                class="hover-cursor text-primary-400 order-3 w-full md:order-1"
+                class="hover-cursor text-primary-400 order-3 w-full sm:w-fit md:order-1"
             >
                 © Printres 2024 Todos los derechos reservados.
                 <br />

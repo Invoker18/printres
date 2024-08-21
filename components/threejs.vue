@@ -1,13 +1,15 @@
 <template>
     <div>
         <TresCanvas
-            preset="realistic"
             window-size
+            shadows
+            :outputColorSpace="SRGBColorSpace"
+            :toneMapping="ACESFilmicToneMapping"
+            :toneMappingExposure="3"
             power-preference="high-performance"
             class="relative z-50"
         >
             <TresPerspectiveCamera
-                ref="camera"
                 :position="[0, 3, 10]"
                 :fov="45"
                 :aspect="1"
@@ -18,24 +20,12 @@
             <!-- <TresGridHelper :args="[10, 10]" /> -->
             <!-- <OrbitControls :enable-zoom="false" /> -->
 
-            <TresAmbientLight :intensity="1" />
             <TresDirectionalLight
-                cast-shadow
                 :position="[0, 10, 0]"
-                :intensity="0.5"
+                cast-shadow
+                :intensity="1"
             />
-
-            <!-- SMOKE -->
-            <!-- <Suspense>
-                <Smoke
-                    :speed="0.8"
-                    :opacity="1"
-                    :width="20"
-                    :segments="20"
-                    :color="'#000000'"
-                    :depthTest="false"
-                />
-            </Suspense> -->
+            <TresAmbientLight :intensity="0.5" />
 
             <Suspense>
                 <TexturedBall></TexturedBall>
@@ -55,7 +45,6 @@
             </TresMesh>
             <!-- FIRST SPEHERE -->
             <TresMesh
-                ref="firstSphere"
                 :receive-shadow="true"
                 cast-shadow
                 :position="[-4, 1, 0]"
@@ -117,23 +106,15 @@
 </template>
 
 <script lang="ts" setup>
-import { OrbitControls } from '@tresjs/cientos'
-import { DoubleSide } from 'three'
+import { ACESFilmicToneMapping, DoubleSide, SRGBColorSpace } from 'three'
+import { toneMappingExposure } from 'three/examples/jsm/nodes/display/ToneMappingNode.js';
+import { toneMapping } from 'three/examples/jsm/nodes/Nodes.js';
 
 // Half a sphere
 const phiStart = ref(0)
 const phiEnd = ref(Math.PI * 2)
 const thetaStart = ref(0)
 const thetaEnd = ref(Math.PI / 2)
-
-const camera = shallowRef()
-const firstSphere = shallowRef()
-
-// const { onLoop } = useRenderLoop()
-
-useRenderLoop().onLoop(({ delta }) => {
-    // yRotation.value += 0.02 * delta
-})
 </script>
 
 <style scoped>
