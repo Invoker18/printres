@@ -46,12 +46,13 @@
                         class="flex w-full flex-col items-start justify-between lg:flex-row"
                     >
                         <div class="flex flex-shrink-0 items-center gap-5">
+                            
                             <div
-                                class="border-primary-950 hover-cursor h-fit rounded-full border p-1 hover:cursor-pointer"
+                                class="border-primary-950 hover-cursor flex size-10 shrink-0 grow-0 items-center justify-center rounded-full border hover:cursor-pointer"
                             >
                                 <UIcon
                                     name="i-ph-arrow-up-left-bold"
-                                    class="text-primary-950 hidden size-6 group-hover:block 2xl:size-10"
+                                    class="text-primary-950 size-6 group-hover:block"
                                 ></UIcon>
                             </div>
                             <div
@@ -84,7 +85,7 @@
                             >
                                 <UIcon
                                     name="i-ph-arrow-up-left-bold"
-                                    class="hidden self-end text-secondary group-hover:block"
+                                    class="self-end text-secondary group-hover:block"
                                 ></UIcon>
                                 {{ blok.Title }}
                                 <span

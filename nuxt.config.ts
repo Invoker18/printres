@@ -52,7 +52,6 @@ export default defineNuxtConfig({
     },
 
     nodemailer: {
-        from: 'omarmendez@printres.com',
         host: 'smtp.ethereal.email',
         port: 587,
         // secure: true,

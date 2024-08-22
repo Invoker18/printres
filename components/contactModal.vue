@@ -2,11 +2,13 @@
     <UModal
         id="contactModal"
         :ui="{
-            container: 'items-start sm:items-center justify-center text-center',
+            container:
+                'items-start sm:items-center justify-center text-center ',
             inner: 'overflow-hidden',
             background: 'bg-primary-950/90 dark:bg-primary-950/90',
             overlay: {
-                background: 'bg-gray-800/60 dark:bg-gray-800/60',
+                background:
+                    'bg-gray-950/50 dark:bg-gray-950/50 backdrop-blur-sm',
             },
             shadow: 'shadow-2xl',
             width: 'w-full sm:max-w-lg',
@@ -27,6 +29,7 @@
                 </div>
             </div>
             <UForm
+                ref="form"
                 :schema="schema"
                 :state="state"
                 class="grid grid-flow-row gap-3"
@@ -98,14 +101,23 @@
                     class="rounded-md bg-curious-blue-600 p-2.5 text-gray-100 placeholder-gray-200"
                 ></textarea> -->
                 <!-- <div class="flex items-start gap-4 overflow-auto"> -->
-                <button
-                    :disabled="isValid"
+                <UButton
                     :loading="loading"
                     type="submit"
-                    class="mt-3 w-full rounded-xl bg-secondary p-2.5 text-gray-200 disabled:hover:cursor-not-allowed disabled:hover:bg-gray-500"
+                    color="white"
+                    block
+                    size="xl"
+                    :ui="{
+                        rounded: 'rounded-xl',
+                        color: {
+                            white: {
+                                solid: 'shadow-sm ring-0 text-gray-200 dark:text-gray-200 bg-secondary hover:bg-coral-300 disabled:bg-gray dark:bg-secondary dark:hover:bg-coral-300 focus-visible:ring-0 mt-3 disabled:dark:text-gray-200',
+                            },
+                        },
+                    }"
                 >
-                    Enviar
-                </button>
+                    <span class="font-semibold uppercase">Enviar</span>
+                </UButton>
                 <!-- <p class="text-sm">
                         This site is protected by reCAPTCHA and the Google
                         Privacy Policy and Terms of Service apply.
@@ -128,6 +140,10 @@ import type { FormSubmitEvent } from '#ui/types'
 import contactShape from '@/assets/images/shapes/contactShape.png'
 const { executeRecaptcha } = useGoogleRecaptcha()
 
+const toast = useToast()
+
+const form = ref()
+
 const loading = ref(false)
 const schema = z
     .object({
@@ -142,9 +158,9 @@ const schema = z
 type Schema = z.output<typeof schema>
 
 const state = reactive({
-    email: undefined,
-    name: undefined,
-    message: undefined,
+    email: '',
+    name: '',
+    message: '',
 })
 
 const isValid = computed(() => {
@@ -154,28 +170,59 @@ const isValid = computed(() => {
 const isOpen = ref(false)
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
+    loading.value = true
+
     // Do something with data
-    console.log(event.data)
-    const { token } = await executeRecaptcha('submit')
-    console.log(token, 'token')
+    const { token }: any = await executeRecaptcha('submit')
 
-    const isValid: any = await $fetch(
-        '/api/validate?' +
-            new URLSearchParams({
-                token: JSON.stringify(token),
-                from: event.data.email,
-                subject: event.data.name,
-                text: event.data.email,
-            })
-    )
+    const formData = {
+        token: token,
+        from: event.data.email,
+        subject: event.data.name,
+        text: event.data.message,
+    }
 
-    // const mail = useMail()
+    try {
+        const isValid: any = await $fetch('/api/validate', {
+            method: 'POST',
+            body: formData,
+        })
 
-    // mail.send({
-    //     from: event.data.email,
-    //     subject: event.data.name,
-    //     text: event.data.message,
-    // })
+        toast.add({
+            title: 'Correo enviado satisfactoriamente!',
+            description: isValid.message,
+            timeout: 6000,
+            color: 'coral',
+            icon: 'i-heroicons-check-circle',
+            ui: {
+                background: 'bg-primary-950 dark:bg-primary-950',
+                ring: 'ring-1 ring-primary-200 dark:ring-primary-800',
+                wrapper: 'hover-cursor',
+            },
+        })
+    } catch (error) {
+        console.log(error, 'error')
+
+        toast.add({
+            title: 'Ups ha habido un problema!',
+            description:
+                'Por favor intenta de nuevo mas tarde.si el problema persiste ponerse en contacto con el administrador del sitio! ',
+            timeout: 6000,
+            color: 'red',
+            icon: 'i-heroicons-x-circle',
+            ui: {
+                background: 'bg-red-800 dark:bg-red-800',
+                ring: 'ring-1 ring-red-200 dark:ring-red-800',
+                wrapper: 'hover-cursor',
+            },
+        })
+    }
+
+    loading.value = false
+
+    state.name = ''
+    state.email = ''
+    state.message = ''
 }
 </script>
 

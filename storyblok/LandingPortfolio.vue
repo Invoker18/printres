@@ -20,7 +20,7 @@
                                 ></span>
                                 <UIcon
                                     name="i-ph-arrow-up-right-bold"
-                                    class="hidden size-8 self-end text-secondary group-hover:block"
+                                    class="size-8 self-end text-secondary group-hover:block"
                                 ></UIcon>
                             </h3>
                         </button>
@@ -127,11 +127,11 @@
                                 class="custom-pagination3 hover-cursor w-full"
                             ></div>
                             <div
-                                class="border-primary-950 hover-cursor h-fit rounded-full border p-1 hover:cursor-pointer"
+                                class="border-primary-950 hover-cursor flex size-10 shrink-0 grow-0 items-center justify-center rounded-full border hover:cursor-pointer"
                             >
                                 <UIcon
                                     name="i-ph-arrow-up-right-bold"
-                                    class="text-primary-950 hidden size-6 group-hover:block 2xl:size-10"
+                                    class="text-primary-950 size-6 group-hover:block"
                                 ></UIcon>
                             </div>
                         </div>
