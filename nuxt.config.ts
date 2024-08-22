@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@tresjs/nuxt',
         '@storyblok/nuxt',
+        'nuxt-nodemailer',
     ],
 
     // tres: {
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
     },
 
     app: {
-        pageTransition: { name: 'page', mode: 'out-in' },
+        pageTransition: { name: 'page' },
         head: {
             charset: 'utf-8',
             viewport:
@@ -39,4 +40,38 @@ export default defineNuxtConfig({
     },
 
     compatibilityDate: '2024-08-13',
+
+    runtimeConfig: {
+        // Private keys are only available on the server
+        apiSecret: '123',
+
+        // Public keys that are exposed to the client
+        public: {
+            RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
+        },
+    },
+
+    nodemailer: {
+        host: 'smtp.ethereal.email',
+        port: 587,
+        // secure: true,
+        auth: {
+            user: 'keaton72@ethereal.email',
+            pass: process.env.MAIL_PASSWORD,
+        },
+    },
+
+    // mail: {
+    //     message: {
+    //         to: 'omarmendez@printres.com',
+    //     },
+    //     smtp: {
+    //         host: 'smtp.ethereal.email',
+    //         port: 587,
+    //         auth: {
+    //             user: 'keaton72@ethereal.email',
+    //             pass: '5g5mp4MkNkynSZ3qZd',
+    //         },
+    //     },
+    // },
 })

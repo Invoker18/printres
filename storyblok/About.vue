@@ -1,7 +1,7 @@
 <template>
     <section
         v-editable="blok"
-        class="bg-primary-950 pin sticky left-0 top-0 z-30 flex h-screen flex-col gap-8 px-5 pb-56 pt-20 md:h-full md:pt-28 lg:px-10 2xl:gap-x-20 2xl:px-28"
+        class="bg-primary-950 pin relative left-0 top-0 z-30 flex h-screen flex-col gap-5 px-5 py-12 sm:sticky sm:pt-28 lg:px-10 2xl:gap-x-20 2xl:px-28"
         id="aboutUs"
     >
         <div
@@ -20,13 +20,12 @@
             class="grid grid-cols-12 place-content-center items-center gap-5 md:gap-y-10 xl:gap-x-20"
         >
             <div
-                class="col-span-full flex flex-col gap-5 text-pretty text-base md:col-span-5 lg:text-lg xl:col-span-6 xl:gap-14"
+                class="col-span-full flex flex-col gap-5 text-pretty text-base tracking-tight md:col-span-6 lg:text-lg xl:col-span-6"
             >
-                <p class="hover-cursor">
-                    {{ blok.Texto1 }}
-                    <br />
-                    {{ blok.Texto2 }}
-                </p>
+                <ClientOnly>
+                    <p class="hover-cursor" v-html="Description"></p>
+                    <p class="hover-cursor" v-html="Description2"></p>
+                </ClientOnly>
                 <div class="hidden h-full w-full md:block">
                     <img
                         :src="shape"
@@ -37,7 +36,7 @@
                 </div>
             </div>
             <div
-                class="col-span-full flex h-full w-full flex-col place-content-center gap-5 md:col-span-7 xl:col-span-6"
+                class="col-span-full flex h-full w-full flex-col place-content-center gap-5 md:col-span-6 xl:col-span-6"
             >
                 <ClientOnly>
                     <Swiper
@@ -79,14 +78,12 @@
 </template>
 
 <script setup>
-// import people from '@/assets/images/people.jpeg';
 import shape from '@/assets/images/shapes/aboutShape.png'
-import leaf from '@/assets/images/shapes/leaf.png'
-import people2 from '@/assets/images/people/about.jpg'
-import people from '@/assets/images/people/0V3A0074.jpg'
-import image from '@/assets/images/shapes/image.png'
+const props = defineProps({ blok: Object })
 
-defineProps({ blok: Object })
+const { width } = useWindowSize()
+const Description = computed(() => renderRichText(props.blok.Description))
+const Description2 = computed(() => renderRichText(props.blok.Description2))
 </script>
 
 <style scoped>
@@ -132,7 +129,7 @@ defineProps({ blok: Object })
 }
 
 :deep(.swiper-pagination-bullet-active) {
-    @apply text-primary bg-secondary opacity-100 !important;
+    @apply bg-secondary text-primary opacity-100 !important;
 }
 :deep(.swiper-pagination-bullet) {
     @apply size-2 rounded-tl-full bg-white opacity-60 lg:size-3;

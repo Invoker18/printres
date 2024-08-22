@@ -1,26 +1,14 @@
 <template>
     <div>
-        <StoryblokComponent
-            v-if="story"
-            :blok="story.content"
-        />
-        <ClientOnly>
+        <StoryblokComponent v-if="story" :blok="story.content" />
+        <!-- <ClientOnly>
             <div class="fixed right-0 top-0 z-50 text-secondary">
                 w/{{ width }} h/{{ height }}
             </div>
-        </ClientOnly>
+        </ClientOnly> -->
     </div>
 </template>
 
-<!-- <Hero></Hero> -->
-<!-- <VideoSection></VideoSection> -->
-<!-- <About></About> -->
-<!-- <Projects></Projects> -->
-<!-- <Events></Events> -->
-<!-- fix for sticky bottom0 -->
-<!-- <div id="contact"></div> -->
-<!-- <Contact></Contact> -->
-<!-- <Location></Location> -->
 
 <script lang="ts" setup>
 import gsap from 'gsap'
@@ -34,7 +22,7 @@ const story = await useAsyncStoryblok(
     slug && slug.length > 0 ? slug.join('/') : 'home',
     { version: 'draft' }
 )
-console.log(story.value, 'st')
+// console.log(story.value, 'st')
 
 // const component = resolveComponent(story.value.content.component)
 
@@ -44,44 +32,48 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     const sections = Array.from(document.querySelectorAll('.pin'))
+    // const sections = Array.from(document.querySelectorAll('#aboutUs'))
 
     let contactDom: any = document.getElementById('contactContainer')
+    let mm = gsap.matchMedia()
 
-    sections.forEach((section, index) => {
-        // const isLast = index === sections.length - 1
+    mm.add('(min-width: 640px)', () => {
+        sections.forEach((section, index) => {
+            // const isLast = index === sections.length - 1
 
-        gsap.timeline({
-            scrollTrigger: {
-                immediateRender: true,
-                trigger: section,
-                start: '20% top',
-                end: 'bottom top',
-                scrub: true,
-                toggleActions: 'play none none reset',
-                // markers: true,
-                onEnterBack: () => {
-                    // console.log('onEnterBack')
-                    section.classList.add('z-30')
-                    section.classList.add('sticky')
-                    contactDom.classList.remove('z-30')
+            gsap.timeline({
+                scrollTrigger: {
+                    immediateRender: true,
+                    trigger: section,
+                    start: '20% top',
+                    end: 'bottom top',
+                    scrub: true,
+                    toggleActions: 'play none none reset',
+                    // markers: true,
+                    onEnterBack: () => {
+                        // console.log('onEnterBack')
+                        section.classList.add('z-30')
+                        section.classList.add('sticky')
+                        contactDom.classList.remove('z-30')
+                    },
+                    onLeave: () => {
+                        section.classList.remove('z-30')
+                        section.classList.remove('sticky')
+                        contactDom.classList.add('z-30')
+                        ScrollTrigger.refresh()
+                    },
                 },
-                onLeave: () => {
-                    section.classList.remove('z-30')
-                    section.classList.remove('sticky')
-                    contactDom.classList.add('z-30')
-                    ScrollTrigger.refresh()
-                },
-            },
-        }).to(section, {
-            ease: 'none',
-            startAt: { filter: 'brightness(100%) blur(0px)' },
-            filter: 'brightness(90%) blur(10px)',
-            // onComplete: () => {
-            //     console.log('onComplete')
-            //     section.classList.remove('z-30')
-            //     section.classList.remove('sticky')
-            // },
-            // onReverseComplete: () => {},
+            }).to(section, {
+                ease: 'none',
+                startAt: { filter: 'brightness(100%) blur(0px)' },
+                filter: 'brightness(90%) blur(10px)',
+                // onComplete: () => {
+                //     console.log('onComplete')
+                //     section.classList.remove('z-30')
+                //     section.classList.remove('sticky')
+                // },
+                // onReverseComplete: () => {},
+            })
         })
     })
 })

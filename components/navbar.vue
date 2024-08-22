@@ -1,7 +1,7 @@
 <template>
     <header
         id="nav"
-        class="sticky left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
+        class="left-0 top-0 z-50 w-full bg-opacity-80 backdrop-blur-sm transition-all duration-500 ease-in"
         :class="navbarColor"
     >
         <div
@@ -20,12 +20,12 @@
             <ul
                 class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
             >
-                <li
-                    @click="goHome()"
+                <NuxtLink
+                    to="/"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Inicio
-                </li>
+                </NuxtLink>
                 <li
                     @click="scrollTo('aboutUs')"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
@@ -39,7 +39,7 @@
                     Trabajos
                 </NuxtLink>
                 <NuxtLink
-                    to="/events"
+                    to="/all-events"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Eventos
@@ -89,8 +89,8 @@ const route = useRoute()
 
 const navbarColor = computed(() => {
     return route.path === '/'
-        ? 'bg-primary-950'
-        : 'bg-gray-300 text-primary-950'
+        ? 'bg-primary-950 sticky'
+        : 'bg-gray-300 fixed text-primary-950'
 })
 
 const scrollTo = async (section: string) => {
@@ -131,4 +131,4 @@ onMounted(() => {
 })
 </script>
 
-<style></style>
+<style scoped></style>

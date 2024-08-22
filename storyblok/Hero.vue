@@ -70,12 +70,12 @@ onMounted(() => {
 
     mm.add('(max-width: 640px)', () => {
         gsap.to('#text1 div', {
-            yPercent: '+=525',
+            yPercent: '+=650',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',
                 scrub: true,
-                start: 'center 25%',
+                start: 'center 35%',
                 end: '100% top',
             },
             stagger: {

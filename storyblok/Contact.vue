@@ -2,17 +2,19 @@
     <div id="contact"></div>
     <div
         v-editable="blok"
-        class="hover-cursor sticky bottom-0 grid h-[100dvh] select-none place-content-center bg-curious-blue-600 px-5"
+        class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 py-24 pt-32 sm:sticky sm:h-screen sm:py-0 sm:pt-0"
         id="contactContainer"
     >
-        <div class="relative z-40 w-full max-w-xl py-16">
+        <div class="relative z-40 -mt-10 w-full max-w-xl">
             <div
                 class="mx-auto flex h-fit w-full max-w-xl flex-col gap-5 rounded-md"
             >
                 <div class="mb-3 text-center text-2xl">
                     {{ blok.Title }}
                 </div>
-                <div class="text-center text-8xl uppercase md:text-9xl">
+                <div
+                    class="text-primary-950 text-center text-8xl uppercase md:text-9xl"
+                >
                     {{ blok.Phrase1 }}
                     <br />
                     {{ blok.Phrase2 }}
@@ -36,28 +38,17 @@
                         Contactanos
                     </UButton>
                 </div>
-                <hr class="border-primary-950 mt-12" />
+                <hr class="border-primary-950 mt-6 sm:hidden" />
             </div>
         </div>
-        <LazyThreejs class="hidden md:block"></LazyThreejs>
-        <!-- <LazyThreejsMobile class="block md:hidden"></LazyThreejsMobile> -->
+        <Threejs class="hidden md:block"></Threejs>
+        <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
 </template>
 
 <script lang="ts" setup>
-import vector1 from '@/assets/images/shapes/Vector1.png'
-import vector2 from '@/assets/images/shapes/Vector2.png'
-import vector3 from '@/assets/images/shapes/Vector3.png'
-import vector4 from '@/assets/images/shapes/Vector4.png'
-import vector5 from '@/assets/images/shapes/Vector5.png'
-import vector6 from '@/assets/images/shapes/Vector6.png'
-import vector7 from '@/assets/images/shapes/Vector7.png'
-import vector8 from '@/assets/images/shapes/Vector8.png'
-import vector9 from '@/assets/images/shapes/Vector9.png'
-import vector10 from '@/assets/images/shapes/Vector10.png'
-import { ContactModal } from '#components'
-
 import gsap from 'gsap'
+import { ContactModal } from '#components'
 import { ScrollTrigger } from 'gsap/all'
 
 defineProps({
@@ -74,12 +65,13 @@ const openModal = () => {
 }
 
 onMounted(() => {
-    // gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger)
     let contactDom: any = document.getElementById('contactContainer')
 
     let mm = gsap.matchMedia()
 
-    // mm.add('(min-width: 768px)', () => {
+    mm.add('(min-width: 640px)', () => {
+        console.log('entre')
         ScrollTrigger.create({
             trigger: '#location',
             start: 'top bottom',
@@ -92,12 +84,8 @@ onMounted(() => {
                 contactDom.classList.remove('top-0')
             },
         })
-    // })
+    })
 })
 </script>
 
-<style scoped>
-#shapesContainer img {
-    filter: drop-shadow(0px 0px 0.5px #0091dc);
-}
-</style>
+<style scoped></style>
