@@ -8,7 +8,7 @@
             class="relative flex h-full w-full flex-1 select-none flex-col items-center justify-start px-5 pt-16 font-semibold sm:items-start sm:pt-10 md:pt-[18vh] lg:px-10 2xl:px-28"
         >
             <div
-                class="flex text-7xl text-gray-100 sm:text-8xl md:text-[8.5rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
+                class="flex text-7xl text-gray-100 sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text1"
             >
                 <div
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div
-                class="flex text-7xl sm:text-8xl md:text-[8.5rem] lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
+                class="flex text-7xl sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text2"
             >
                 <div
@@ -35,7 +35,9 @@
                 </div>
             </div>
         </div>
-        <HeroShapes></HeroShapes>
+        <ClientOnly>
+            <HeroShapes></HeroShapes>
+        </ClientOnly>
         <div
             id="scrollText"
             class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-44 md:right-16 2xl:right-24"

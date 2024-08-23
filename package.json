@@ -12,6 +12,7 @@
     "dependencies": {
         "@nuxt/image": "^1.7.0",
         "@nuxt/ui": "^2.17.0",
+        "@nuxtjs/fontaine": "^0.4.3",
         "@storyblok/nuxt": "^6.0.10",
         "@tresjs/cientos": "^3.9.0",
         "@tresjs/nuxt": "^3.0.2",

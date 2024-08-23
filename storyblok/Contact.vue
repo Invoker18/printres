@@ -41,7 +41,7 @@
                 <hr class="border-primary-950 mt-6 sm:hidden" />
             </div>
         </div>
-        <Threejs class="hidden md:block"></Threejs>
+        <LazyThreejs v-if="y > 1200" class="hidden md:block" />
         <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
 </template>
@@ -50,6 +50,8 @@
 import gsap from 'gsap'
 import { ContactModal } from '#components'
 import { ScrollTrigger } from 'gsap/all'
+
+const { x, y } = useWindowScroll()
 
 defineProps({
     blok: {
@@ -71,7 +73,6 @@ onMounted(() => {
     let mm = gsap.matchMedia()
 
     mm.add('(min-width: 640px)', () => {
-        console.log('entre')
         ScrollTrigger.create({
             trigger: '#location',
             start: 'top bottom',

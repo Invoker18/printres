@@ -25,8 +25,8 @@
                             </h3>
                         </button>
                         <div class="max-w-full md:hidden">
-                            <img
-                                :src="eventsShape"
+                            <NuxtImg
+                                src="images/shapes/eventsShape.png"
                                 id="shape"
                                 alt=""
                                 class="hover-cursor max-h-20 object-cover"
@@ -60,7 +60,7 @@
                                 :key="n"
                                 class="h-full min-h-60"
                             >
-                                <img
+                                <NuxtImg
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n}`"
                                     alt=""
@@ -96,7 +96,7 @@
                                 :key="n"
                                 class="h-full min-h-60"
                             >
-                                <img
+                                <NuxtImg
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}`"
                                     alt=""
@@ -113,8 +113,8 @@
                         class="flex w-full flex-col items-end justify-between lg:flex-row lg:items-start"
                     >
                         <div class="order-2 max-w-full self-center lg:order-1">
-                            <img
-                                :src="shape"
+                            <NuxtImg
+                                src="/images/shapes/projectsShape.png"
                                 id="shape"
                                 alt=""
                                 class="hover-cursor max-h-36 object-contain"
@@ -143,9 +143,6 @@
 </template>
 
 <script setup>
-import shape from '@/assets/images/shapes/projectsShape.png'
-import eventsShape from '@/assets/images/shapes/eventsShape.png'
-
 defineProps({
     blok: {
         type: Object,

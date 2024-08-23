@@ -7,7 +7,6 @@
         <div
             class="flex w-full items-center justify-between px-5 py-6 lg:px-10 2xl:px-28"
         >
-            <!-- @click="scrollToTop()" -->
             <NuxtImg
                 :src="
                     route.path === '/'
@@ -15,6 +14,8 @@
                         : '/images/logoprintres2.svg'
                 "
                 class="hover-cursor w-28 md:w-32 lg:w-40"
+                width="300px"
+                height="76px"
                 id="logo"
             />
             <ul
@@ -46,14 +47,22 @@
                 </NuxtLink>
             </ul>
             <div class="flex items-center gap-3">
-                <img
+                <NuxtImg
                     @click="openModal()"
-                    :src="route.path === '/' ? tresImg : tresImg2"
+                    :src="
+                        route.path === '/'
+                            ? `images/shapes/3oscuro.svg`
+                            : 'images/shapes/3hueso.svg'
+                    "
                     alt=""
                     class="hover-cursor size-10 cursor-pointer"
                 />
-                <img
-                    :src="route.path === '/' ? menuImg2 : menuImg"
+                <NuxtImg
+                    :src="
+                        route.path === '/'
+                            ? '/images/shapes/menuAzul.svg'
+                            : '/images/shapes/menuOscuro.svg'
+                    "
                     alt=""
                     class="hover-cursor size-6 cursor-pointer md:hidden"
                     @click="openSlideover()"
@@ -64,10 +73,6 @@
 </template>
 
 <script lang="ts" setup>
-import tresImg from '@/assets/images/shapes/3oscuro.svg'
-import tresImg2 from '@/assets/images/shapes/3hueso.svg'
-import menuImg from '@/assets/images/shapes/menuOscuro.svg'
-import menuImg2 from '@/assets/images/shapes/menuAzul.svg'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/all'
 import { ContactModal } from '#components'
@@ -78,7 +83,7 @@ const openModal = () => {
 }
 
 import { SlideMenu } from '#components'
-const slideover = useSlideover()
+const slideover: any = useSlideover()
 const openSlideover = () => {
     slideover.open(SlideMenu, { onClose: slideover.close })
 }
