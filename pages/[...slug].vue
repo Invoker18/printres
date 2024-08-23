@@ -19,7 +19,7 @@ const { slug } = useRoute().params as any
 
 const story = await useAsyncStoryblok(
     slug && slug.length > 0 ? slug.join('/') : 'home',
-    { version: 'draft' }
+    { version: process.env.NODE_ENV === 'production' ? 'published' : 'draft' }
 )
 // console.log(story.value, 'st')
 
