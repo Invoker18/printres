@@ -30,64 +30,38 @@ html.lenis body {
 @font-face {
     font-family: 'Stara';
     src: url('../fonts/Stara-Black.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-Black.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../fonts/Stara-Black.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */ url('../fonts/Stara-Black.woff') format('woff'),
         /* Modern Browsers */ url('../fonts/Stara-Black.woff2') format('woff2'),
         /* Modern Browsers */ url('../fonts/Stara-Black.ttf') format('truetype'); /* Safari, Android, iOS */
     font-style: normal;
     font-weight: 900;
     text-rendering: optimizeLegibility;
-}
-
-/* Webfont: Stara-BlackItalic */
-@font-face {
-    font-family: 'Stara';
-    src: url('../fonts/Stara-BlackItalic.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-BlackItalic.eot?#iefix')
-            format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/Stara-BlackItalic.woff') format('woff'),
-        /* Modern Browsers */ url('../fonts/Stara-BlackItalic.woff2')
-            format('woff2'),
-        /* Modern Browsers */ url('../fonts/Stara-BlackItalic.ttf')
-            format('truetype'); /* Safari, Android, iOS */
-    font-style: italic;
-    font-weight: 900;
-    text-rendering: optimizeLegibility;
+    font-display: swap;
 }
 
 /* Webfont: Stara-Bold */
 @font-face {
     font-family: 'Stara';
     src: url('../fonts/Stara-Bold.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-Bold.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../fonts/Stara-Bold.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */ url('../fonts/Stara-Bold.woff') format('woff'),
         /* Modern Browsers */ url('../fonts/Stara-Bold.woff2') format('woff2'),
         /* Modern Browsers */ url('../fonts/Stara-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
     font-style: normal;
     font-weight: 700;
     text-rendering: optimizeLegibility;
-}
-
-/* Webfont: Stara-BoldItalic */
-@font-face {
-    font-family: 'Stara';
-    src: url('../fonts/Stara-BoldItalic.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-BoldItalic.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/Stara-BoldItalic.woff') format('woff'),
-        /* Modern Browsers */ url('../fonts/Stara-BoldItalic.woff2')
-            format('woff2'),
-        /* Modern Browsers */ url('../fonts/Stara-BoldItalic.ttf')
-            format('truetype'); /* Safari, Android, iOS */
-    font-style: italic;
-    font-weight: 700;
-    text-rendering: optimizeLegibility;
+    font-display: swap;
 }
 
 /* Webfont: Stara-ExtraBold */
 @font-face {
     font-family: 'Stara';
     src: url('../fonts/Stara-ExtraBold.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../fonts/Stara-ExtraBold.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */ url('../fonts/Stara-ExtraBold.woff') format('woff'),
         /* Modern Browsers */ url('../fonts/Stara-ExtraBold.woff2')
             format('woff2'),
@@ -96,29 +70,15 @@ html.lenis body {
     font-style: normal;
     font-weight: 800;
     text-rendering: optimizeLegibility;
-}
-
-/* Webfont: Stara-ExtraBoldItalic */
-@font-face {
-    font-family: 'Stara';
-    src: url('../fonts/Stara-ExtraBoldItalic.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-ExtraBoldItalic.eot?#iefix')
-            format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/Stara-ExtraBoldItalic.woff') format('woff'),
-        /* Modern Browsers */ url('../fonts/Stara-ExtraBoldItalic.woff2')
-            format('woff2'),
-        /* Modern Browsers */ url('../fonts/Stara-ExtraBoldItalic.ttf')
-            format('truetype'); /* Safari, Android, iOS */
-    font-style: italic;
-    font-weight: 800;
-    text-rendering: optimizeLegibility;
+    font-display: swap;
 }
 
 /* Webfont: Stara-Medium */
 @font-face {
     font-family: 'Stara';
     src: url('../fonts/Stara-Medium.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-Medium.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../fonts/Stara-Medium.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */ url('../fonts/Stara-Medium.woff') format('woff'),
         /* Modern Browsers */ url('../fonts/Stara-Medium.woff2') format('woff2'),
         /* Modern Browsers */ url('../fonts/Stara-Medium.ttf')
@@ -126,29 +86,15 @@ html.lenis body {
     font-style: normal;
     font-weight: 500;
     text-rendering: optimizeLegibility;
-}
-
-/* Webfont: Stara-MediumItalic */
-@font-face {
-    font-family: 'Stara';
-    src: url('../fonts/Stara-MediumItalic.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-MediumItalic.eot?#iefix')
-            format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/Stara-MediumItalic.woff') format('woff'),
-        /* Modern Browsers */ url('../fonts/Stara-MediumItalic.woff2')
-            format('woff2'),
-        /* Modern Browsers */ url('../fonts/Stara-MediumItalic.ttf')
-            format('truetype'); /* Safari, Android, iOS */
-    font-style: italic;
-    font-weight: 500;
-    text-rendering: optimizeLegibility;
+    font-display: swap;
 }
 
 /* Webfont: Stara-SemiBold */
 @font-face {
     font-family: 'Stara';
     src: url('../fonts/Stara-SemiBold.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-SemiBold.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../fonts/Stara-SemiBold.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */ url('../fonts/Stara-SemiBold.woff') format('woff'),
         /* Modern Browsers */ url('../fonts/Stara-SemiBold.woff2')
             format('woff2'),
@@ -157,20 +103,92 @@ html.lenis body {
     font-style: normal;
     font-weight: 600;
     text-rendering: optimizeLegibility;
+    font-display: swap;
 }
 
-/* Webfont: Stara-SemiBoldItalic */
+/* Webfont: Stara-BlackItalic */
+/* @font-face {
+    font-family: 'Stara';
+    src: url('../fonts/Stara-BlackItalic.eot'); 
+    src:
+        url('../fonts/Stara-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Stara-BlackItalic.woff') format('woff'),
+         url('../fonts/Stara-BlackItalic.woff2')
+            format('woff2'),
+         url('../fonts/Stara-BlackItalic.ttf')
+            format('truetype'); 
+    font-style: italic;
+    font-weight: 900;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+} */
+
+/* Webfont: Stara-BoldItalic
 @font-face {
     font-family: 'Stara';
-    src: url('../fonts/Stara-SemiBoldItalic.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/Stara-SemiBoldItalic.eot?#iefix')
-            format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/Stara-SemiBoldItalic.woff') format('woff'),
-        /* Modern Browsers */ url('../fonts/Stara-SemiBoldItalic.woff2')
+    src: url('../fonts/Stara-BoldItalic.eot'); 
+    src:
+        url('../fonts/Stara-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Stara-BoldItalic.woff') format('woff'),
+         url('../fonts/Stara-BoldItalic.woff2')
             format('woff2'),
-        /* Modern Browsers */ url('../fonts/Stara-SemiBoldItalic.ttf')
-            format('truetype'); /* Safari, Android, iOS */
+        url('../fonts/Stara-BoldItalic.ttf')
+            format('truetype'); 
+    font-style: italic;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+} */
+
+/* Webfont: Stara-ExtraBoldItalic */
+/* @font-face {
+    font-family: 'Stara';
+    src: url('../fonts/Stara-ExtraBoldItalic.eot');
+    src:
+        url('../fonts/Stara-ExtraBoldItalic.eot?#iefix')
+            format('embedded-opentype'),
+         url('../fonts/Stara-ExtraBoldItalic.woff') format('woff'),
+         url('../fonts/Stara-ExtraBoldItalic.woff2')
+            format('woff2'),
+         url('../fonts/Stara-ExtraBoldItalic.ttf')
+            format('truetype');
+    font-style: italic;
+    font-weight: 800;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+} */
+
+/* Webfont: Stara-MediumItalic */
+/* @font-face {
+    font-family: 'Stara';
+    src: url('../fonts/Stara-MediumItalic.eot'); 
+    src:
+        url('../fonts/Stara-MediumItalic.eot?#iefix')
+            format('embedded-opentype'),
+         url('../fonts/Stara-MediumItalic.woff') format('woff'),
+        url('../fonts/Stara-MediumItalic.woff2')
+            format('woff2'),
+         url('../fonts/Stara-MediumItalic.ttf')
+            format('truetype'); 
+    font-style: italic;
+    font-weight: 500;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+} */
+/* Webfont: Stara-SemiBoldItalic */
+/* @font-face {
+    font-family: 'Stara';
+    src: url('../fonts/Stara-SemiBoldItalic.eot');
+    src:
+        url('../fonts/Stara-SemiBoldItalic.eot?#iefix')
+            format('embedded-opentype'),
+         url('../fonts/Stara-SemiBoldItalic.woff') format('woff'),
+         url('../fonts/Stara-SemiBoldItalic.woff2')
+            format('woff2'),
+        url('../fonts/Stara-SemiBoldItalic.ttf')
+            format('truetype');
     font-style: italic;
     font-weight: 600;
     text-rendering: optimizeLegibility;
-}
+    font-display: swap;
+} */

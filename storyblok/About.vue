@@ -27,8 +27,8 @@
                     <p class="hover-cursor" v-html="Description2"></p>
                 </ClientOnly>
                 <div class="hidden h-full w-full md:block">
-                    <img
-                        :src="shape"
+                    <NuxtImg
+                        src="/images/shapes/aboutShape.png"
                         id="shape"
                         alt=""
                         class="hover-cursor max-h-48 object-cover"
@@ -58,7 +58,7 @@
                             :key="slide.id"
                             class=""
                         >
-                            <img
+                            <NuxtImg
                                 loading="lazy"
                                 :src="slide.filename"
                                 alt=""
@@ -78,7 +78,6 @@
 </template>
 
 <script setup>
-import shape from '@/assets/images/shapes/aboutShape.png'
 const props = defineProps({ blok: Object })
 
 const { width } = useWindowSize()

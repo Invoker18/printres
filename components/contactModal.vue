@@ -224,6 +224,10 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     state.email = ''
     state.message = ''
 }
+
+onMounted(() => {
+    console.log('contact Modal')
+})
 </script>
 
 <style scoped></style>

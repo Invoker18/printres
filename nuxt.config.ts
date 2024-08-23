@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     css: ['~/assets/css/main.css'],
+
+    ssr: true,
 
     modules: [
         '@nuxt/ui',
@@ -11,7 +13,16 @@ export default defineNuxtConfig({
         '@tresjs/nuxt',
         '@storyblok/nuxt',
         'nuxt-nodemailer',
+        '@nuxtjs/fontaine',
     ],
+
+    nitro: {
+        compressPublicAssets: true,
+        minify: true,
+        prerender: {
+            crawlLinks: true,
+        },
+    },
 
     // tres: {
     //     devtools: true,
@@ -28,6 +39,7 @@ export default defineNuxtConfig({
         storyblok: {
             baseURL: 'https://a-us.storyblok.com',
         },
+        format: ['webp']
     },
 
     app: {
@@ -59,6 +71,23 @@ export default defineNuxtConfig({
             user: 'keaton72@ethereal.email',
             pass: process.env.MAIL_PASSWORD,
         },
+    },
+
+    swiper: {
+        // Swiper options
+        //----------------------
+        // prefix: 'Swiper',
+        // styleLang: 'css',
+        modules: [
+            'autoplay',
+            'controller',
+            'free-mode',
+            'grid',
+            'mousewheel',
+            'navigation',
+            'pagination',
+            'thumbs',
+        ], // all modules are imported by default
     },
 
     // mail: {

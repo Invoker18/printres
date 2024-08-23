@@ -24,12 +24,8 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide
-                                v-for="n in 6"
-                                :key="n"
-                                class="h-60"
-                            >
-                                <img
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-60">
+                                <NuxtImg
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}}`"
                                     alt=""
@@ -46,7 +42,6 @@
                         class="flex w-full flex-col items-start justify-between lg:flex-row"
                     >
                         <div class="flex flex-shrink-0 items-center gap-5">
-                            
                             <div
                                 class="border-primary-950 hover-cursor flex size-10 shrink-0 grow-0 items-center justify-center rounded-full border hover:cursor-pointer"
                             >
@@ -60,8 +55,8 @@
                             ></div>
                         </div>
                         <div class="max-w-full self-center">
-                            <img
-                                :src="eventsShape"
+                            <NuxtImg
+                                src="/images/shapes/eventsShape.png"
                                 id="shape"
                                 alt=""
                                 class="hover-cursor max-h-40 object-contain"
@@ -72,8 +67,8 @@
                 <div class="flex flex-col gap-5 text-right">
                     <div class="flex items-center justify-between gap-5">
                         <div class="max-w-full md:hidden">
-                            <img
-                                :src="shape"
+                            <NuxtImg
+                                src="/images/shapes/projectsShape.png"
                                 id="shape"
                                 alt=""
                                 class="hover-cursor max-h-20 object-cover"
@@ -112,12 +107,8 @@
                             }"
                             :lazy="true"
                         >
-                            <SwiperSlide
-                                v-for="n in 6"
-                                :key="n"
-                                class="h-60"
-                            >
-                                <img
+                            <SwiperSlide v-for="n in 6" :key="n" class="h-60">
+                                <NuxtImg
                                     loading="lazy"
                                     :src="`https://picsum.photos/1920/1080?random=${n}`"
                                     alt=""
@@ -137,8 +128,6 @@
 </template>
 
 <script lang="ts" setup>
-import shape from '@/assets/images/shapes/projectsShape.png'
-import eventsShape from '@/assets/images/shapes/eventsShape.png'
 defineProps({
     blok: {
         type: Object,
@@ -149,7 +138,7 @@ defineProps({
 
 <style scoped>
 :deep(.swiper-pagination-bullet-active) {
-    @apply text-primary bg-secondary opacity-100 !important;
+    @apply bg-secondary text-primary opacity-100 !important;
 }
 :deep(.swiper-pagination-bullet) {
     @apply bg-primary-950 size-2 rounded-tl-full opacity-100 xl:size-3;

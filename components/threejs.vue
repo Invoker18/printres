@@ -107,14 +107,15 @@
 
 <script lang="ts" setup>
 import { ACESFilmicToneMapping, DoubleSide, SRGBColorSpace } from 'three'
-import { toneMappingExposure } from 'three/examples/jsm/nodes/display/ToneMappingNode.js';
-import { toneMapping } from 'three/examples/jsm/nodes/Nodes.js';
-
 // Half a sphere
 const phiStart = ref(0)
 const phiEnd = ref(Math.PI * 2)
 const thetaStart = ref(0)
 const thetaEnd = ref(Math.PI / 2)
+
+onMounted(() => {
+    console.log('three')
+})
 </script>
 
 <style scoped>

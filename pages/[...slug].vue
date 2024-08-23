@@ -9,7 +9,6 @@
     </div>
 </template>
 
-
 <script lang="ts" setup>
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
