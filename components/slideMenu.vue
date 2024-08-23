@@ -38,13 +38,13 @@
                     Nosotros
                 </li>
                 <NuxtLink
-                    to="portfolio"
+                    to="/portfolio"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Trabajos</NuxtLink
                 >
                 <NuxtLink
-                    to="events"
+                    to="/all-events"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Eventos</NuxtLink
