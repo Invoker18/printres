@@ -3,8 +3,6 @@ export default defineNuxtConfig({
     devtools: { enabled: false },
     css: ['~/assets/css/main.css'],
 
-    ssr: true,
-
     modules: [
         '@nuxt/ui',
         '@nuxt/image',
