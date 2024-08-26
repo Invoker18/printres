@@ -1,5 +1,5 @@
 <template>
-    <div id="contact"></div>
+    <!-- <div id="contact"></div> -->
     <div
         v-editable="blok"
         class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 py-24 pt-32 sm:sticky sm:h-screen sm:py-0 sm:pt-0"
@@ -41,7 +41,7 @@
                 <hr class="border-primary-950 mt-6 sm:hidden" />
             </div>
         </div>
-        <LazyThreejs v-if="y > 1200" class="hidden md:block" />
+        <LazyThreejs class="hidden md:block" />
         <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
 </template>
@@ -50,8 +50,6 @@
 import gsap from 'gsap'
 import { ContactModal } from '#components'
 import { ScrollTrigger } from 'gsap/all'
-
-const { x, y } = useWindowScroll()
 
 defineProps({
     blok: {
