@@ -12,8 +12,6 @@ export const useEvents = () => {
             sort_by: 'created_at:desc',
         })
 
-        console.log(data.stories)
-
         state.events = data.stories
     }
     return {
