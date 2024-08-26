@@ -60,7 +60,6 @@ defineProps({
 
 const modal = useModal()
 const openModal = () => {
-    console.log('open modal')
     modal.open(ContactModal)
 }
 

@@ -141,7 +141,6 @@ const thumbsSwiper = ref(null)
 const activeIndex = ref(0)
 
 const slideChange = (swiper: any) => {
-    console.log(swiper, 'swiper')
     activeIndex.value = swiper.realIndex
 }
 

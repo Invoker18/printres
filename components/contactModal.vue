@@ -201,8 +201,6 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
             },
         })
     } catch (error) {
-        console.log(error, 'error')
-
         toast.add({
             title: 'Ups ha habido un problema!',
             description:

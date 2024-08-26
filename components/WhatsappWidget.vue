@@ -130,7 +130,6 @@ const goToWhatsapp = async () => {
         new URLSearchParams({
             text: chatMessage.value,
         })
-    console.log(url, 'urlI')
     await navigateTo(url, {
         open: {
             target: '_blank',

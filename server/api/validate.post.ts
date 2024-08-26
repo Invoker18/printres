@@ -21,7 +21,6 @@ export default defineEventHandler(async (event) => {
         }
     )
 
-    console.log(isValid)
     if (!isValid.success) throw new Error(isValid['error-codes'][0])
 
     sendMail({
