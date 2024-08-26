@@ -7,10 +7,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig()
 
     const options = {
-        siteKey: config.public.RECAPTCHA_SITE_KEY,
+        siteKey: config.public.PUBLIC_RECAPTCHA,
         loaderOptions: {
             autoHideBadge: true,
         },
-    }
+    } as any
     nuxtApp.vueApp.use(VueReCaptcha, options)
 })
