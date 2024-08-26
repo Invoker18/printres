@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
     devtools: { enabled: false },
     css: ['~/assets/css/main.css'],
-
     modules: [
         '@nuxt/ui',
         '@nuxt/image',
@@ -22,9 +21,6 @@ export default defineNuxtConfig({
         },
     },
 
-    // tres: {
-    //     devtools: true,
-    // },
     storyblok: {
         accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
         apiOptions: {
@@ -88,17 +84,4 @@ export default defineNuxtConfig({
         ], // all modules are imported by default
     },
 
-    // mail: {
-    //     message: {
-    //         to: 'omarmendez@printres.com',
-    //     },
-    //     smtp: {
-    //         host: 'smtp.ethereal.email',
-    //         port: 587,
-    //         auth: {
-    //             user: 'keaton72@ethereal.email',
-    //             pass: '5g5mp4MkNkynSZ3qZd',
-    //         },
-    //     },
-    // },
 })

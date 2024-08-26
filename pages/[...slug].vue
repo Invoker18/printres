@@ -21,7 +21,8 @@ const story = await useAsyncStoryblok(
     slug && slug.length > 0 ? slug.join('/') : 'home',
     { version: process.env.NODE_ENV === 'production' ? 'published' : 'draft' }
 )
-// console.log(story.value, 'st')
+console.log(process.env.NODE_ENV, 'process.env')
+console.log(story.value, 'st')
 
 // const component = resolveComponent(story.value.content.component)
 
