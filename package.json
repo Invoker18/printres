@@ -6,7 +6,7 @@
         "build": "nuxt build",
         "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --host",
         "generate": "nuxt generate",
-        "preview": "nuxt preview NODE_TLS_REJECT_UNAUTHORIZED=0 --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
+        "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
