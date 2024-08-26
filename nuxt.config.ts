@@ -54,6 +54,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
+            storyblokVersion: process.env.STORYBLOK_VERSION || "published"
         },
     },
 

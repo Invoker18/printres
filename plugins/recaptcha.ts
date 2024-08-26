@@ -5,7 +5,6 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 
 export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig()
-    console.log(config.public.RECAPTCHA_SITE_KEY)
 
     const options = {
         siteKey: config.public.RECAPTCHA_SITE_KEY,
