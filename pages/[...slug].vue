@@ -13,16 +13,23 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
+const config = useRuntimeConfig()
+
 const { width, height } = useWindowSize()
 
 const { slug } = useRoute().params as any
 
 const story = await useAsyncStoryblok(
     slug && slug.length > 0 ? slug.join('/') : 'home',
-    { version: process.env.NODE_ENV === 'production' ? 'published' : 'draft' }
+    { version: 'published' }
 )
-console.log(process.env.NODE_ENV, 'process.env')
-console.log(story.value, 'st')
+
+if (story.value.status) {
+    throw createError({
+        statusCode: story.value.status,
+        statusMessage: story.value.response,
+    })
+}
 
 // const component = resolveComponent(story.value.content.component)
 

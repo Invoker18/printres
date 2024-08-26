@@ -6,8 +6,7 @@ export const useCategories = () => {
     async function fetchCategories() {
         const storyblokApi = useStoryblokApi()
         const { data } = await storyblokApi.get('cdn/stories/', {
-            version:
-                process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+            version: 'published',
             starts_with: 'categories/',
             is_startpage: false,
         })
