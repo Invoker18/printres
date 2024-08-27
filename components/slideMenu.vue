@@ -29,7 +29,7 @@
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
                     @click="goHome()"
                 >
-                    Home
+                    Inicio
                 </li>
                 <li
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
@@ -38,7 +38,13 @@
                     Nosotros
                 </li>
                 <NuxtLink
-                    to="/portfolio"
+                    :to="{
+                        path: '/portfolio',
+                        query: {
+                            category: categories[0]?.uuid,
+                            page: 1,
+                        },
+                    }"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Trabajos</NuxtLink
@@ -51,7 +57,7 @@
                 >
                 <li
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear hover:text-secondary"
-                    @click="scrollTo('contact')"
+                    @click="scrollTo('contactContainer')"
                 >
                     Contacto
                 </li>
@@ -72,6 +78,8 @@
 import emapanada from '@/assets/images/shapes/smallBlueEmpa.png'
 import { ScrollToPlugin } from 'gsap/all'
 import gsap from 'gsap'
+
+const { categories } = useCategories()
 
 const slideover = useSlideover()
 const route = useRoute()

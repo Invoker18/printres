@@ -22,19 +22,25 @@
                 class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
             >
                 <NuxtLink
-                    to="/"
+                    @click.prevent="goTo('#home')"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Inicio
                 </NuxtLink>
-                <li
-                    @click="scrollTo('aboutUs')"
+                <NuxtLink
+                    @click="goTo('#aboutUs')"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Nosotros
-                </li>
+                </NuxtLink>
                 <NuxtLink
-                    to="/portfolio"
+                    :to="{
+                        path: '/portfolio',
+                        query: {
+                            category: categories[0]?.uuid,
+                            page: 1,
+                        },
+                    }"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Trabajos
@@ -88,6 +94,9 @@ const openSlideover = () => {
     slideover.open(SlideMenu, { onClose: slideover.close })
 }
 
+const { categories, fetchCategories } = useCategories()
+await fetchCategories()
+
 const isOpen = ref(false)
 
 const route = useRoute()
@@ -114,15 +123,15 @@ const scrollTo = async (section: string) => {
         })
     }
 }
-const scrollToTop = () => {
+const scrollToTarget = (target: string) => {
     gsap.to(window, {
         duration: 2,
-        scrollTo: 'top',
+        scrollTo: target,
     })
 }
 
-const goHome = async () => {
-    if (route.path === '/') return scrollToTop()
+const goTo = async (target: string) => {
+    if (route.path === '/') return scrollToTarget(target)
     await navigateTo('/')
 }
 onMounted(() => {

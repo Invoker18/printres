@@ -41,7 +41,9 @@
                 <hr class="border-primary-950 mt-6 sm:hidden" />
             </div>
         </div>
-        <LazyThreejs class="hidden md:block" />
+        <div class="hidden md:block">
+            <Threejs/>
+        </div>
         <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
 </template>
@@ -57,6 +59,8 @@ defineProps({
         default: () => {},
     },
 })
+
+const { width } = useWindowSize()
 
 const modal = useModal()
 const openModal = () => {
