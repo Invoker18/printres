@@ -22,18 +22,22 @@
                 class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
             >
                 <NuxtLink
+                    activeClass="text-secondary underline underline-offset-4"
                     @click.prevent="goTo('#home')"
+                    to="/"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Inicio
                 </NuxtLink>
                 <NuxtLink
+                    activeClass="text-secondary underline underline-offset-4"
                     @click="goTo('#aboutUs')"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >
                     Nosotros
                 </NuxtLink>
                 <NuxtLink
+                    activeClass="text-secondary underline underline-offset-4"
                     :to="{
                         path: '/portfolio',
                         query: {
@@ -46,6 +50,7 @@
                     Trabajos
                 </NuxtLink>
                 <NuxtLink
+                    activeClass="text-secondary underline underline-offset-4"
                     to="/all-events"
                     class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                 >

@@ -8,7 +8,7 @@
             <div class="loader"></div>
         </div>
         <Navbar></Navbar>
-        <slot />
+        <slot  />
         <Footer></Footer>
     </div>
 </template>

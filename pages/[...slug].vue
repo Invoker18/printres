@@ -1,6 +1,9 @@
 <template>
     <div>
-        <StoryblokComponent v-if="story" :blok="story.content" />
+        <StoryblokComponent
+            v-if="status === 'success' && story"
+            :blok="story.content"
+        />
         <!-- <ClientOnly>
             <div class="fixed right-0 top-0 z-50 text-secondary">
                 w/{{ width }} h/{{ height }}
@@ -17,20 +20,43 @@ const config = useRuntimeConfig()
 
 const { width, height } = useWindowSize()
 
-const { slug } = useRoute().params as any
+const { slug }: any = useRoute().params
+const url = slug && slug.length > 0 ? slug.join('/') : 'home'
 
-const story = await useAsyncStoryblok(
-    slug && slug.length > 0 ? slug.join('/') : 'home',
-    { version: 'published'}
-    
-)
+const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
 
-if (story.value.status) {
-    throw createError({
-        statusCode: story.value.status,
-        statusMessage: story.value.response,
-    })
+const { data: story, status } = await useAsyncData(`${url}`, async () => {
+    const { data } = await useStoryblokApi().get(
+        `cdn/stories/${url.replace(/\/$/, '')}`,
+        {
+            version: isPreview ? 'draft' : 'published',
+        }
+    )
+    return data?.story
+})
+
+console.log(story.value)
+
+if (!isPreview) {
+    if (!story.value) {
+        showError({ statusCode: 404, statusMessage: 'Page Not Found' })
+    }
 }
+
+// const { slug } = useRoute().params as any
+
+// const story = await useAsyncStoryblok(
+//     slug && slug.length > 0 ? slug.join('/') : 'home',
+//     { version: 'published'}
+
+// )
+
+// if (story.value.status) {
+//     throw createError({
+//         statusCode: story.value.status,
+//         statusMessage: story.value.response,
+//     })
+// }
 
 // const component = resolveComponent(story.value.content.component)
 

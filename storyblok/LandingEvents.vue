@@ -4,39 +4,43 @@
         id="events"
         class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
     >
-        <div class="h-full w-full px-5 py-20 md:pb-28 lg:px-10 2xl:px-28">
+        <div class="h-full w-full px-5 pb-20 pt-12 md:pb-28 lg:px-10 2xl:px-28">
             <div
-                class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 xl:gap-32"
+                class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 2xl:gap-32"
             >
-                <div class="hidden flex-col gap-8 md:flex">
-                    <ClientOnly>
-                        <Swiper
-                            :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96"
-                            :loop="true"
-                            :autoplay="true"
-                            :pagination="{
-                                el: '.custom-pagination4',
-                                clickable: true,
-                                renderBullet: function (index, className) {
-                                    return `<span class='${className}'></span>`
-                                },
-                            }"
-                            :lazy="true"
+                <div class="hidden flex-col gap-5 md:flex">
+                    <Swiper
+                        :modules="[SwiperPagination, SwiperAutoplay]"
+                        class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
+                        :loop="true"
+                        :autoplay="true"
+                        :pagination="{
+                            el: '.custom-pagination4',
+                            clickable: true,
+                            renderBullet: function (index, className) {
+                                return `<span class='${className}'></span>`
+                            },
+                        }"
+                        :lazy="true"
+                    >
+                        <SwiperSlide
+                            v-for="image in blok.Slider1"
+                            :key="image.id"
+                            class="h-full min-h-60"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n" class="h-60">
-                                <NuxtImg
-                                    loading="lazy"
-                                    :src="`https://picsum.photos/1920/1080?random=${n * 2 * Math.round(Math.random())}}`"
-                                    alt=""
-                                    class="hover-cursor h-full w-full object-cover"
-                                />
-                                <div
-                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                                ></div>
-                            </SwiperSlide>
-                        </Swiper>
-                    </ClientOnly>
+                            <NuxtImg
+                                loading="lazy"
+                                provider="storyblok"
+                                :src="image.filename"
+                                :alt="image.alt"
+                                sizes="100vw sm:50vw md:600px xl:800px"
+                                class="hover-cursor h-full w-full object-cover"
+                            />
+                            <div
+                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                            ></div>
+                        </SwiperSlide>
+                    </Swiper>
 
                     <div
                         class="flex w-full flex-col items-start justify-between lg:flex-row"
@@ -92,34 +96,38 @@
                     <p class="hover-cursor text-pretty">
                         {{ blok.Description }}
                     </p>
-                    <ClientOnly>
-                        <Swiper
-                            :modules="[SwiperPagination, SwiperAutoplay]"
-                            class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96"
-                            :loop="true"
-                            :autoplay="true"
-                            :pagination="{
-                                el: '.custom-pagination5',
-                                clickable: true,
-                                renderBullet: function (index, className) {
-                                    return `<span class='${className}'></span>`
-                                },
-                            }"
-                            :lazy="true"
+                    <Swiper
+                        :modules="[SwiperPagination, SwiperAutoplay]"
+                        class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
+                        :loop="true"
+                        :autoplay="true"
+                        :pagination="{
+                            el: '.custom-pagination5',
+                            clickable: true,
+                            renderBullet: function (index, className) {
+                                return `<span class='${className}'></span>`
+                            },
+                        }"
+                        :lazy="true"
+                    >
+                        <SwiperSlide
+                            v-for="image in blok.Slider2"
+                            :key="image.id"
+                            class="h-full min-h-60"
                         >
-                            <SwiperSlide v-for="n in 6" :key="n" class="h-60">
-                                <NuxtImg
-                                    loading="lazy"
-                                    :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                    alt=""
-                                    class="hover-cursor h-full w-full object-cover"
-                                />
-                                <div
-                                    class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                                ></div>
-                            </SwiperSlide>
-                        </Swiper>
-                    </ClientOnly>
+                            <NuxtImg
+                                loading="lazy"
+                                provider="storyblok"
+                                :src="image.filename"
+                                :alt="image.alt"
+                                sizes="100vw sm:50vw md:600px xl:800px"
+                                class="hover-cursor h-full w-full object-cover"
+                            />
+                            <div
+                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                            ></div>
+                        </SwiperSlide>
+                    </Swiper>
                     <div class="custom-pagination5 hover-cursor"></div>
                 </div>
             </div>
