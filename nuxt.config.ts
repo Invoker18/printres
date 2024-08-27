@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: false },
+
+    ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
+
     css: ['~/assets/css/main.css'],
     modules: [
         '@nuxt/ui',
@@ -54,7 +57,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            storyblokVersion: process.env.STORYBLOK_VERSION || 'published',
+            NODE_ENV: process.env.NODE_ENV
         },
     },
 

@@ -31,45 +31,47 @@
                         src="/images/shapes/aboutShape.png"
                         id="shape"
                         alt=""
-                        class="hover-cursor max-h-48 object-cover"
+                        widt="200"
+                        height="200"
+                        class="hover-cursor max-h-40 object-cover"
                     />
                 </div>
             </div>
             <div
                 class="col-span-full flex h-full w-full flex-col place-content-center gap-5 md:col-span-6 xl:col-span-6"
             >
-                <ClientOnly>
-                    <Swiper
-                        :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="maskImg h-full min-h-64 w-full min-w-0 select-none"
-                        :loop="true"
-                        :autoplay="true"
-                        :pagination="{
-                            el: '.custom-pagination',
-                            clickable: true,
-                            renderBullet: function (index, className) {
-                                return `<span class='${className}'></span>`
-                            },
-                        }"
-                        :lazy="true"
+                <Swiper
+                    :modules="[SwiperPagination, SwiperAutoplay]"
+                    class="maskImg h-full min-h-64 w-full min-w-0 select-none"
+                    :loop="true"
+                    :autoplay="true"
+                    :pagination="{
+                        el: '.custom-pagination',
+                        clickable: true,
+                        renderBullet: function (index, className) {
+                            return `<span class='${className}'></span>`
+                        },
+                    }"
+                    :lazy="true"
+                >
+                    <SwiperSlide
+                        v-for="slide in blok.Slider"
+                        :key="slide.id"
+                        class=""
                     >
-                        <SwiperSlide
-                            v-for="slide in blok.Slider"
-                            :key="slide.id"
-                            class=""
-                        >
-                            <NuxtImg
-                                loading="lazy"
-                                :src="slide.filename"
-                                alt=""
-                                class="hover-cursor h-full w-full object-cover"
-                            />
-                            <div
-                                class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
-                            ></div>
-                        </SwiperSlide>
-                    </Swiper>
-                </ClientOnly>
+                        <NuxtImg
+                            loading="lazy"
+                            provider="storyblok"
+                            :src="slide.filename"
+                            :alt="slide.alt"
+                            sizes="100vw sm:50vw md:800px"
+                            class="hover-cursor h-full w-full object-cover"
+                        />
+                        <div
+                            class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
+                        ></div>
+                    </SwiperSlide>
+                </Swiper>
 
                 <div class="custom-pagination hover-cursor"></div>
             </div>
