@@ -33,7 +33,7 @@ export default defineNuxtConfig({
         storyblok: {
             baseURL: 'https://a-us.storyblok.com',
         },
-        format: ['webp']
+        format: ['webp'],
     },
 
     app: {
@@ -54,7 +54,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            storyblokVersion: process.env.STORYBLOK_VERSION || "published"
+            storyblokVersion: process.env.STORYBLOK_VERSION || 'published',
         },
     },
 
@@ -84,5 +84,4 @@ export default defineNuxtConfig({
             'thumbs',
         ], // all modules are imported by default
     },
-
 })

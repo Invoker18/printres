@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div id="home">
         <NuxtLoadingIndicator :color="false" class="bg-secondary" :height="4" />
         <NuxtLayout class="overflow-clip">
-            <NuxtPage />
+            <NuxtPage  />
             <WhatsappWidget></WhatsappWidget>
             <UModals></UModals>
             <USlideovers />

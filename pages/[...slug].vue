@@ -21,7 +21,8 @@ const { slug } = useRoute().params as any
 
 const story = await useAsyncStoryblok(
     slug && slug.length > 0 ? slug.join('/') : 'home',
-    { version: 'published' }
+    { version: 'published'}
+    
 )
 
 if (story.value.status) {
