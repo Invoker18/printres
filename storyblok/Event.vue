@@ -130,12 +130,11 @@ defineProps({
     },
 })
 
-const { width, height } = useWindowSize()
+const { width } = useWindowSize()
 
 const orientation = computed(() => {
     return width.value > 784 ? 'vertical' : 'horizontal'
 })
-const route = useRoute()
 
 const thumbsSwiper = ref(null)
 const activeIndex = ref(0)

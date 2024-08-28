@@ -1,4 +1,3 @@
-import { ScrollTrigger } from 'gsap/all'
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.hook('page:finish', () => {
         console.log('Page finished loading..')

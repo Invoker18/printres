@@ -106,7 +106,7 @@
             >
                 <UIcon
                     name="i-ic-baseline-whatsapp"
-                    class="size-10 text-white"
+                    class="size-8 text-white"
                 ></UIcon>
             </UButton>
         </div>
@@ -115,7 +115,7 @@
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const route = useRoute()
 

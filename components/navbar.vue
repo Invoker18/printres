@@ -34,8 +34,8 @@
                 </li>
                 <li>
                     <NuxtLink
-                        activeClass="text-secondary underline underline-offset-4"
-                        @click="goTo('#aboutUs')"
+                        to="/"
+                        @click.prevent="goTo('#aboutUs')"
                         class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                     >
                         Nosotros
@@ -94,7 +94,7 @@
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollToPlugin } from 'gsap/all'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import { ContactModal } from '#components'
 
 const modal = useModal()

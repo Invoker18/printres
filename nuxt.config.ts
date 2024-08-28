@@ -59,12 +59,10 @@ export default defineNuxtConfig({
                 'width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5',
             link: [
                 { rel: 'preconnect', href: 'https://a-us.storyblok.com' },
-                [
-                    { rel: 'preconnect', href: 'https://a-us.storyblok.com' },
-                    { rel: 'preconnect', href: 'https://www.google.com' },
-                    { rel: 'preconnect', href: 'https://www.gstatic.com' },
-                    { rel: 'preconnect', href: 'https://api.iconify.design' },
-                ],
+                { rel: 'preconnect', href: 'https://a-us.storyblok.com' },
+                { rel: 'preconnect', href: 'https://www.google.com' },
+                { rel: 'preconnect', href: 'https://www.gstatic.com' },
+                { rel: 'preconnect', href: 'https://api.iconify.design' },
             ],
         },
     },

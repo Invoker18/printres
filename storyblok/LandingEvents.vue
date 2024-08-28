@@ -86,7 +86,8 @@
                             alt="Projects Shape"
                             class="hover-cursor md:hidden"
                             width="180"
-                            fint="inside"
+                            height="100"
+                            fit="inside"
                         />
                         <button class="ml-auto">
                             <h3

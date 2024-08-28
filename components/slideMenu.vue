@@ -7,16 +7,37 @@
                 'bg-primary-950/60 dark:bg-primary-950/60 backdrop-blur-md',
         }"
     >
-        <div class="flex h-full flex-col gap-10 p-5 pb-10">
+        <div class="flex h-full flex-col gap-10 p-5 pb-10" >
             <div class="flex items-center justify-between">
                 <NuxtImg
+                    format="webp"
+                    loading="lazy"
                     src="/images/logoprintres.svg"
-                    class="hover-cursor w-28"
+                    class="hover-cursor"
+                    width="120"
+                    height="50"
+                    fit="inside"
                     id="logo"
                 />
                 <div class="flex items-center gap-1">
-                    <img :src="emapanada" alt="" class="max-h-16" />
-                    <img :src="emapanada" alt="" class="max-h-16" />
+                    <NuxtImg
+                        loading="lazy"
+                        format="webp"
+                        src="/images/shapes/smallBlueEmpa.png"
+                        alt="mask shape"
+                        width="25"
+                        height="25"
+                        fit="inside"
+                    />
+                    <NuxtImg
+                        loading="lazy"
+                        format="webp"
+                        src="/images/shapes/smallBlueEmpa.png"
+                        alt="mask shape"
+                        width="25"
+                        height="25"
+                        fit="inside"
+                    />
                     <UIcon
                         name="i-simple-line-icons-close"
                         @click="slideover.close()"
@@ -75,8 +96,7 @@
 </template>
 
 <script lang="ts" setup>
-import emapanada from '@/assets/images/shapes/smallBlueEmpa.png'
-import { ScrollToPlugin } from 'gsap/all'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import gsap from 'gsap'
 
 const { categories } = useCategories()
