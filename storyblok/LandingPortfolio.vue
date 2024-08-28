@@ -24,15 +24,16 @@
                                 ></UIcon>
                             </h3>
                         </button>
-                        <div class="max-w-full md:hidden">
-                            <NuxtImg
-                                src="images/shapes/eventsShape.png"
-                                id="shape"
-                                alt=""
-                                width="150"
-                                class="hover-cursor"
-                            />
-                        </div>
+                        <NuxtImg
+                            format="webp"
+                            loading="lazy"
+                            src="images/shapes/eventsShape.png"
+                            id="shape"
+                            alt="Events Shape"
+                            width="180"
+                            fit="inside"
+                            class="hover-cursor md:hidden"
+                        />
                     </div>
                     <p class="hover-cursor text-pretty">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -45,7 +46,9 @@
                         :modules="[SwiperPagination, SwiperAutoplay]"
                         class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
                         :loop="true"
-                        :autoplay="true"
+                        :autoplay="{
+                            delay: 5000,
+                        }"
                         :pagination="{
                             el: '.custom-pagination2',
                             clickable: true,
@@ -61,12 +64,15 @@
                             class="h-full min-h-60"
                         >
                             <NuxtImg
+                                format="webp"
                                 loading="lazy"
                                 provider="storyblok"
                                 :src="image.filename"
                                 :alt="image.alt"
-                                sizes="100vw sm:50vw md:600px xl:800px"
-                                class="hover-cursor h-full w-full object-cover"
+                                width="700"
+                                height="500"
+                                sizes="100vw sm:50vw md:600px  xl:1024px"
+                                class="hover-cursor object-cover"
                             />
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"
@@ -81,7 +87,9 @@
                         :modules="[SwiperPagination, SwiperAutoplay]"
                         class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
                         :loop="true"
-                        :autoplay="true"
+                        :autoplay="{
+                            delay: 5000,
+                        }"
                         :pagination="{
                             el: '.custom-pagination3',
                             clickable: true,
@@ -97,12 +105,15 @@
                             class="h-full min-h-60"
                         >
                             <NuxtImg
+                                format="webp"
                                 loading="lazy"
                                 provider="storyblok"
                                 :src="image.filename"
-                                alt=""
-                                sizes="100vw sm:50vw md:600px xl:800px"
-                                class="hover-cursor h-full w-full object-cover"
+                                :alt="image.alt"
+                                width="700"
+                                height="500"
+                                sizes="100vw sm:50vw md:600px  xl:1024px"
+                                class="hover-cursor object-cover"
                             />
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"
@@ -113,14 +124,16 @@
                     <div
                         class="flex w-full flex-col items-end justify-between lg:flex-row lg:items-start"
                     >
-                        <div class="order-2 max-w-full self-center lg:order-1">
-                            <NuxtImg
-                                src="/images/shapes/projectsShape.png"
-                                id="shape"
-                                alt=""
-                                class="hover-cursor max-h-36 object-contain"
-                            />
-                        </div>
+                        <NuxtImg
+                            format="webp"
+                            src="/images/shapes/projectsShape.png"
+                            id="shape"
+                            alt="Projects Shape"
+                            height="200"
+                            width="250"
+                            fit="inside"
+                            class="hover-cursor order-2 lg:order-1"
+                        />
                         <div
                             class="order-1 flex flex-shrink-0 items-center gap-5 lg:order-2"
                         >

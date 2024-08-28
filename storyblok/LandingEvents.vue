@@ -4,7 +4,7 @@
         id="events"
         class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
     >
-        <div class="h-full w-full px-5 pb-20 pt-12 md:pb-28 lg:px-10 2xl:px-28">
+        <div class="h-full w-full px-5 pb-20 pt-6 md:pb-28 lg:px-10 2xl:px-28">
             <div
                 class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 2xl:gap-32"
             >
@@ -13,7 +13,9 @@
                         :modules="[SwiperPagination, SwiperAutoplay]"
                         class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
                         :loop="true"
-                        :autoplay="true"
+                        :autoplay="{
+                            delay: 5000,
+                        }"
                         :pagination="{
                             el: '.custom-pagination4',
                             clickable: true,
@@ -29,12 +31,15 @@
                             class="h-full min-h-60"
                         >
                             <NuxtImg
+                                format="webp"
                                 loading="lazy"
                                 provider="storyblok"
                                 :src="image.filename"
                                 :alt="image.alt"
-                                sizes="100vw sm:50vw md:600px xl:800px"
-                                class="hover-cursor h-full w-full object-cover"
+                                width="700"
+                                height="500"
+                                sizes="100vw sm:50vw md:600px  xl:1024px"
+                                class="hover-cursor object-cover"
                             />
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"
@@ -43,7 +48,7 @@
                     </Swiper>
 
                     <div
-                        class="flex w-full flex-col items-start justify-between lg:flex-row"
+                        class="flex w-full flex-row items-start justify-between"
                     >
                         <div class="flex flex-shrink-0 items-center gap-5">
                             <div
@@ -58,26 +63,31 @@
                                 class="custom-pagination4 hover-cursor w-full"
                             ></div>
                         </div>
-                        <div class="max-w-full self-center">
-                            <NuxtImg
-                                src="/images/shapes/eventsShape.png"
-                                id="shape"
-                                alt=""
-                                class="hover-cursor max-h-40 object-contain"
-                            />
-                        </div>
+                        <NuxtImg
+                            loading="lazy"
+                            format="webp"
+                            src="/images/shapes/eventsShape.png"
+                            id="shape"
+                            width="250"
+                            height="200"
+                            alt="Events Shape"
+                            fit="inside"
+                            class="hover-cursor"
+                        />
                     </div>
                 </div>
                 <div class="flex flex-col gap-5 text-right">
                     <div class="flex items-center justify-between gap-5">
-                        <div class="max-w-full md:hidden">
-                            <NuxtImg
-                                src="/images/shapes/projectsShape.png"
-                                id="shape"
-                                alt=""
-                                class="hover-cursor max-h-20 object-cover"
-                            />
-                        </div>
+                        <NuxtImg
+                            format="webp"
+                            loading="lazy"
+                            src="/images/shapes/projectsShape.png"
+                            id="shape"
+                            alt="Projects Shape"
+                            class="hover-cursor md:hidden"
+                            width="180"
+                            fint="inside"
+                        />
                         <button class="ml-auto">
                             <h3
                                 class="hover-cursor text-primary-950 group relative flex w-fit items-center text-3xl lg:text-4xl"
@@ -100,7 +110,9 @@
                         :modules="[SwiperPagination, SwiperAutoplay]"
                         class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
                         :loop="true"
-                        :autoplay="true"
+                        :autoplay="{
+                            delay: 5000,
+                        }"
                         :pagination="{
                             el: '.custom-pagination5',
                             clickable: true,
@@ -116,12 +128,15 @@
                             class="h-full min-h-60"
                         >
                             <NuxtImg
+                                format="webp"
                                 loading="lazy"
                                 provider="storyblok"
                                 :src="image.filename"
                                 :alt="image.alt"
-                                sizes="100vw sm:50vw md:600px xl:800px"
-                                class="hover-cursor h-full w-full object-cover"
+                                width="700"
+                                height="500"
+                                sizes="100vw sm:50vw md:600px xl:1024px"
+                                class="hover-cursor object-cover"
                             />
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"

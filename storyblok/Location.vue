@@ -33,9 +33,14 @@
                     def
                 ></iframe>
                 <NuxtImg
+                    format="webp"
+                    loading="lazy"
                     src="/images/shapes/locationShape.png"
-                    alt=""
-                    class="hover-cursor hidden h-full object-contain lg:block"
+                    alt="Location Shape"
+                    width="300"
+                    height="500"
+                    fit="inside"
+                    class="hover-cursor hidden lg:block"
                 />
             </div>
             <div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">

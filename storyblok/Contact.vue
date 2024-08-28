@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="hidden md:block">
-            <Threejs/>
+            <LazyThreejs v-if="y > 1200" />
         </div>
         <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
     </div>
@@ -60,7 +60,7 @@ defineProps({
     },
 })
 
-const { width } = useWindowSize()
+const { y } = useWindowScroll()
 
 const modal = useModal()
 const openModal = () => {
