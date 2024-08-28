@@ -28,12 +28,14 @@
                 </ClientOnly>
                 <div class="hidden h-full w-full md:block">
                     <NuxtImg
+                        format="webp"
                         src="/images/shapes/aboutShape.png"
                         id="shape"
                         alt=""
-                        widt="200"
-                        height="200"
-                        class="hover-cursor max-h-40 object-cover"
+                        width="250"
+                        height="150"
+                        class="hover-cursor"
+                        fit="inside"
                     />
                 </div>
             </div>
@@ -60,12 +62,15 @@
                         class=""
                     >
                         <NuxtImg
+                            format="webp"
                             loading="lazy"
                             provider="storyblok"
                             :src="slide.filename"
                             :alt="slide.alt"
-                            sizes="100vw sm:50vw md:800px"
-                            class="hover-cursor h-full w-full object-cover"
+                            height="600"
+                            width="600"
+                            sizes="100vw sm:50vw md:700px xl:1024px"
+                            class="hover-cursor object-cover"
                         />
                         <div
                             class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
