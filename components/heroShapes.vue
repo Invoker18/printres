@@ -19,6 +19,7 @@
                     height="150"
                     fit="cover"
                     preload
+                    alt="Hero Shapes"
                 ></NuxtImg>
             </div>
         </div>

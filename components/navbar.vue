@@ -17,45 +17,54 @@
                 width="300px"
                 height="76px"
                 id="logo"
+                alt="Company Logo"
             />
             <ul
                 class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
             >
-                <NuxtLink
-                    activeClass="text-secondary underline underline-offset-4"
-                    @click.prevent="goTo('#home')"
-                    to="/"
-                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
-                >
-                    Inicio
-                </NuxtLink>
-                <NuxtLink
-                    activeClass="text-secondary underline underline-offset-4"
-                    @click="goTo('#aboutUs')"
-                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
-                >
-                    Nosotros
-                </NuxtLink>
-                <NuxtLink
-                    activeClass="text-secondary underline underline-offset-4"
-                    :to="{
-                        path: '/portfolio',
-                        query: {
-                            category: categories[0]?.uuid,
-                            page: 1,
-                        },
-                    }"
-                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
-                >
-                    Trabajos
-                </NuxtLink>
-                <NuxtLink
-                    activeClass="text-secondary underline underline-offset-4"
-                    to="/all-events"
-                    class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
-                >
-                    Eventos
-                </NuxtLink>
+                <li>
+                    <NuxtLink
+                        activeClass="text-secondary underline underline-offset-4"
+                        @click.prevent="goTo('#home')"
+                        to="/"
+                        class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
+                    >
+                        Inicio
+                    </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink
+                        activeClass="text-secondary underline underline-offset-4"
+                        @click="goTo('#aboutUs')"
+                        class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
+                    >
+                        Nosotros
+                    </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink
+                        activeClass="text-secondary underline underline-offset-4"
+                        :to="{
+                            path: '/portfolio',
+                            query: {
+                                category: categories[0]?.uuid,
+                                page: 1,
+                            },
+                        }"
+                        class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
+                    >
+                        Trabajos
+                    </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink
+                        activeClass="text-secondary underline underline-offset-4"
+                        to="/all-events"
+                        class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
+                    >
+                        Eventos
+                    </NuxtLink>
+                </li>
             </ul>
             <div class="flex items-center gap-3">
                 <NuxtImg
@@ -65,7 +74,7 @@
                             ? `images/shapes/3oscuro.svg`
                             : 'images/shapes/3hueso.svg'
                     "
-                    alt=""
+                    alt="Contact Button"
                     class="hover-cursor size-10 cursor-pointer"
                 />
                 <NuxtImg
@@ -74,7 +83,7 @@
                             ? '/images/shapes/menuAzul.svg'
                             : '/images/shapes/menuOscuro.svg'
                     "
-                    alt=""
+                    alt="Menu Button"
                     class="hover-cursor size-6 cursor-pointer md:hidden"
                     @click="openSlideover()"
                 />

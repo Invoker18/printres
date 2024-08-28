@@ -80,6 +80,9 @@
                         @keydown.enter.prevent="goToWhatsapp()"
                     ></textarea>
                     <button
+                        id="goToWhatsapp"
+                        title="Go to Whatsapp"
+                        aria-label="Go to Whatsapp"
                         @click="goToWhatsapp()"
                         class="bg-gray-200 px-2 text-gray-400 dark:bg-gray-200"
                     >
@@ -91,6 +94,9 @@
 
         <div class="relative text-right">
             <UButton
+                id="openChat"
+                title="Open Chat"
+                aria-label="Open Chat"
                 @click="showChat = !showChat"
                 :ui="{ rounded: 'rounded-full' }"
                 size="xl"
