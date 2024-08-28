@@ -8,7 +8,7 @@
             class="flex h-full w-full flex-col gap-5 p-5 pb-4 pt-16 md:flex-row md:items-center lg:px-10 xl:gap-x-24 2xl:px-28"
         >
             <div class="hidden flex-col gap-5 text-xl md:flex md:max-w-xs">
-                <h5 class="hover-cursor text-3xl">Hablemos</h5>
+                <h4 class="hover-cursor text-3xl">Hablemos</h4>
                 <div class="hover-cursor">{{ blok.Number }}</div>
                 <hr class="border-secondary" />
                 <div class="hover-cursor">{{ blok.Email }}</div>
@@ -22,6 +22,7 @@
                     class="h-full w-12 flex-shrink-0 rounded-md bg-[#0424D9]"
                 ></div>
                 <iframe
+                    title="Google Maps"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3174403739504!2d-79.5209539889663!3d9.03477979098933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca94d3cdfa713%3A0xd9978d65b54dafb!2sPrintres!5e0!3m2!1ses!2sve!4v1720189304037!5m2!1ses!2sve"
                     width="100%"
                     height="100%"

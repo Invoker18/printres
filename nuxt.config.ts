@@ -1,8 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: false },
+    devtools: { enabled: true },
 
     ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
+
+    site: {
+        url: 'https://printres.vercel.app',
+        name: 'Mejor Imprenta de Panama',
+        description: 'Bienvenidos a la mejor imprenta de toda Panama!',
+        defaultLocale: 'es', // not needed if you have @nuxtjs/i18n installed
+    },
+
+    ogImage: {
+        enabled: false,
+    },
 
     css: ['~/assets/css/main.css'],
     modules: [
@@ -14,6 +25,7 @@ export default defineNuxtConfig({
         '@storyblok/nuxt',
         'nuxt-nodemailer',
         '@nuxtjs/fontaine',
+        '@nuxtjs/seo',
     ],
 
     nitro: {
@@ -44,7 +56,7 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport:
-                'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0',
+                'width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5',
         },
     },
 
@@ -57,7 +69,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            NODE_ENV: process.env.NODE_ENV
+            NODE_ENV: process.env.NODE_ENV,
         },
     },
 
