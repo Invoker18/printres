@@ -17,8 +17,9 @@
                     :src="`/images/shapes/Vector${vector}.png`"
                     width="150"
                     height="150"
-                    fit="cover"
+                    fit="inside"
                     preload
+                    format="webp"
                     alt="Hero Shapes"
                 ></NuxtImg>
             </div>
@@ -28,7 +29,7 @@
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const { width } = useWindowSize()
 

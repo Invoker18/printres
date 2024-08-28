@@ -4,21 +4,14 @@
             v-if="status === 'success' && story"
             :blok="story.content"
         />
-        <!-- <ClientOnly>
-            <div class="fixed right-0 top-0 z-50 text-secondary">
-                w/{{ width }} h/{{ height }}
-            </div>
-        </ClientOnly> -->
     </div>
 </template>
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const config = useRuntimeConfig()
-
-const { width, height } = useWindowSize()
 
 const { slug }: any = useRoute().params
 const url = slug && slug.length > 0 ? slug.join('/') : 'home'

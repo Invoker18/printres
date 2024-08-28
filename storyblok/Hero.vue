@@ -53,7 +53,7 @@
 
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 defineProps({
     blok: {
@@ -149,19 +149,6 @@ onMounted(() => {
 
     // DESKTOP ANIAMTION
     mm.add('(min-width: 768px)', () => {
-        // gsap.to('#scrollText', {
-        //     opacity: 0,
-        //     scrollTrigger: {
-        //         trigger: '#heroText',
-        //         start: 'center center',
-        //         end: 'center center',
-        //         // toggleActions: 'play none none reset',
-        //         markers: true,
-        //         // scrub: true,
-        //     },
-        //     ease: 'power2.out',
-        //     duration: 0.5,
-        // })
         gsap.to('#scrollText', {
             autoAlpha: 0,
             scrollTrigger: {
@@ -174,7 +161,7 @@ onMounted(() => {
             duration: 1,
         })
         gsap.to('#text1 div', {
-            y: '+=675',
+            y: '+=750',
             rotation: 'random(100, -100)',
             scrollTrigger: {
                 trigger: '#heroText',

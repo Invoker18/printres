@@ -31,6 +31,7 @@
                             id="shape"
                             alt="Events Shape"
                             width="180"
+                            height="100"
                             fit="inside"
                             class="hover-cursor md:hidden"
                         />

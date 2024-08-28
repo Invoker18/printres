@@ -8,7 +8,7 @@
             <div class="loader"></div>
         </div>
         <Navbar></Navbar>
-        <slot  />
+        <slot />
         <Footer></Footer>
     </div>
 </template>
@@ -16,7 +16,7 @@
 <script setup>
 import Lenis from 'lenis'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 const isLoading = ref(true)
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)

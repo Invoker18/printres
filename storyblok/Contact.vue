@@ -51,7 +51,7 @@
 <script lang="ts" setup>
 import gsap from 'gsap'
 import { ContactModal } from '#components'
-import { ScrollTrigger } from 'gsap/all'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 defineProps({
     blok: {
