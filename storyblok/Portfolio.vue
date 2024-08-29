@@ -3,46 +3,62 @@
         v-if="blok"
         v-editable="blok"
         id="jobs"
-        class="text-primary-950 relative z-20 h-full w-full bg-gray-200 pt-20"
+        class="text-primary-950 relative z-20 h-full w-full bg-gray-200 pt-24"
     >
-        <div class="flex flex-col flex-wrap gap-5 px-5 py-5 lg:px-10 2xl:px-28">
-            <div class="flex items-center gap-5">
-                <div class="flex flex-col gap-3">
+        <div
+            class="flex flex-col flex-wrap gap-10 px-5 py-5 lg:px-10 2xl:px-28"
+        >
+            <div class="grid grid-cols-3 items-center ">
+                <div class="col-span-full flex flex-col gap-5 md:col-span-2">
                     <h3
-                        class="text-primary-950  hover-cursor group relative mb-3 flex w-fit items-center text-3xl lg:text-4xl"
+                        class="text-primary-950 hover-cursor group relative mb-3 flex w-fit items-center text-3xl lg:text-4xl"
                     >
                         {{ blok.Title }}
                         <span
-                            class="absolute -bottom-0.5 right-0 mt-1 h-0.5 w-[50%] bg-secondary"
+                            class="absolute -bottom-0.5 mt-1 hidden h-0.5 w-[50%] bg-secondary sm:right-0 sm:block"
                         ></span>
                     </h3>
+                    <p class="hover-cursor text-gray-800">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non saepe dolorum neque similique adipisci quo eveniet nihil laboriosam optio a, ad vel pariatur facere repellendus, nemo iste nam qui expedita!
+                        Officia praesentium expedita neque omnis minima dolore quas corporis aliquid laudantium accusantium deleniti nobis quos, rem corrupti facilis nulla ullam voluptatem nam unde possimus fugiat, eum porro. Ab, veritatis voluptate.
+                    </p>
                     <ul class="flex flex-wrap gap-3 sm:gap-5">
                         <li
                             @click="changeCategory(category)"
                             v-for="category in categories"
                             :key="category.id"
-                            class="border-primary-950 hover-cursor flex gap-1 rounded-full border px-3 py-1.5 transition-all duration-300 ease-linear hover:cursor-pointer"
+                            class="hover-cursor flex gap-1 rounded-full px-3 py-1.5 transition-all duration-300 ease-linear hover:cursor-pointer"
                             :class="
                                 activeCategory.uuid === category.uuid
-                                    ? 'bg-primary-950 text-white'
-                                    : ''
+                                    ? 'shadow-primary-950 bg-curious-blue-500 text-white shadow-inner'
+                                    : 'border-primary-950 border'
                             "
                         >
                             <p>{{ category.name }}</p>
                         </li>
                     </ul>
-                    <p class="hover-cursor">
+                    <!-- <p class="hover-cursor text-gray-800">
                         {{ activeCategory.content.Description }}
-                    </p>
+                    </p> -->
                 </div>
-                <div class="ml-auto hidden max-w-24 flex-shrink-0 md:block">
+                <div class="mx-auto 2xl:ml-auto 2xl:mx-0">
                     <NuxtImg
+                        format="webp"
                         src="/images/shapes/workPage.png"
                         alt=""
-                        width="200"
+                        width="125"
                         height="200"
-                        fit="outside"
-                        class="hover-cursor"
+                        fit="inside"
+                        class="hover-cursor hidden flex-shrink-0 md:block lg:hidden"
+                    />
+                    <NuxtImg
+                        format="webp"
+                        src="/images/shapes/eventsShape.png"
+                        alt=""
+                        width="250"
+                        height="150"
+                        fit="inside"
+                        class="hover-cursor hidden flex-shrink-0 lg:block"
                     />
                 </div>
             </div>
@@ -65,64 +81,80 @@
                     @click="showImage(work.filename)"
                 />
             </div>
-            <ul
-                class="hover-cursor ml-auto flex w-fit items-center rounded-md text-gray-200"
+            <!-- <Pagination :totalPages="totalPages"></Pagination> -->
+            <UPagination
+                :to="
+                    (page: number) => ({
+                        query: { category: route.query.category, page: page },
+                    })
+                "
+                class="ml-auto text-gray-200 dark:text-gray-200"
+                v-model="page"
+                :page-count="perPage"
+                :total="activeWorks.length"
+                :ui="{
+                    rounded:
+                        'first-of-type:rounded-s-md last-of-type:rounded-e-md',
+                }"
+                :active-button="{
+                    color: 'curious-blue',
+                    activeClass: 'text-gray-200 dark:text-gray-200',
+                    inactiveClass: 'text-gray-200 dark:text-gray-200',
+                }"
+                :inactive-button="{
+                    color: 'primary',
+                    activeClass:
+                        'text-gray-200 dark:text-gray-200 dark:bg-primary-950',
+                    inactiveClass:
+                        'dark:bg-primary-950 text-gray-200 dark:text-gray-200',
+                }"
             >
-                <NuxtLink
-                    @click.native="prev()"
-                    class="flex items-center rounded-l-md bg-secondary px-1.5 py-1.5"
-                    :class="
-                        +route.query.page === 1
-                            ? 'cursor-not-allowed'
-                            : 'cursor-pointer'
-                    "
-                >
-                    <UIcon
-                        name="i-heroicons-arrow-small-left-20-solid"
-                        class="size-6"
+                <template #prev="{ onClick }">
+                    <UTooltip text="Previous page" :ui="{}">
+                        <UButton
+                            icon="i-heroicons-arrow-small-left-20-solid"
+                            color="primary"
+                            variant="solid"
+                            :ui="{
+                                rounded: 'rounded-full',
+                                variant: {
+                                    solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                                },
+                            }"
+                            class="me-2 rtl:[&_span:first-child]:rotate-180"
+                            @click="onClick"
+                        />
+                    </UTooltip>
+                </template>
+
+                <template #next="{ onClick }">
+                    <UTooltip
+                        text="Next page"
+                        :ui="{
+                            container: 'z-50 group',
+                        }"
                     >
-                    </UIcon>
-                </NuxtLink>
-                <NuxtLink
-                    v-for="page in totalPages"
-                    :to="{
-                        path: router.path,
-                        query: {
-                            category: route.query.category,
-                            page: page,
-                        },
-                    }"
-                    class="border-r border-coral-500 p-3 py-1.5 outline-2"
-                    :class="[
-                        route.query.page == page
-                            ? 'bg-coral-500'
-                            : 'bg-secondary',
-                        { 'border-l': page === 1 },
-                    ]"
-                >
-                    {{ page }}
-                </NuxtLink>
-                <NuxtLink
-                    @click.native="next()"
-                    class="flex items-center rounded-r-md bg-secondary px-1.5 py-1.5"
-                    :class="
-                        +route.query.page === totalPages
-                            ? 'cursor-not-allowed'
-                            : 'cursor-pointer'
-                    "
-                >
-                    <UIcon
-                        name="i-heroicons-arrow-small-right-20-solid"
-                        class="size-6"
-                    >
-                    </UIcon>
-                </NuxtLink>
-            </ul>
+                        <UButton
+                            icon="i-heroicons-arrow-small-right-20-solid"
+                            color="primary"
+                            variant="solid"
+                            :ui="{
+                                rounded: 'rounded-full',
+                                variant: {
+                                    solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                                },
+                            }"
+                            class="ms-2 rtl:[&_span:last-child]:rotate-180"
+                            @click="onClick"
+                        />
+                    </UTooltip>
+                </template>
+            </UPagination>
         </div>
         <UModal
             :transition="false"
             :ui="{
-                container: 'items-center',
+                container: 'items-center backdrop-blur-sm',
                 width: 'w-full max-w-xl sm:max-w-xl md:max-w-screen-md lg:max-w-screen-lg',
                 padding: 'sm:p-4 md:p-8',
                 shadow: 'shadow-xl shadow-gray-800',
@@ -159,9 +191,9 @@ const router: any = useRouter()
 const { categories, fetchCategories }: any = useCategories()
 await fetchCategories()
 
-// const page = ref<number>(route.query.page)
-// const queryCategory = ref(route.query.category)
-const perPage = ref(6)
+const page = ref<number>(+route.query.page)
+const queryCategory = ref(route.query.category)
+const perPage = ref(24)
 const currentImg = ref('')
 const isOpen = ref(false)
 
@@ -182,28 +214,6 @@ const activeCategory: any = computed(() => {
     })
 })
 
-const prev = () => {
-    if (+route.query.page === 1) return
-    router.push({
-        path: router.path,
-        query: {
-            category: route.query.category,
-            page: +route.query.page - 1,
-        },
-    })
-}
-
-const next = () => {
-    if (+route.query.page === totalPages.value) return
-    router.push({
-        path: router.path,
-        query: {
-            category: route.query.category,
-            page: +route.query.page + 1,
-        },
-    })
-}
-
 const paginatedData = computed(() => {
     const from = route.query.page * perPage.value - perPage.value
     const to = route.query.page * perPage.value
@@ -221,22 +231,29 @@ const showImage = (url: string) => {
     isOpen.value = true
 }
 
-watch(width, () => {
-    if (width.value > 1280) perPage.value = 8
-    else perPage.value = 6
-})
+const onClick = () => {
+    router.push({
+        path: router.path,
+        query: { category: route.query.category, page: page.value },
+    })
+}
 
-onMounted(() => {
-    if (width.value > 1280) perPage.value = 8
-    else perPage.value = 8
+// watch(width, () => {
+//     if (width.value > 1280) perPage.value = 8
+//     else perPage.value = 6
+// })
 
-    if (totalPages.value < route.query.page) {
-        router.push({
-            path: router.path,
-            query: { category: route.query.category, page: 1 },
-        })
-    }
-})
+// onMounted(() => {
+//     if (width.value > 1280) perPage.value = 8
+//     else perPage.value = 6
+
+//     if (totalPages.value < route.query.page) {
+//         router.push({
+//             path: router.path,
+//             query: { category: route.query.category, page: 1 },
+//         })
+//     }
+// })
 </script>
 
 <style></style>
