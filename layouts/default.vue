@@ -1,6 +1,6 @@
 <template>
+    <SpeedInsights />
     <div>
-        <SpeedInsights />
         <div class="cursor-follower"></div>
         <!-- <div
             id="loader"
