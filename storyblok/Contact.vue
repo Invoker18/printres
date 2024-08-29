@@ -2,7 +2,7 @@
     <!-- <div id="contact"></div> -->
     <div
         v-editable="blok"
-        class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 py-24 pt-32 sm:sticky sm:h-screen sm:py-0 sm:pt-0"
+        class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 py-24 pt-32 sm:sticky sm:h-screen sm:py-0 sm:pt-0 sm:opacity-0"
         id="contactContainer"
     >
         <div class="relative z-40 -mt-20 w-full max-w-xl">
@@ -70,6 +70,8 @@ const openModal = () => {
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
     let contactDom: any = document.getElementById('contactContainer')
+
+    if (y.value > 1200) contactDom.classList.remove('sm:opacity-0')
 
     let mm = gsap.matchMedia()
 

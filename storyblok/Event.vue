@@ -29,7 +29,7 @@
                         :thumbs="{
                             swiper: thumbsSwiper,
                         }"
-                        :modules="[SwiperThumbs, SwiperNavigation, SwiperGrid]"
+                        :modules="[SwiperThumbs, SwiperNavigation]"
                         class="h-fit w-full min-w-0 rounded-md md:h-full"
                     >
                         <SwiperSlide class="space-y-3">
@@ -77,7 +77,6 @@
                         :navigation="true"
                         :modules="[
                             SwiperThumbs,
-                            SwiperMousewheel,
                             SwiperFreeMode,
                             SwiperNavigation,
                         ]"
