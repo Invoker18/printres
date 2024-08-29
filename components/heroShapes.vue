@@ -33,13 +33,19 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const { width } = useWindowSize()
 
-const vectorsComputed = computed(() => {
-    if (width.value < 900) return [1, 6, 3]
-    if (width.value < 1280) return [1, 2, 3, 6, 4, 5]
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const vectorsComputed = ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+watch(width, () => {
+    if (width.value < 900) return (vectorsComputed.value = [1, 6, 3])
+    if (width.value < 1280) return (vectorsComputed.value = [1, 2, 3, 6, 4, 5])
+    return (vectorsComputed.value = [1, 2, 3, 4, 5, 6, 7, 8, 9])
 })
 
 onMounted(() => {
+    if (width.value < 900) vectorsComputed.value = [1, 6, 3]
+    if (width.value > 900) vectorsComputed.value = [1, 2, 3, 6, 4, 5]
+    if (width.value > 1280) vectorsComputed.value = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
     gsap.registerPlugin(ScrollTrigger)
 
     nextTick(() => {

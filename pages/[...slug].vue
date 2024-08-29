@@ -68,8 +68,12 @@ onMounted(() => {
         sections.forEach((section, index) => {
             // const isLast = index === sections.length - 1
 
-            gsap.timeline({
+            gsap.to(section, {
+                ease: 'none',
+                startAt: { filter: 'brightness(100%) blur(0px)' },
+                filter: 'brightness(90%) blur(10px)',
                 scrollTrigger: {
+                    fastScrollEnd: true,
                     immediateRender: true,
                     trigger: section,
                     start: '20% top',
@@ -90,10 +94,6 @@ onMounted(() => {
                         ScrollTrigger.refresh()
                     },
                 },
-            }).to(section, {
-                ease: 'none',
-                startAt: { filter: 'brightness(100%) blur(0px)' },
-                filter: 'brightness(90%) blur(10px)',
                 // onComplete: () => {
                 //     console.log('onComplete')
                 //     section.classList.remove('z-30')

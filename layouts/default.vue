@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="cursor-follower"></div>
-        <div
+        <!-- <div
             id="loader"
             class="bg-primary-950 opacity-1 fixed left-0 top-0 z-[9999] grid h-[100vh] w-full place-content-center text-5xl"
         >
             <div class="loader"></div>
-        </div>
+        </div> -->
         <Navbar></Navbar>
         <slot />
         <Footer></Footer>
@@ -95,14 +95,14 @@ onMounted(() => {
     }
     initLenis()
 
-    gsap.to('.loader', {
-        autoAlpha: 0,
-        duration: 0,
-    })
-    gsap.to('#loader', {
-        autoAlpha: 0,
-        duration: 1,
-    })
+    // gsap.to('.loader', {
+    //     autoAlpha: 0,
+    //     duration: 0,
+    // })
+    // gsap.to('#loader', {
+    //     autoAlpha: 0,
+    //     duration: 1,
+    // })
     document.body.style.cursor = 'none'
 })
 </script>

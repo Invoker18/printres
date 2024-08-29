@@ -11,20 +11,20 @@
                 class="flex text-7xl text-gray-100 sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text1"
             >
-                <div
+                <h1
                     v-for="(letter, index) in blok.Phrase1"
                     :key="index"
                     class="hover-cursor2"
                 >
                     <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
                     {{ letter }}
-                </div>
+                </h1>
             </div>
             <div
                 class="flex text-7xl sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 id="text2"
             >
-                <div
+                <h1
                     v-for="(letter, index) in blok.Phrase2"
                     :key="index"
                     class="hover-cursor2"
@@ -32,12 +32,10 @@
                 >
                     <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
                     {{ letter }}
-                </div>
+                </h1>
             </div>
         </div>
-        <ClientOnly>
-            <HeroShapes></HeroShapes>
-        </ClientOnly>
+        <HeroShapes></HeroShapes>
         <div
             id="scrollText"
             class="absolute bottom-12 right-6 z-50 hidden items-center gap-2 text-2xl sm:flex sm:text-4xl md:bottom-44 md:right-16 2xl:right-24"
@@ -62,16 +60,12 @@ defineProps({
     },
 })
 
-const text1 = ref('Impresión')
-const text2 = ref('sin límites')
-
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
-    // create
     let mm = gsap.matchMedia()
 
     mm.add('(max-width: 640px)', () => {
-        gsap.to('#text1 div', {
+        gsap.to('#text1 h1', {
             yPercent: '+=650',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -86,7 +80,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 div', {
+        gsap.to('#text2 h1', {
             yPercent: '+=475',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -115,7 +109,7 @@ onMounted(() => {
             ease: 'power2.out',
             duration: 1,
         })
-        gsap.to('#text1 div', {
+        gsap.to('#text1 h1', {
             y: '+=475',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -130,7 +124,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 div', {
+        gsap.to('#text2 h1', {
             y: '+=300',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -160,7 +154,7 @@ onMounted(() => {
             ease: 'power2.out',
             duration: 1,
         })
-        gsap.to('#text1 div', {
+        gsap.to('#text1 h1', {
             y: '+=750',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -175,7 +169,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 div', {
+        gsap.to('#text2 h1', {
             y: '+=800',
             rotation: 'random(100, -100)',
             scrollTrigger: {

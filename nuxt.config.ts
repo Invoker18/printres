@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
 
-    ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
+    ssr: process.env.NODE_ENV === 'production' ? true : false,
 
     site: {
         url: 'https://printres.vercel.app',
@@ -27,6 +27,7 @@ export default defineNuxtConfig({
         '@nuxtjs/fontaine',
         '@nuxtjs/seo',
         'nuxt-delay-hydration',
+        '@nuxtjs/google-fonts',
     ],
 
     delayHydration: {
@@ -107,11 +108,17 @@ export default defineNuxtConfig({
             'autoplay',
             'controller',
             'free-mode',
-            'grid',
-            'mousewheel',
             'navigation',
             'pagination',
             'thumbs',
         ], // all modules are imported by default
+    },
+
+    googleFonts: {
+        families: {
+            Roboto: true,
+        },
+        display: 'swap',
+        preload: true,
     },
 })
