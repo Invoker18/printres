@@ -1,5 +1,6 @@
 <template>
     <div>
+        <SpeedInsights />
         <div class="cursor-follower"></div>
         <!-- <div
             id="loader"
@@ -17,6 +18,8 @@
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+
 const isLoading = ref(true)
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)

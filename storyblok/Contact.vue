@@ -71,7 +71,7 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
     let contactDom: any = document.getElementById('contactContainer')
 
-    contactDom.classList.remove('sm:opacity-0')
+    if (y.value > 1200) contactDom.classList.remove('sm:opacity-0')
 
     let mm = gsap.matchMedia()
 
