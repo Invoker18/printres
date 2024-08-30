@@ -8,19 +8,26 @@
         <div
             class="flex flex-col flex-wrap gap-10 px-5 py-5 lg:px-10 2xl:px-28"
         >
-            <div class="grid grid-cols-3 items-center ">
+            <div class="grid grid-cols-3 items-center">
                 <div class="col-span-full flex flex-col gap-5 md:col-span-2">
                     <h3
-                        class="text-primary-950 hover-cursor group relative mb-3 flex w-fit items-center text-3xl lg:text-4xl"
+                        class="text-primary-950 hover-cursor group relative flex w-fit items-center text-3xl sm:mb-3 lg:text-4xl"
                     >
                         {{ blok.Title }}
                         <span
-                            class="absolute -bottom-0.5 mt-1 hidden h-0.5 w-[50%] bg-secondary sm:right-0 sm:block"
+                            class="absolute -bottom-0.5 mt-1 h-0.5 w-[50%] bg-secondary sm:right-0"
                         ></span>
                     </h3>
                     <p class="hover-cursor text-gray-800">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non saepe dolorum neque similique adipisci quo eveniet nihil laboriosam optio a, ad vel pariatur facere repellendus, nemo iste nam qui expedita!
-                        Officia praesentium expedita neque omnis minima dolore quas corporis aliquid laudantium accusantium deleniti nobis quos, rem corrupti facilis nulla ullam voluptatem nam unde possimus fugiat, eum porro. Ab, veritatis voluptate.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Non saepe dolorum neque similique adipisci quo eveniet
+                        nihil laboriosam optio a, ad vel pariatur facere
+                        repellendus, nemo iste nam qui expedita! Officia
+                        praesentium expedita neque omnis minima dolore quas
+                        corporis aliquid laudantium accusantium deleniti nobis
+                        quos, rem corrupti facilis nulla ullam voluptatem nam
+                        unde possimus fugiat, eum porro. Ab, veritatis
+                        voluptate.
                     </p>
                     <ul class="flex flex-wrap gap-3 sm:gap-5">
                         <li
@@ -30,7 +37,7 @@
                             class="hover-cursor flex gap-1 rounded-full px-3 py-1.5 transition-all duration-300 ease-linear hover:cursor-pointer"
                             :class="
                                 activeCategory.uuid === category.uuid
-                                    ? 'shadow-primary-950 bg-curious-blue-500 text-white shadow-inner'
+                                    ? 'bg-curious-blue-500 text-white shadow-inner shadow-curious-blue-800'
                                     : 'border-primary-950 border'
                             "
                         >
@@ -41,7 +48,7 @@
                         {{ activeCategory.content.Description }}
                     </p> -->
                 </div>
-                <div class="mx-auto 2xl:ml-auto 2xl:mx-0">
+                <div class="mx-auto 2xl:mx-0 2xl:ml-auto">
                     <NuxtImg
                         format="webp"
                         src="/images/shapes/workPage.png"
@@ -62,8 +69,10 @@
                     />
                 </div>
             </div>
+            <hr class="border-primary-950 border-[1.5px]" />
+
             <div
-                class="grid grid-cols-2 place-content-center items-center gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4"
+                class="grid grid-cols-2 place-content-center items-center gap-3 sm:gap-5 md:grid-cols-3 2xl:grid-cols-4"
             >
                 <NuxtImg
                     v-for="work in paginatedData"
@@ -78,76 +87,60 @@
                     format="webp"
                     quality="80"
                     class="hover-cursor rounded-md object-cover hover:cursor-pointer"
-                    @click="showImage(work.filename)"
+                    @click="showImage(work)"
                 />
             </div>
-            <!-- <Pagination :totalPages="totalPages"></Pagination> -->
             <UPagination
+                id="pagination"
                 :to="
                     (page: number) => ({
                         query: { category: route.query.category, page: page },
                     })
                 "
-                class="ml-auto text-gray-200 dark:text-gray-200"
+                :max="5"
                 v-model="page"
                 :page-count="perPage"
                 :total="activeWorks.length"
-                :ui="{
-                    rounded:
-                        'first-of-type:rounded-s-md last-of-type:rounded-e-md',
-                }"
                 :active-button="{
                     color: 'curious-blue',
-                    activeClass: 'text-gray-200 dark:text-gray-200',
-                    inactiveClass: 'text-gray-200 dark:text-gray-200',
+                    class: 'text-gray-200 dark:text-gray-200 font-bold',
                 }"
                 :inactive-button="{
                     color: 'primary',
                     activeClass:
-                        'text-gray-200 dark:text-gray-200 dark:bg-primary-950',
-                    inactiveClass:
-                        'dark:bg-primary-950 text-gray-200 dark:text-gray-200',
+                        'dark:bg-primary-950 dark:hover:bg-curious-blue-400',
+                    class: 'text-gray-200 dark:text-gray-200',
                 }"
             >
                 <template #prev="{ onClick }">
-                    <UTooltip text="Previous page" :ui="{}">
-                        <UButton
-                            icon="i-heroicons-arrow-small-left-20-solid"
-                            color="primary"
-                            variant="solid"
-                            :ui="{
-                                rounded: 'rounded-full',
-                                variant: {
-                                    solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
-                                },
-                            }"
-                            class="me-2 rtl:[&_span:first-child]:rotate-180"
-                            @click="onClick"
-                        />
-                    </UTooltip>
-                </template>
-
-                <template #next="{ onClick }">
-                    <UTooltip
-                        text="Next page"
+                    <UButton
+                        icon="i-heroicons-arrow-small-left-20-solid"
+                        color="primary"
+                        variant="solid"
                         :ui="{
-                            container: 'z-50 group',
+                            rounded: 'rounded-full',
+                            variant: {
+                                solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                            },
                         }"
-                    >
-                        <UButton
-                            icon="i-heroicons-arrow-small-right-20-solid"
-                            color="primary"
-                            variant="solid"
-                            :ui="{
-                                rounded: 'rounded-full',
-                                variant: {
-                                    solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
-                                },
-                            }"
-                            class="ms-2 rtl:[&_span:last-child]:rotate-180"
-                            @click="onClick"
-                        />
-                    </UTooltip>
+                        class="mr-2 rtl:[&_span:first-child]:rotate-180"
+                        @click="prev()"
+                    />
+                </template>
+                <template #next="{ onClick }">
+                    <UButton
+                        icon="i-heroicons-arrow-small-right-20-solid"
+                        color="primary"
+                        variant="solid"
+                        :ui="{
+                            rounded: 'rounded-full',
+                            variant: {
+                                solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                            },
+                        }"
+                        class="rtl:[&_span:last-child]:rotate-180"
+                        @click="next()"
+                    />
                 </template>
             </UPagination>
         </div>
@@ -163,7 +156,7 @@
         >
             <NuxtImg
                 loading="lazy"
-                :src="currentImg"
+                :src="currentImg.filename"
                 provider="storyblok"
                 format="webp"
                 alt=""
@@ -172,6 +165,9 @@
                 placeholder
                 class="hover-cursor max-h-[40rem] rounded-md object-cover"
             />
+            <span class="p-2">{{
+                currentImg.alt.length ? currentImg.alt : 'Title'
+            }}</span>
         </UModal>
     </div>
 </template>
@@ -184,17 +180,14 @@ const props = defineProps({
     },
 })
 
-const { width } = useWindowSize()
-
 const route: any = useRoute()
 const router: any = useRouter()
 const { categories, fetchCategories }: any = useCategories()
 await fetchCategories()
 
 const page = ref<number>(+route.query.page)
-const queryCategory = ref(route.query.category)
-const perPage = ref(24)
-const currentImg = ref('')
+const perPage = ref(16)
+const currentImg: any = ref({})
 const isOpen = ref(false)
 
 const activeWorks = computed(() => {
@@ -221,39 +214,58 @@ const paginatedData = computed(() => {
 })
 
 const changeCategory = (category: any) => {
+    page.value = 1
     router.push({
         path: router.path,
         query: { category: category.uuid, page: 1 },
     })
 }
-const showImage = (url: string) => {
-    currentImg.value = url
+const showImage = (img: object) => {
+    currentImg.value = img
     isOpen.value = true
 }
 
-const onClick = () => {
+const prev = () => {
+    if (page.value === 1) {
+        return
+    } else {
+        page.value--
+    }
     router.push({
         path: router.path,
-        query: { category: route.query.category, page: page.value },
+        query: {
+            category: route.query.category,
+            page: page.value,
+        },
     })
 }
 
-// watch(width, () => {
-//     if (width.value > 1280) perPage.value = 8
-//     else perPage.value = 6
-// })
-
-// onMounted(() => {
-//     if (width.value > 1280) perPage.value = 8
-//     else perPage.value = 6
-
-//     if (totalPages.value < route.query.page) {
-//         router.push({
-//             path: router.path,
-//             query: { category: route.query.category, page: 1 },
-//         })
-//     }
-// })
+const next = () => {
+    if (page.value === totalPages.value) {
+        return
+    } else {
+        page.value++
+    }
+    router.push({
+        path: router.path,
+        query: {
+            category: route.query.category,
+            page: page.value,
+        },
+    })
+}
 </script>
 
-<style></style>
+<style>
+#pagination {
+    @apply ml-auto;
+}
+
+#pagination button {
+    @apply bg-curious-blue-500 [&:nth-last-child(1)]:ml-2;
+}
+
+#pagination a {
+    @apply [&:nth-child(2)]:rounded-s-md [&:nth-last-child(2)]:rounded-e-md;
+}
+</style>

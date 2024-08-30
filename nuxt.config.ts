@@ -61,7 +61,6 @@ export default defineNuxtConfig({
     },
 
     app: {
-        pageTransition: { name: 'page' },
         head: {
             charset: 'utf-8',
             viewport:
