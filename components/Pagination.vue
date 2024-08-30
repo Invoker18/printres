@@ -1,79 +1,118 @@
 <template>
-    <ul
-        class="hover-cursor ml-auto flex w-fit items-center rounded-md text-gray-200"
+    <UPagination
+        id="pagination"
+        :to="
+            (page: number) => ({
+                query: { category: route.query.category, page: page },
+            })
+        "
+        :max="5"
+        v-model="page"
+        :page-count="perPage"
+        :total="total"
+        :active-button="{
+            color: 'curious-blue',
+            class: 'text-gray-200 dark:text-gray-200',
+        }"
+        :inactive-button="{
+            color: 'primary',
+            activeClass: 'dark:bg-primary-950 dark:hover:bg-curious-blue-500',
+            class: 'text-gray-200 dark:text-gray-200',
+        }"
     >
-        <NuxtLink
-            @click.native="prev()"
-            class="flex items-center rounded-l-md bg-secondary px-1.5 py-1.5"
-            :class="
-                +route.query.page === 1
-                    ? 'cursor-not-allowed'
-                    : 'cursor-pointer'
-            "
-        >
-            <UIcon name="i-heroicons-arrow-small-left-20-solid" class="size-6">
-            </UIcon>
-        </NuxtLink>
-        <NuxtLink
-            v-for="page in totalPages"
-            :to="{
-                path: router.path,
-                query: {
-                    category: route.query.category,
-                    page: page,
-                },
-            }"
-            class="border-r border-coral-500 p-3 py-1.5 outline-2"
-            :class="[
-                route.query.page == page ? 'bg-coral-500' : 'bg-secondary',
-                { 'border-l': page === 1 },
-            ]"
-        >
-            {{ page }}
-        </NuxtLink>
-        <NuxtLink
-            @click.native="next()"
-            class="flex items-center rounded-r-md bg-secondary px-1.5 py-1.5"
-            :class="
-                +route.query.page === totalPages
-                    ? 'cursor-not-allowed'
-                    : 'cursor-pointer'
-            "
-        >
-            <UIcon name="i-heroicons-arrow-small-right-20-solid" class="size-6">
-            </UIcon>
-        </NuxtLink>
-    </ul>
+        <template #prev="{ onClick }">
+            <UButton
+                icon="i-heroicons-arrow-small-left-20-solid"
+                color="primary"
+                variant="solid"
+                :ui="{
+                    rounded: 'rounded-full',
+                    variant: {
+                        solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                    },
+                }"
+                class="mr-2 rtl:[&_span:first-child]:rotate-180"
+                @click="prev()"
+            />
+        </template>
+        <template #next="{ onClick }">
+            <UButton
+                icon="i-heroicons-arrow-small-right-20-solid"
+                color="primary"
+                variant="solid"
+                :ui="{
+                    rounded: 'rounded-full',
+                    variant: {
+                        solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
+                    },
+                }"
+                class="rtl:[&_span:last-child]:rotate-180"
+                @click="next()"
+            />
+        </template>
+    </UPagination>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-    totalPages: Number,
+const props: any = defineProps({
+    totalPages: {
+        type: Number,
+        default: 0,
+    },
+    total: {
+        type: Number,
+        default: 0,
+    },
+    page: {
+        type: Number,
+        default: 1,
+    },
+    perPage: Number,
 })
 const route: any = useRoute()
 const router: any = useRouter()
-
+const page = ref(props.page)
 const prev = () => {
-    if (+route.query.page === 1) return
+    if (props.page === 1) {
+        return
+    } else {
+        props.page--
+    }
     router.push({
         path: router.path,
         query: {
             category: route.query.category,
-            page: +route.query.page - 1,
+            page: props.page,
         },
     })
 }
 
 const next = () => {
-    if (+route.query.page === props.totalPages) return
+    if (props.page === props.totalPages) {
+        return
+    } else {
+        props.page++
+    }
     router.push({
         path: router.path,
         query: {
             category: route.query.category,
-            page: +route.query.page + 1,
+            page: props.page,
         },
     })
 }
 </script>
 
-<style></style>
+<style scoped>
+#pagination {
+    @apply ml-auto;
+}
+
+#pagination button {
+    @apply bg-curious-blue-500 [&:nth-last-child(1)]:ml-2;
+}
+
+#pagination a {
+    @apply [&:nth-child(2)]:rounded-s-md [&:nth-last-child(2)]:rounded-e-md;
+}
+</style>

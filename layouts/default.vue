@@ -1,5 +1,5 @@
 <template>
-    <SpeedInsights />
+    <!-- <SpeedInsights /> -->
     <div>
         <div class="cursor-follower"></div>
         <div

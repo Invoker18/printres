@@ -1,102 +1,95 @@
 <template>
     <div class="text-primary-950 relative z-20 min-h-screen bg-gray-200 pt-24">
-        <div class="mx-auto space-y-5 px-5 py-5 pb-10 2xl:px-52">
-            <div class="flex items-center justify-between gap-10">
-                <div class="flex flex-col gap-3">
-                    <h4 class="text-2xl">
+        <div class="mx-auto space-y-5 px-5 py-5 pb-10 2xl:px-80">
+            <div class="flex items-center justify-between gap-3 md:gap-10">
+                <div class="flex flex-col">
+                    <h4 class="text-3xl">
                         {{ blok.Title }}
                     </h4>
-                    <p>
+                    <p class="text-sm italic text-gray-800">
+                        {{
+                            new Date(blok.Date).toLocaleString('es-ES', {
+                                dateStyle: 'long',
+                            })
+                        }}
+                    </p>
+                    <p class="mt-3 hidden text-gray-800 md:block">
                         {{ blok.Description }}
                     </p>
                 </div>
-                <img
-                    :src="eventShape"
-                    alt=""
-                    class="hidden max-h-32 md:block"
+                <NuxtImg
+                    fit="inside"
+                    format="webp"
+                    src="/images/shapes/events.png"
+                    alt="Events Shape"
+                    class="hover-cursor h-[75px] w-[150px] md:h-[100px] md:w-[200px]"
                 />
             </div>
+            <p class="mt-3 text-gray-800 md:hidden">
+                {{ blok.Description }}
+            </p>
+
             <hr class="border-primary-950 border-[1.5px]" />
-            <div class="flex w-full flex-col gap-3">
-                <div
-                    class="flex h-full w-full flex-col gap-3 overflow-hidden md:flex-row"
+            <div class="flex flex-col gap-3 overflow-hidden md:flex-row">
+                <Swiper
+                    :spaceBetween="10"
+                    @slideChange="slideChange"
+                    :loop="true"
+                    :thumbs="{
+                        swiper: thumbsSwiper,
+                    }"
+                    :modules="[SwiperThumbs]"
+                    class="h-fit w-full min-w-0 rounded-md md:h-full"
                 >
-                    <Swiper
-                        :spaceBetween="10"
-                        :navigation="true"
-                        @slideChange="slideChange"
-                        :loop="true"
-                        :thumbs="{
-                            swiper: thumbsSwiper,
-                        }"
-                        :modules="[SwiperThumbs, SwiperNavigation]"
-                        class="h-fit w-full min-w-0 rounded-md md:h-full"
-                    >
-                        <SwiperSlide class="space-y-3">
-                            <img
-                                v-if="blok.Slider && blok.Slider.length"
-                                :src="blok.Slider[0].filename"
-                                class="hover-cursor2 h-full max-h-[32rem] w-full select-none rounded-md object-cover"
-                            />
-                            <p class="hidden w-full md:block">
-                                {{ blok.Slider[0].name }}
-                            </p>
-                        </SwiperSlide>
-                        <SwiperSlide v-for="n in 10" :key="n" class="space-y-3">
-                            <img
-                                :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                class="hover-cursor2 h-full w-full select-none rounded-md object-cover"
-                            />
-                            <p class="hidden w-full md:block">
-                                Lorem, ipsum dolor sit amet consectetur
-                                adipisicing elit. Corporis, soluta nam
-                                distinctio porro ullam maiores iusto iure iste
-                                voluptatibus cumque quam sit alias consequuntur
-                                quaerat consectetur impedit reiciendis aperiam
-                                voluptas? Aut facilis deleniti animi reiciendis
-                                praesentium, consequatur dolorem maxime magnam
-                                illum necessitatibus.
-                            </p>
-                        </SwiperSlide>
-                    </Swiper>
-                    <Swiper
-                        :direction="orientation"
-                        @swiper="setThumbsSwiper"
-                        :grabCursor="true"
-                        :freeMode="true"
-                        :breakpoints="{
-                            320: {
-                                slidesPerView: 2,
-                                spaceBetween: 10,
-                            },
-                            784: {
-                                slidesPerView: 'auto',
-                                spaceBetween: 10,
-                            },
-                        }"
-                        :navigation="true"
-                        :modules="[
-                            SwiperThumbs,
-                            SwiperFreeMode,
-                            SwiperNavigation,
-                        ]"
-                        class="grid h-full max-h-60 w-full min-w-0 grid-rows-2 overflow-auto rounded-md sm:max-h-[40rem] sm:w-[30%]"
-                    >
-                        <SwiperSlide v-for="n in 10" :key="n">
-                            <img
-                                :src="`https://picsum.photos/1920/1080?random=${n}`"
-                                class="hover-cursor select-none rounded-md" /></SwiperSlide
-                        ><SwiperSlide />
-                    </Swiper>
-                    <p class="md:hidden">
-                        {{ activeIndex }}
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Veritatis recusandae harum consectetur quas, labore
-                        necessitatibus modi rerum fugiat unde et cupiditate
-                        architecto dicta, aliquam, iusto nam? Consectetur,
-                        soluta illum? Possimus.
-                    </p>
-                </div>
+                    <SwiperSlide v-for="image in blok.Slider" :key="image.id">
+                        <NuxtImg
+                            placeholder
+                            provider="storyblok"
+                            :src="image.filename"
+                            width="1200"
+                            sizes="100vw sm:50vw md:800px xl:1200px"
+                            class="hover-cursor2 max-h-[600px] select-none rounded-md object-cover"
+                        />
+                        <p class="mt-3 hidden w-full md:block">
+                            {{ image.title }}
+                        </p>
+                    </SwiperSlide>
+                </Swiper>
+                <Swiper
+                    :direction="orientation"
+                    @swiper="setThumbsSwiper"
+                    :grabCursor="true"
+                    :freeMode="true"
+                    :breakpoints="{
+                        320: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
+                        784: {
+                            slidesPerView: 'auto',
+                            spaceBetween: 10,
+                        },
+                    }"
+                    :navigation="true"
+                    :modules="[SwiperThumbs, SwiperFreeMode, SwiperNavigation]"
+                    class="grid h-full max-h-60 w-full min-w-0 grid-rows-2 overflow-auto rounded-md sm:max-h-[40rem] md:w-[40%]"
+                >
+                    <SwiperSlide v-for="image in blok.Slider" :key="image.id">
+                        <NuxtImg
+                            placeholder
+                            provider="storyblok"
+                            quality="50"
+                            :src="image.filename"
+                            width="400"
+                            :height="width > 640 ? '250' : '300'"
+                            sizes="100vw sm:50vw md:300px xl:400px"
+                            class="hover-cursor select-none rounded-md object-cover"
+                        />
+                    </SwiperSlide>
+                </Swiper>
+                <p class="md:hidden">
+                    {{ blok.Slider[activeIndex].title }}
+                </p>
             </div>
             <div class="flex items-center gap-3">
                 <div
@@ -118,7 +111,6 @@
 </template>
 
 <script lang="ts" setup>
-import eventShape from '@/assets/images/shapes/events.png'
 // import required modules
 // import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
 
