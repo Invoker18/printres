@@ -38,8 +38,7 @@
                     :thumbs="{
                         swiper: thumbsSwiper,
                     }"
-                    :modules="[SwiperThumbs, SwiperZoom]"
-                    :zoom="true"
+                    :modules="[SwiperThumbs]"
                     class="w-full min-w-0 rounded-md"
                 >
                     <SwiperSlide v-for="image in blok.Slider" :key="image.id">
