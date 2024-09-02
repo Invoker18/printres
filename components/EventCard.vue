@@ -1,5 +1,5 @@
 <template>
-    <div class="flex h-full w-full flex-col gap-1 rounded-md">
+    <div class="flex h-full w-full flex-col rounded-md">
         <NuxtLink
             :to="`/${slug}`"
             class="overflow-hidden rounded-md border border-gray-300"
@@ -12,31 +12,24 @@
                 loading="lazy"
                 :alt="cover.alt"
                 :src="cover.filename"
-                width="500"
-                height="300"
                 sizes="100vw sm:50vw md:400px xl:600px"
+                class="hover-cursor h-48 w-full rounded-md object-cover hover:cursor-pointer md:h-60"
                 quality="80"
-                class="hover-cursor object-cover"
             />
         </NuxtLink>
-
-        <div class="grid w-full grid-cols-2">
-            <div class="col-span-full flex items-center gap-3 text-lg">
-                <div class="truncate">
-                    {{ event.Title }}
-                </div>
-
-                <div class="ml-auto flex-shrink-0 text-sm text-gray-800">
-                    {{
-                        new Date(event.Date).toLocaleString('es-ES', {
-                            dateStyle: 'medium',
-                        })
-                    }}
-                </div>
-            </div>
-            <div class="truncate text-sm text-gray-800">
-                {{ event.Location }}
-            </div>
+        <div class="truncate text-lg">
+            {{ event.Title }}
+        </div>
+        <div class="flex flex-wrap items-center gap-x-1 text-sm text-gray-800">
+            {{ event.Location }}
+            -
+            <span class="italic">
+                {{
+                    new Date(event.Date).toLocaleString('es-ES', {
+                        dateStyle: 'medium',
+                    })
+                }}
+            </span>
         </div>
     </div>
 </template>

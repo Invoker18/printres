@@ -59,8 +59,6 @@
 </template>
 
 <script lang="ts" setup>
-import eventShape from '@/assets/images/shapes/events.png'
-
 defineProps({
     blok: {
         type: Object,

@@ -1,7 +1,7 @@
 <template>
     <div>
         <StoryblokComponent
-            v-if="status === 'success' && story"
+            v-if="status !== 'error' && story"
             :blok="story.content"
         />
     </div>
@@ -27,8 +27,6 @@ const { data: story, status } = await useAsyncData(`${url}`, async () => {
     )
     return data?.story
 })
-
-console.log(story.value)
 
 if (!isPreview) {
     if (!story.value) {

@@ -1,5 +1,5 @@
 <template>
-    <!-- <SpeedInsights /> -->
+    <SpeedInsights />
     <div>
         <div class="cursor-follower"></div>
         <div
@@ -20,7 +20,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 
-const isLoading = ref(true)
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger)
     // ScrollTrigger.config({ ignoreMobileResize: true })
@@ -134,16 +133,6 @@ body {
     @apply bg-curious-blue-600;
 }
 
-/* li:hover,
-#logo:hover {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" stroke="%23f87c56" fill="%23f87c56" width="64px" height="64px" viewBox="0 0 10.04 10.04"><circle opacity="0.7" cx="5.02" cy="5.02" r="4.52"/></svg>')
-            20 20,
-        auto !important;
-    transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    mix-blend-mode: difference;
-} */
-
 .page-enter-active,
 .page-leave-active {
     transition: all 0.4s;
@@ -202,43 +191,4 @@ body {
         border-top-right-radius: 50%;
     }
 }
-/* HTML: <div class="loader"></div> */
-/* .loader {
-    width: 75px;
-    aspect-ratio: 1;
-    display: grid;
-}
-.loader:before,
-.loader:after {
-    content: '';
-    grid-area: 1/1;
-    width: 35px;
-    aspect-ratio: 1;
-    box-shadow: 0 0 0 3px #fff inset;
-    filter: drop-shadow(40px 40px 0 #fff);
-    animation: l8 2s infinite alternate;
-}
-.loader:after {
-    margin: 0 0 0 auto;
-    filter: drop-shadow(-40px 40px 0 #fff);
-    animation-delay: -1s;
-}
-@keyframes l8 {
-    0%,
-    10% {
-        border-radius: 0;
-    }
-    30%,
-    40% {
-        border-radius: 50% 0;
-    }
-    60%,
-    70% {
-        border-radius: 50%;
-    }
-    90%,
-    100% {
-        border-radius: 0 50%;
-    }
-} */
 </style>
