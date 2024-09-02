@@ -3,10 +3,11 @@ const state = reactive({
 })
 
 export const useCategories = () => {
+    const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
     async function fetchCategories() {
         const storyblokApi = useStoryblokApi()
         const { data } = await storyblokApi.get('cdn/stories/', {
-            version: 'published',
+            version: isPreview ? 'draft' : 'published',
             starts_with: 'categories/',
             is_startpage: false,
         })
