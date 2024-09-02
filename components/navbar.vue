@@ -24,7 +24,6 @@
             >
                 <li>
                     <NuxtLink
-                        activeClass="text-secondary underline underline-offset-4"
                         @click.prevent="goTo('#home')"
                         to="/"
                         class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
