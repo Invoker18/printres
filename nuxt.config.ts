@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
 
-    ssr: process.env.NODE_ENV === 'production' ? true : false,
+    ssr: process.env.NUXT_NODE_ENV === 'production' ? true : false,
 
     site: {
         url: 'https://printres.vercel.app',
@@ -34,7 +34,6 @@ export default defineNuxtConfig({
         // enables nuxt-delay-hydration in dev mode for testing
         // NOTE: you should disable this once you've finished testing, it will break HMR
         // enables nuxt-delay-hydration in dev mode for testing
-        debug: process.env.NODE_ENV === 'development',
         mode: 'init',
     },
 
@@ -85,7 +84,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            NODE_ENV: process.env.NODE_ENV,
+            NODE_ENV: process.env.NUXT_NODE_ENV,
         },
     },
 

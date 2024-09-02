@@ -27,7 +27,7 @@
                         <NuxtImg
                             format="webp"
                             loading="lazy"
-                            src="images/shapes/eventsShape.png"
+                            src="/images/shapes/eventsShape.png"
                             id="shape"
                             alt="Events Shape"
                             width="180"

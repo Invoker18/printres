@@ -12,7 +12,6 @@
                 :key="vector"
                 class="hover-cursor"
             >
-                <!-- <img :src="vector" alt="" class="object-contain" /> -->
                 <NuxtImg
                     :src="`/images/shapes/Vector${vector}.png`"
                     width="150"

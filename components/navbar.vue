@@ -75,8 +75,8 @@
                     @click="openModal()"
                     :src="
                         route.path === '/'
-                            ? `images/shapes/3oscuro.svg`
-                            : 'images/shapes/3hueso.svg'
+                            ? `/images/shapes/3oscuro.svg`
+                            : '/images/shapes/3hueso.svg'
                     "
                     alt="Contact Button"
                     class="hover-cursor size-10 cursor-pointer"
