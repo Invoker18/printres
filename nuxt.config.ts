@@ -111,7 +111,6 @@ export default defineNuxtConfig({
             'navigation',
             'pagination',
             'thumbs',
-            'zoom',
         ], // all modules are imported by default
     },
 
