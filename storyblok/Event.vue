@@ -1,6 +1,6 @@
 <template>
     <div class="text-primary-950 relative z-20 min-h-screen bg-gray-200 pt-24">
-        <div class="mx-auto space-y-5 px-5 py-5 pb-10 2xl:px-80">
+        <div class="mx-auto space-y-5 px-5 py-5 pb-10 xl:px-10 2xl:px-80">
             <div class="flex items-center justify-between gap-3 md:gap-10">
                 <div class="flex flex-col">
                     <h4 class="text-3xl">
@@ -39,16 +39,16 @@
                         swiper: thumbsSwiper,
                     }"
                     :modules="[SwiperThumbs]"
-                    class="h-fit w-full min-w-0 rounded-md md:h-full"
+                    class="w-full min-w-0 rounded-md"
                 >
                     <SwiperSlide v-for="image in blok.Slider" :key="image.id">
                         <NuxtImg
                             placeholder
                             provider="storyblok"
                             :src="image.filename"
-                            width="1200"
                             sizes="100vw sm:50vw md:800px xl:1200px"
-                            class="hover-cursor2 max-h-[600px] select-none rounded-md object-cover"
+                            quality="80"
+                            class="hover-cursor2 h-full max-h-72 w-full select-none rounded-md object-contain sm:max-h-96 sm:object-cover lg:max-h-[40rem]"
                         />
                         <p class="mt-3 hidden w-full md:block">
                             {{ image.title }}
@@ -72,7 +72,7 @@
                     }"
                     :navigation="true"
                     :modules="[SwiperThumbs, SwiperFreeMode, SwiperNavigation]"
-                    class="grid h-full max-h-60 w-full min-w-0 grid-rows-2 overflow-auto rounded-md sm:max-h-[40rem] md:w-[40%]"
+                    class="grid h-full w-full min-w-0 grid-rows-2 rounded-md sm:max-h-96 md:w-[40%] lg:max-h-[40rem]"
                 >
                     <SwiperSlide v-for="image in blok.Slider" :key="image.id">
                         <NuxtImg
@@ -80,10 +80,8 @@
                             provider="storyblok"
                             quality="50"
                             :src="image.filename"
-                            width="400"
-                            :height="width > 640 ? '250' : '300'"
                             sizes="100vw sm:50vw md:300px xl:400px"
-                            class="hover-cursor select-none rounded-md object-cover"
+                            class="hover-cursor h-full max-h-32 w-full select-none rounded-md object-cover sm:max-h-40 md:max-h-56"
                         />
                     </SwiperSlide>
                 </Swiper>

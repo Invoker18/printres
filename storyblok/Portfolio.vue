@@ -80,13 +80,11 @@
                     :src="work.filename"
                     provider="storyblok"
                     :alt="work.alt"
-                    placeholder
-                    width="600"
-                    height="400"
-                    sizes="100vh sm:50vw md:400px xl:600px"
+                    :placeholder="[50, 25, 10, 5]"
+                    sizes="100vw sm:50vw md:400px xl:600px"
                     format="webp"
-                    quality="80"
-                    class="hover-cursor rounded-md object-cover hover:cursor-pointer"
+                    quality="50"
+                    class="hover-cursor h-48 w-full rounded-md object-cover hover:cursor-pointer md:h-60"
                     @click="showImage(work)"
                 />
             </div>
@@ -151,21 +149,23 @@
                 width: 'w-full max-w-xl sm:max-w-xl md:max-w-screen-md lg:max-w-screen-lg',
                 padding: 'sm:p-4 md:p-8',
                 shadow: 'shadow-xl shadow-gray-800',
+                background: 'bg-primary-950 dark:bg-primary-950',
             }"
             v-model="isOpen"
         >
             <NuxtImg
+                @load="imageIsLoaded = true"
                 loading="lazy"
                 :src="currentImg.filename"
                 provider="storyblok"
                 format="webp"
-                alt=""
+                :alt="currentImg.alt"
+                :placeholder="[50, 25, 10, 5]"
                 width="1024"
-                height="768"
-                placeholder
-                class="hover-cursor max-h-[40rem] rounded-md object-cover"
+                quality="80"
+                class="hover-cursor rounded-md max-h-[70vh] object-cover"
             />
-            <span class="p-2">{{
+            <span v-if="imageIsLoaded" class="p-2">{{
                 currentImg.alt.length ? currentImg.alt : 'Title'
             }}</span>
         </UModal>
@@ -184,6 +184,8 @@ const route: any = useRoute()
 const router: any = useRouter()
 const { categories, fetchCategories }: any = useCategories()
 await fetchCategories()
+
+const imageIsLoaded = ref(false)
 
 const page = ref<number>(+route.query.page)
 const perPage = ref(16)
@@ -224,6 +226,10 @@ const showImage = (img: object) => {
     currentImg.value = img
     isOpen.value = true
 }
+
+watch(isOpen, () => {
+    if (!isOpen.value) imageIsLoaded.value = false
+})
 
 const prev = () => {
     if (page.value === 1) {

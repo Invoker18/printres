@@ -33,7 +33,8 @@ export default defineNuxtConfig({
     delayHydration: {
         // enables nuxt-delay-hydration in dev mode for testing
         // NOTE: you should disable this once you've finished testing, it will break HMR
-        // debug: process.env.NODE_ENV === 'development',
+        // enables nuxt-delay-hydration in dev mode for testing
+        debug: process.env.NODE_ENV === 'development',
         mode: 'init',
     },
 
