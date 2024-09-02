@@ -4,8 +4,6 @@
             :to="`/${slug}`"
             class="overflow-hidden rounded-md border border-gray-300"
         >
-            <!-- :src="`https://picsum.photos/1920/1080?random=${event?.id}`" -->
-
             <NuxtImg
                 v-if="event.Slider && event.Slider.length"
                 provider="storyblok"
