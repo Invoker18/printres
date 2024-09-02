@@ -12,7 +12,7 @@
                 :key="vector"
                 class="hover-cursor"
             >
-                <NuxtImg
+                <!-- <NuxtImg
                     :src="`/images/shapes/Vector${vector}.png`"
                     width="150"
                     height="150"
@@ -20,7 +20,7 @@
                     preload
                     format="webp"
                     alt="Hero Shapes"
-                ></NuxtImg>
+                ></NuxtImg> -->
             </div>
         </div>
     </div>
