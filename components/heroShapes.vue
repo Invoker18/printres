@@ -7,17 +7,15 @@
             id="vectors"
         >
             <div
-                v-memo="[vector]"
                 v-for="vector in vectorsComputed"
                 :key="vector"
                 class="hover-cursor"
             >
                 <NuxtImg
-                    :src="`/images/shapes/Vector${vector}.png`"
+                    :src="`/images/shapes/vector${vector}.png`"
                     width="150"
                     height="150"
                     fit="inside"
-                    preload
                     format="webp"
                     alt="Hero Shapes"
                 ></NuxtImg>
