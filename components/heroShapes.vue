@@ -7,12 +7,65 @@
             id="vectors"
         >
             <div
-                v-for="vector in vectorsComputed"
-                :key="vector"
+                
                 class="hover-cursor"
             >
+                <!-- <NuxtImg
+                    :src="`/images/shapes/vector${vector}.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg> -->
                 <NuxtImg
-                    :src="getUrl(vector)"
+                    :src="`/images/shapes/vector1.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg>
+                <NuxtImg
+                    :src="`/images/shapes/vector2.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg>
+                <NuxtImg
+                    :src="`/images/shapes/vector3.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg>
+                <NuxtImg
+                    :src="`/images/shapes/vector4.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg>
+                <NuxtImg
+                    :src="`/images/shapes/vector5.png`"
+                    width="150"
+                    height="150"
+                    fit="inside"
+                    preload
+                    format="webp"
+                    alt="Hero Shapes"
+                ></NuxtImg>
+                <NuxtImg
+                    :src="`/images/shapes/vector6.png`"
                     width="150"
                     height="150"
                     fit="inside"
@@ -38,10 +91,6 @@ watch(width, () => {
     if (width.value < 1280) return (vectorsComputed.value = [1, 2, 3, 6, 4, 5])
     return (vectorsComputed.value = [1, 2, 3, 4, 5, 6, 7, 8, 9])
 })
-
-const getUrl = (vector: any) => {
-    return 'images/shapes/Vector' + vector + '.png'
-}
 
 onMounted(() => {
     if (width.value < 900) vectorsComputed.value = [1, 6, 3]
