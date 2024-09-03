@@ -7,7 +7,7 @@
                 'bg-primary-950/60 dark:bg-primary-950/60 backdrop-blur-md',
         }"
     >
-        <div class="flex h-full flex-col gap-10 p-5 pb-10" >
+        <div class="flex h-full flex-col gap-10 p-5 pb-10">
             <div class="flex items-center justify-between">
                 <NuxtImg
                     format="webp"
@@ -66,13 +66,20 @@
                             page: 1,
                         },
                     }"
+                    activeClass="text-secondary font-semibold"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     @click="slideover.close()"
                     >Trabajos</NuxtLink
                 >
                 <NuxtLink
                     to="/all-events"
+                    activeClass="text-secondary font-semibold"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
+                    :class="
+                        route.params.slug[0] === 'events'
+                            ? 'text-secondary underline underline-offset-4'
+                            : ''
+                    "
                     @click="slideover.close()"
                     >Eventos</NuxtLink
                 >

@@ -1,10 +1,14 @@
 <template>
     <div>
         <TresCanvas
-            preset="realistic"
             window-size
+            shadows
+            clearColor="#0091dc"
+            :outputColorSpace="SRGBColorSpace"
+            :toneMapping="ACESFilmicToneMapping"
+            :toneMappingExposure="3"
             power-preference="high-performance"
-            class="relative"
+            class="relative z-30"
         >
             <TresPerspectiveCamera
                 ref="camera"
@@ -15,31 +19,18 @@
                 :far="100"
                 :lookAt="[0, 2, 0]"
             />
-            <!-- <OrbitControls :enable-zoom="false" /> -->
 
-            <ContactShadows :blur="0.5" :resolution="512" :opacity="0.2" />
-
-                        <TresAmbientLight :intensity="1" />
             <TresDirectionalLight
-                cast-shadow
                 :position="[0, 10, 0]"
-                :intensity="0.5"
+                cast-shadow
+                :intensity="1"
             />
+            <TresAmbientLight :intensity="0.5" />
 
             <Suspense>
-                <TexturedBall2></TexturedBall2>
+                <TexturedBall></TexturedBall>
             </Suspense>
 
-            <!-- ORANGE SPHERE -->
-            <!-- <TresMesh
-                ref="sphereRef"
-                cast-shadow
-                :position="[0, 2, 0]"
-                class="relative z-50"
-            >
-                <TresSphereGeometry :args="[0.5, 32, 32]" />
-                <TresMeshPhongMaterial color="#f87c56" />
-            </TresMesh> -->
             <!-- CIRCLE TO SPHERE -->
             <TresMesh :position="[0, 1, 0]" :rotation="[1.655, 0, 0]">
                 <TresCircleGeometry :args="[1, 32]"></TresCircleGeometry>
@@ -62,13 +53,12 @@
                     color="#051bd2"
                 ></TresMeshPhongMaterial>
             </TresMesh>
-            <!-- PLANE -->
             <TresMesh
                 receive-shadow
                 :position="[0, 0, 0]"
                 :rotation="[-Math.PI / 2, 0, 0]"
             >
-                <TresPlaneGeometry :args="[20, 20, 1, 1]" />
+                <TresPlaneGeometry :args="[50, 10, 1, 1]" />
                 <TresMeshStandardMaterial color="#001489" />
             </TresMesh>
         </TresCanvas>
@@ -76,8 +66,7 @@
 </template>
 
 <script lang="ts" setup>
-import { OrbitControls, Smoke, Stats, ContactShadows } from '@tresjs/cientos'
-import { DoubleSide, BackSide } from 'three'
+import { ACESFilmicToneMapping, DoubleSide, SRGBColorSpace } from 'three'
 
 // Half a sphere
 const phiStart = ref(0)
