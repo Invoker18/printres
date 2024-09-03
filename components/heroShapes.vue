@@ -6,16 +6,7 @@
             class="grid shrink-0 select-none grid-cols-1 grid-rows-3 px-10 min-[900px]:grid-cols-2 xl:grid-cols-3 2xl:px-20"
             id="vectors"
         >
-            <NuxtImg
-                src="/images/shapes/vector1.png"
-                width="150"
-                height="150"
-                fit="inside"
-                preload
-                format="webp"
-                alt="Hero Shapes"
-            ></NuxtImg>
-            <!-- <div
+            <div
                 v-for="vector in vectorsComputed"
                 :key="vector"
                 class="hover-cursor"
@@ -25,11 +16,10 @@
                     width="150"
                     height="150"
                     fit="inside"
-                    preload
                     format="webp"
                     alt="Hero Shapes"
                 ></NuxtImg>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
