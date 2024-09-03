@@ -5,7 +5,7 @@
         class="hover-cursor bottom-0 grid h-full select-none place-content-center bg-curious-blue-600 px-5 py-24 pt-32 sm:sticky sm:h-screen sm:py-0 sm:pt-0"
         id="contactContainer"
     >
-        <div class="relative z-40 -mt-20 w-full max-w-xl">
+        <div class="relative z-40 -mt-8 sm:-mt-20 w-full max-w-xl">
             <div
                 class="mx-auto flex h-fit w-full max-w-xl flex-col gap-5 rounded-md"
             >
@@ -44,7 +44,9 @@
         <div class="hidden md:block">
             <LazyThreejs v-if="y > 1200" />
         </div>
-        <!-- <ThreejsMobile class="block md:hidden"></ThreejsMobile> -->
+        <!-- <div class="block md:hidden">
+            <LazyThreejsMobile v-if="y > 1000" />
+        </div> -->
     </div>
 </template>
 

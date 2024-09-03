@@ -58,7 +58,12 @@
                 <li>
                     <NuxtLink
                         activeClass="text-secondary underline underline-offset-4"
-                        to="/all-events"
+                        :to="{
+                            path: '/all-events',
+                            query: {
+                                page: 1,
+                            },
+                        }"
                         class="hover:scale-105 hover:cursor-pointer hover:text-secondary"
                         :class="
                             route.params.slug[0] === 'events'

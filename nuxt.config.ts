@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
     devtools: { enabled: true },
 
     ssr: process.env.NODE_ENV === 'production' ? true : false,
@@ -10,6 +9,10 @@ export default defineNuxtConfig({
         name: 'Mejor Imprenta de Panama',
         description: 'Bienvenidos a la mejor imprenta de toda Panama!',
         defaultLocale: 'es', // not needed if you have @nuxtjs/i18n installed
+    },
+
+    tres: {
+        devtools: true,
     },
 
     ogImage: {

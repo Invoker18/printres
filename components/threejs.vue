@@ -2,11 +2,12 @@
     <TresCanvas
         window-size
         shadows
+        clearColor="#0091dc"
         :outputColorSpace="SRGBColorSpace"
         :toneMapping="ACESFilmicToneMapping"
         :toneMappingExposure="3"
         power-preference="high-performance"
-        class="relative z-50"
+        class="relative z-30"
     >
         <TresPerspectiveCamera
             :position="[0, 3, 10]"
@@ -26,6 +27,7 @@
         />
         <TresAmbientLight :intensity="0.5" />
 
+        <!-- ORANGE BALL -->
         <Suspense>
             <TexturedBall></TexturedBall>
         </Suspense>
@@ -101,7 +103,7 @@
     </TresCanvas>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ACESFilmicToneMapping, DoubleSide, SRGBColorSpace } from 'three'
 // Half a sphere
 const phiStart = ref(0)
