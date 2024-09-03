@@ -40,7 +40,7 @@ watch(width, () => {
 })
 
 const getUrl = (vector: any) => {
-    return '/images/shapes/Vector' + vector + '.png'
+    return 'images/shapes/Vector' + vector + '.png'
 }
 
 onMounted(() => {
