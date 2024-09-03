@@ -6,11 +6,21 @@
             class="grid shrink-0 select-none grid-cols-1 grid-rows-3 px-10 min-[900px]:grid-cols-2 xl:grid-cols-3 2xl:px-20"
             id="vectors"
         >
-            <div
-                
+            <NuxtImg
+                src="/images/shapes/vector1.png"
+                width="150"
+                height="150"
+                fit="inside"
+                preload
+                format="webp"
+                alt="Hero Shapes"
+            ></NuxtImg>
+            <!-- <div
+                v-for="vector in vectorsComputed"
+                :key="vector"
                 class="hover-cursor"
             >
-                <!-- <NuxtImg
+                <NuxtImg
                     :src="`/images/shapes/vector${vector}.png`"
                     width="150"
                     height="150"
@@ -18,62 +28,8 @@
                     preload
                     format="webp"
                     alt="Hero Shapes"
-                ></NuxtImg> -->
-                <NuxtImg
-                    :src="`/images/shapes/vector1.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
                 ></NuxtImg>
-                <NuxtImg
-                    :src="`/images/shapes/vector2.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
-                ></NuxtImg>
-                <NuxtImg
-                    :src="`/images/shapes/vector3.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
-                ></NuxtImg>
-                <NuxtImg
-                    :src="`/images/shapes/vector4.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
-                ></NuxtImg>
-                <NuxtImg
-                    :src="`/images/shapes/vector5.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
-                ></NuxtImg>
-                <NuxtImg
-                    :src="`/images/shapes/vector6.png`"
-                    width="150"
-                    height="150"
-                    fit="inside"
-                    preload
-                    format="webp"
-                    alt="Hero Shapes"
-                ></NuxtImg>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
