@@ -2,10 +2,11 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
 
-    ssr: process.env.NODE_ENV === 'production' ? true : false,
+    // ssr: process.env.NODE_ENV === 'production' ? true : false,
+    ssr: true,
 
     site: {
-        url: 'https://printres.vercel.app',
+        url: process.env.NODE_ENV === 'production' ? 'https://printres.vercel.app': 'https://localhost:3000',
         name: 'Mejor Imprenta de Panama',
         description: 'Bienvenidos a la mejor imprenta de toda Panama!',
         defaultLocale: 'es', // not needed if you have @nuxtjs/i18n installed
@@ -13,10 +14,6 @@ export default defineNuxtConfig({
 
     tres: {
         devtools: true,
-    },
-
-    ogImage: {
-        enabled: false,
     },
 
     css: ['~/assets/css/main.css'],

@@ -1,8 +1,6 @@
 <template>
     <div
-        v-if="blok"
         v-editable="blok"
-        id="jobs"
         class="text-primary-950 relative z-20 h-full w-full bg-gray-200 pt-24"
     >
         <div
@@ -36,7 +34,7 @@
                             :key="category.id"
                             class="hover-cursor flex gap-1 rounded-full px-3 py-1.5 transition-all duration-300 ease-linear hover:cursor-pointer"
                             :class="
-                                activeCategory.uuid === category.uuid
+                                activeCategory?.uuid === category.uuid
                                     ? 'bg-curious-blue-500 text-white shadow-inner shadow-curious-blue-800'
                                     : 'border-primary-950 border'
                             "
@@ -98,7 +96,7 @@
                 :max="5"
                 v-model="page"
                 :page-count="perPage"
-                :total="activeWorks.length"
+                :total="activeWorks?.length ?? 0"
                 :active-button="{
                     color: 'curious-blue',
                     class: 'text-gray-200 dark:text-gray-200 font-bold',
@@ -163,7 +161,7 @@
                 :placeholder="[50, 25, 10, 5]"
                 width="1024"
                 quality="80"
-                class="hover-cursor rounded-md max-h-[70vh] object-cover"
+                class="hover-cursor max-h-[70vh] rounded-md object-cover"
             />
             <span v-if="imageIsLoaded" class="p-2">{{
                 currentImg.alt.length ? currentImg.alt : 'Title'
@@ -173,6 +171,8 @@
 </template>
 
 <script lang="ts" setup>
+const { categories, fetchCategories } = useCategories()
+await fetchCategories()
 const props = defineProps({
     blok: {
         type: Object,
@@ -182,8 +182,6 @@ const props = defineProps({
 
 const route: any = useRoute()
 const router: any = useRouter()
-const { categories, fetchCategories }: any = useCategories()
-await fetchCategories()
 
 const imageIsLoaded = ref(false)
 
@@ -192,11 +190,12 @@ const perPage = ref(16)
 const currentImg: any = ref({})
 const isOpen = ref(false)
 
-const activeWorks = computed(() => {
-    const data = props.blok.Categories.find(
-        (value: any) => value.Category === route.query.category
+const activeWorks: any = computed(() => {
+    return (
+        props.blok.Categories.find(
+            (value: any) => value.Category === route.query.category
+        )?.ImagesContainer ?? []
     )
-    return data.ImagesContainer
 })
 
 const totalPages = computed(() => {
