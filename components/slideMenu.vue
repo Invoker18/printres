@@ -72,7 +72,12 @@
                     >Trabajos</NuxtLink
                 >
                 <NuxtLink
-                    to="/all-events"
+                    :to="{
+                        path: '/all-events',
+                        query: {
+                            page: 1,
+                        },
+                    }"
                     activeClass="text-secondary font-semibold"
                     class="hover-cursor w-full border-b py-6 text-right transition-all duration-300 ease-linear focus-within:outline-none hover:text-secondary"
                     :class="

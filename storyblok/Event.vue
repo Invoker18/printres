@@ -1,17 +1,20 @@
 <template>
-    <div class="text-primary-950 relative z-20 min-h-screen bg-gray-200 pt-24">
-        <div class="mx-auto space-y-5 px-5 py-5 pb-10 xl:px-10 2xl:px-80">
+    <div class="text-primary-950 relative z-20 bg-gray-200 pt-24">
+        <div class="mx-auto space-y-5 px-5 py-5 pb-10 xl:px-10 2xl:px-56">
             <div class="flex items-center justify-between gap-3 md:gap-10">
                 <div class="flex flex-col">
                     <h4 class="text-3xl">
                         {{ blok.Title }}
                     </h4>
-                    <p class="text-sm italic text-gray-800">
-                        {{
-                            new Date(blok.Date).toLocaleString('es-ES', {
-                                dateStyle: 'long',
-                            })
-                        }}
+                    <p class="text-sm text-gray-800">
+                        {{ blok.Location }} -
+                        <span class="italic">
+                            {{
+                                new Date(blok.Date).toLocaleString('es-ES', {
+                                    dateStyle: 'long',
+                                })
+                            }}
+                        </span>
                     </p>
                     <p class="mt-3 hidden text-gray-800 md:block">
                         {{ blok.Description }}
@@ -46,9 +49,9 @@
                             placeholder
                             provider="storyblok"
                             :src="image.filename"
-                            sizes="100vw sm:50vw md:800px xl:1200px"
-                            quality="80"
-                            class="hover-cursor2 h-full max-h-72 w-full select-none rounded-md object-contain sm:max-h-96 sm:object-cover lg:max-h-[40rem]"
+                            sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
+                            quality="90"
+                            class="hover-cursor2 h-full max-h-72 w-full select-none rounded-md object-cover sm:max-h-96 sm:object-cover lg:max-h-[32rem] 2xl:max-h-[36rem]"
                         />
                         <p class="mt-3 hidden w-full md:block">
                             {{ image.title }}
@@ -72,7 +75,7 @@
                     }"
                     :navigation="true"
                     :modules="[SwiperThumbs, SwiperFreeMode, SwiperNavigation]"
-                    class="grid h-full w-full min-w-0 grid-rows-2 rounded-md sm:max-h-96 md:w-[40%] lg:max-h-[40rem]"
+                    class="grid h-full w-full min-w-0 grid-rows-2 rounded-md sm:max-h-96 md:w-[40%] lg:max-h-[32rem] 2xl:max-h-[36rem]"
                 >
                     <SwiperSlide v-for="image in blok.Slider" :key="image.id">
                         <NuxtImg
