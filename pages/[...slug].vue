@@ -11,8 +11,6 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-const config = useRuntimeConfig()
-
 const { slug }: any = useRoute().params
 const url = slug && slug.length > 0 ? slug.join('/') : 'home'
 
@@ -33,6 +31,19 @@ if (!isPreview) {
         showError({ statusCode: 404, statusMessage: 'Page Not Found' })
     }
 }
+console.log(story.value, 'story')
+
+defineOgImageComponent('MyTemplate', {
+    title: story.value.name,
+    description: story.value.content.description ?? 'Impresion sin limites',
+    headline: 'Printres',
+})
+
+// defineOgImageComponent('Nuxt', {
+//   headline: 'Greetings',
+//   title: 'Hello OG Image 👋',
+//   description: 'Look what at me using the Nuxt template',
+// })
 
 // const { slug } = useRoute().params as any
 
