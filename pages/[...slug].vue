@@ -14,7 +14,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 const { slug }: any = useRoute().params
 const url = slug && slug.length > 0 ? slug.join('/') : 'home'
 
-const isPreview = useRuntimeConfig().public.NODE_ENV_VERCEL !== 'production'
+const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
 
 const { data: story, status } = await useAsyncData(`${url}`, async () => {
     const { data } = await useStoryblokApi().get(
