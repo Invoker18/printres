@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
 
-    ssr: process.env.NODE_ENV_VERCEL === 'production' ? true : false,
+    ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
+
     // ssr: true,
 
     site: {
@@ -85,7 +86,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            NODE_ENV: process.env.NODE_ENV_VERCEL,
+            NODE_ENV: process.env.NODE_ENV,
         },
     },
 
