@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
 
-    // ssr: process.env.NODE_ENV === 'production' ? true : false,
-    ssr: true,
+    ssr: process.env.NODE_ENV_VERCEL === 'production' ? true : false,
+    // ssr: true,
 
     site: {
         url: process.env.NODE_ENV_VERCEL === 'production' ? 'https://printres.com.app': 'https://localhost:3000',
