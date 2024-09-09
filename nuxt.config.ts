@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     // ssr: true,
 
     site: {
-        url: process.env.NODE_ENV_VERCEL === 'production' ? 'https://printres.com.app': 'https://localhost:3000',
+        url: process.env.NODE_ENV_VERCEL === 'production' ? 'https://printres.com.pa': 'https://localhost:3000',
         name: 'Mejor Imprenta de Panama',
         description: 'Bienvenidos a la mejor imprenta de toda Panama!',
         defaultLocale: 'es', // not needed if you have @nuxtjs/i18n installed
