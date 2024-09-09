@@ -85,7 +85,7 @@ export default defineNuxtConfig({
         // Public keys that are exposed to the client
         public: {
             RECAPTCHA_SITE_KEY: process.env.PUBLIC_RECAPTCHA,
-            NODE_ENV: process.env.NODE_ENV,
+            NODE_ENV: process.env.NODE_ENV_VERCEL,
         },
     },
 
