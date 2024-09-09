@@ -6,16 +6,6 @@ export default defineNuxtConfig({
 
     // ssr: true,
 
-    security: {
-        headers: {
-            crossOriginEmbedderPolicy:
-                process.env.NODE_ENV === 'development'
-                    ? 'unsafe-none'
-                    : 'require-corp',
-            xFrameOptions: 'SAMEORIGIN',
-        },
-    },
-
     site: {
         url:
             process.env.NODE_ENV_VERCEL === 'production'
@@ -43,7 +33,6 @@ export default defineNuxtConfig({
         '@nuxtjs/seo',
         'nuxt-delay-hydration',
         '@nuxtjs/google-fonts',
-        'nuxt-security',
     ],
 
     delayHydration: {

@@ -26,7 +26,6 @@
         "lenis": "^1.1.3",
         "nuxt": "^3.12.1",
         "nuxt-delay-hydration": "^1.3.6",
-        "nuxt-security": "^2.0.0-rc.9",
         "nuxt-swiper": "^1.2.2",
         "three": "^0.166.1",
         "vue": "^3.4.27",
