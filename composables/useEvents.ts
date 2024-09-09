@@ -3,7 +3,7 @@ const state = reactive({
 })
 
 export const useEvents = () => {
-    const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
+    const isPreview = useRuntimeConfig().public.NODE_ENV_VERCEL !== 'production'
     async function fetchEvents() {
         const storyblokApi = useStoryblokApi()
         const { data } = await storyblokApi.get('cdn/stories/', {
