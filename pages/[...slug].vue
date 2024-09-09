@@ -30,14 +30,14 @@ if (!isPreview) {
     if (!story.value) {
         showError({ statusCode: 404, statusMessage: 'Page Not Found' })
     }
+
+    defineOgImageComponent('MyTemplate', {
+        title: story.value.name,
+        description: story.value.content.description ?? 'Impresion sin limites',
+        headline: 'Printres',
+    })
 }
 console.log(story.value, 'story')
-
-defineOgImageComponent('MyTemplate', {
-    title: story.value.name,
-    description: story.value.content.description ?? 'Impresion sin limites',
-    headline: 'Printres',
-})
 
 // defineOgImageComponent('Nuxt', {
 //   headline: 'Greetings',
