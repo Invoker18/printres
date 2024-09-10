@@ -23,12 +23,23 @@ export default defineEventHandler(async (event) => {
 
     if (!isValid.success) throw new Error(isValid['error-codes'][0])
 
-    sendMail({
-        to: 'omarmendez@printres.com',
-        from: body.from,
-        subject: body.subject,
-        text: body.text,
-    })
+    try {
+        console.log(body, 'body')
+        sendMail({
+            from: body.from,
+            to: 'contacto@printres.com.pa',
+            subject: body.subject,
+            text: `
+                Nombre: ${body.subject},
+                Correo: ${body.from},
+                Mensaje: ${body.text},
+            `,
+        })
+    } catch (error) {
+        console.log(error, 'error')
+        throw error
+    }
+
     return {
         success: true,
         message:
