@@ -95,11 +95,12 @@ export default defineNuxtConfig({
     },
 
     nodemailer: {
-        host: 'smtp.ethereal.email',
-        port: 587,
-        // secure: true,
+        service: 'Gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
-            user: 'keaton72@ethereal.email',
+            user: 'admin@printres.com.pa',
             pass: process.env.MAIL_PASSWORD,
         },
     },
