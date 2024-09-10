@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
         }
     )
 
+    console.log(isValid, 'isValid')
     if (!isValid.success) throw new Error(isValid['error-codes'][0])
 
     try {
