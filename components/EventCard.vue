@@ -41,7 +41,7 @@ const props = defineProps({
     slug: String,
 })
 
-const cover = ref(props.event.Slider[0])
+const cover = ref(props.event?.Slider?.[0])
 </script>
 
 <style></style>

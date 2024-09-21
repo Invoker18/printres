@@ -126,16 +126,24 @@ const route: any = useRoute()
 const router: any = useRouter()
 
 const page = ref<number>(+route.query.page)
-const perPage = ref(16)
+const perPage = ref(12)
 
 const totalPages = computed(() => {
     return Math.ceil(events.value.length / perPage.value)
 })
 
+const filterEvents = computed(() => {
+    return events.value.sort((a, b) => {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.content.Date) - new Date(a.content.Date)
+    })
+})
+
 const paginatedData = computed(() => {
     const from = route.query.page * perPage.value - perPage.value
     const to = route.query.page * perPage.value
-    return events.value?.slice(from, to)
+    return filterEvents.value?.slice(from, to)
 })
 
 const prev = () => {
