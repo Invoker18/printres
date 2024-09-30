@@ -133,10 +133,12 @@ const totalPages = computed(() => {
 })
 
 const filterEvents = computed(() => {
-    return events.value.sort((a, b) => {
+    return events.value.sort((a: any, b: any) => {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
-        return new Date(b.content.Date) - new Date(a.content.Date)
+        let date1: any = new Date(b.content.Date)
+        let date2: any = new Date(a.content.Date)
+        return date1 - date2
     })
 })
 
