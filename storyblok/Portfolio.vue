@@ -147,7 +147,7 @@
                 width: 'w-full max-w-xl sm:max-w-xl md:max-w-screen-md lg:max-w-screen-lg',
                 padding: 'sm:p-4 md:p-8',
                 shadow: 'shadow-xl shadow-gray-800',
-                background: 'bg-primary-950 dark:bg-primary-950',
+                background: 'bg-gray-900 dark:bg-gray-900',
             }"
             v-model="isOpen"
         >
@@ -161,11 +161,13 @@
                 :placeholder="[50, 25, 10, 5]"
                 width="1024"
                 quality="80"
-                class="hover-cursor max-h-[70vh] rounded-md object-cover"
+                class="hover-cursor max-h-[70vh] rounded-md object-contain"
             />
-            <span v-if="imageIsLoaded" class="p-2">{{
-                currentImg.alt.length ? currentImg.alt : 'Title'
-            }}</span>
+            <span
+                v-if="imageIsLoaded && currentImg.alt.length"
+                class="absolute w-full bg-gray-900/70 text-xl p-2 text-center"
+                >{{ currentImg.alt.length ? currentImg.alt : 'Titulo' }}</span
+            >
         </UModal>
     </div>
 </template>

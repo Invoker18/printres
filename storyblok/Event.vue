@@ -35,25 +35,31 @@
             <hr class="border-primary-950 border-[1.5px]" />
             <div class="flex flex-col gap-3 overflow-hidden md:flex-row">
                 <Swiper
+                    id="swiper1"
                     :spaceBetween="10"
                     @slideChange="slideChange"
                     :loop="true"
+                    :zoom="true"
                     :thumbs="{
                         swiper: thumbsSwiper,
                     }"
-                    :modules="[SwiperThumbs]"
+                    :modules="[SwiperThumbs, SwiperZoom]"
                     class="w-full min-w-0 rounded-md"
                 >
                     <SwiperSlide v-for="image in blok.Slider" :key="image.id">
-                        <NuxtImg
-                            placeholder
-                            provider="storyblok"
-                            :src="image.filename"
-                            sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
-                            quality="90"
-                            class="hover-cursor2 h-full max-h-72 w-full select-none rounded-md object-cover sm:max-h-96 sm:object-cover lg:max-h-[32rem] 2xl:max-h-[36rem]"
-                        />
-                        <p class="mt-3 hidden w-full md:block">
+                        <div
+                            class="swiper-zoom-container rounded-md bg-gray-300"
+                        >
+                            <NuxtImg
+                                placeholder
+                                provider="storyblok"
+                                :src="image.filename"
+                                sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
+                                quality="90"
+                                class="hover-cursor2"
+                            />
+                        </div>
+                        <p class="mt-3 hidden w-full text-gray-800 md:block">
                             {{ image.title }}
                         </p>
                     </SwiperSlide>
@@ -84,7 +90,7 @@
                             quality="50"
                             :src="image.filename"
                             sizes="100vw sm:50vw md:300px xl:400px"
-                            class="hover-cursor h-full max-h-32 w-full select-none rounded-md object-cover sm:max-h-40 md:max-h-56"
+                            class="hover-cursor h-full max-h-36 w-full select-none rounded-md object-cover sm:max-h-40 md:max-h-56"
                         />
                     </SwiperSlide>
                 </Swiper>
@@ -191,5 +197,21 @@ onMounted(() => {
 .list-leave-active {
     position: absolute;
     @apply max-h-56;
+}
+
+#swiper1 .swiper-zoom-container {
+    @apply h-[18rem] w-full cursor-zoom-in sm:h-full sm:max-h-96 lg:max-h-[32rem] 2xl:max-h-[36rem];
+}
+
+#swiper1 img {
+    @apply h-[18rem] w-full cursor-zoom-in select-none object-contain sm:h-full sm:max-h-96 lg:max-h-[32rem] 2xl:max-h-[36rem];
+}
+
+.swiper-slide img {
+    @apply h-64;
+}
+
+#swiper1 .swiper-slide-zoomed img {
+    cursor: zoom-out;
 }
 </style>
