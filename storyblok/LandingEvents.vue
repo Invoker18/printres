@@ -105,7 +105,7 @@
                         </button>
                     </div>
                     <p class="hover-cursor text-pretty">
-                        {{ blok.Description }}
+                        {{ blok.Text1 }} 
                     </p>
                     <Swiper
                         :modules="[SwiperPagination, SwiperAutoplay]"

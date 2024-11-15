@@ -17,15 +17,7 @@
                         ></span>
                     </h3>
                     <p class="hover-cursor text-gray-800">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Non saepe dolorum neque similique adipisci quo eveniet
-                        nihil laboriosam optio a, ad vel pariatur facere
-                        repellendus, nemo iste nam qui expedita! Officia
-                        praesentium expedita neque omnis minima dolore quas
-                        corporis aliquid laudantium accusantium deleniti nobis
-                        quos, rem corrupti facilis nulla ullam voluptatem nam
-                        unde possimus fugiat, eum porro. Ab, veritatis
-                        voluptate.
+                        {{ blok.Description }}
                     </p>
                     <ul class="flex flex-wrap gap-3 sm:gap-5">
                         <li
@@ -165,7 +157,7 @@
             />
             <span
                 v-if="imageIsLoaded && currentImg.alt.length"
-                class="absolute w-full bg-gray-900/70 text-xl p-2 text-center"
+                class="absolute w-full bg-gray-900/70 p-2 text-center text-xl"
                 >{{ currentImg.alt.length ? currentImg.alt : 'Titulo' }}</span
             >
         </UModal>

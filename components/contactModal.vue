@@ -125,10 +125,18 @@
                 <!-- </div> -->
             </UForm>
             <ul class="flex justify-start gap-5">
-                <li class="cursor-pointer">LinkedIn</li>
-                <li class="cursor-pointer">Behance</li>
-                <li class="cursor-pointer">Instagram</li>
-                <li class="cursor-pointer">Facebook</li>
+                <NuxtLink
+                    to="https://www.facebook.com/printr3s/?locale=es_LA"
+                    target="_blank"
+                    class="hover-cursor cursor-pointer"
+                    >Facebook</NuxtLink
+                >
+                <NuxtLink
+                    to="https://www.instagram.com/printr3s/?hl=es-la"
+                    target="_blank"
+                    class="hover-cursor cursor-pointer"
+                    >Instagram</NuxtLink
+                >
             </ul>
         </div>
     </UModal>
@@ -222,7 +230,6 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     state.email = ''
     state.message = ''
 }
-
 </script>
 
 <style scoped></style>
