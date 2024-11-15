@@ -13,7 +13,13 @@
                 <hr class="border-secondary" />
                 <div class="hover-cursor">{{ blok.Email }}</div>
                 <hr class="border-curious-blue-600" />
-                <p class="hover-cursor">{{ blok.Address }}</p>
+                <NuxtLink
+                    target="_blank"
+                    class="hover-cursor"
+                    to="https://www.google.com/maps?ll=9.03478,-79.518374&z=16&t=m&hl=es&gl=VE&mapclient=embed&cid=979947255980415739"
+                >
+                    {{ blok.Address }}
+                </NuxtLink>
             </div>
             <div
                 class="mx-auto flex h-[24rem] w-full max-w-5xl gap-2 sm:h-[26rem] md:h-[28rem] xl:h-[32rem] 2xl:h-[36rem] 2xl:max-h-[60vh]"
@@ -46,7 +52,12 @@
             <div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">
                 <div class="flex flex-col">
                     <h5 class="text-lg text-secondary">Direccion</h5>
-                    <p>{{ blok.Address }}</p>
+                    <NuxtLink
+                        target="_blank"
+                        to="https://www.google.com/maps?ll=9.03478,-79.518374&z=16&t=m&hl=es&gl=VE&mapclient=embed&cid=979947255980415739"
+                    >
+                        {{ blok.Address }}
+                    </NuxtLink>
                 </div>
                 <div class="flex flex-col sm:text-right">
                     <h5 class="text-lg text-secondary">Contacto</h5>

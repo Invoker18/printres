@@ -132,7 +132,7 @@ const chatMessage = ref('')
 
 const goToWhatsapp = async () => {
     const url =
-        'https://wa.me/584141946269?' +
+        'https://wa.me/50760395024?' +
         new URLSearchParams({
             text: chatMessage.value,
         })

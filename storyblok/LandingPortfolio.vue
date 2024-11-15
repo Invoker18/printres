@@ -37,15 +37,11 @@
                         />
                     </div>
                     <p class="hover-cursor text-pretty">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dignissimos nam provident illum fugiat. Recusandae non
-                        molestiae cum placeat aliquid magnam omnis amet fugit
-                        perspiciatis ratione, dignissimos consequatur nemo
-                        veniam voluptatum.
+                        {{ blok.description }}
                     </p>
                     <Swiper
                         :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
+                        class="h-full w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
                         :loop="true"
                         :autoplay="{
                             delay: 5000,
@@ -62,19 +58,18 @@
                         <SwiperSlide
                             v-for="image in blok.Slider1"
                             :key="image.id"
-                            class="h-full min-h-60"
                         >
-                            <NuxtImg
-                                format="webp"
-                                loading="lazy"
-                                provider="storyblok"
-                                :src="image.filename"
-                                :alt="image.alt"
-                                width="700"
-                                height="500"
-                                sizes="100vw sm:50vw md:600px  xl:1024px"
-                                class="hover-cursor object-cover"
-                            />
+                            <div class="rounded-md bg-gray-300">
+                                <NuxtImg
+                                    format="webp"
+                                    loading="lazy"
+                                    :src="image.filename"
+                                    :alt="image.alt"
+                                    sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
+                                    class="mx-auto max-h-80 hover-cursor2"
+                                />
+                            </div>
+
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"
                             ></div>
@@ -105,17 +100,18 @@
                             :key="image.id"
                             class="h-full min-h-60"
                         >
-                            <NuxtImg
-                                format="webp"
-                                loading="lazy"
-                                provider="storyblok"
-                                :src="image.filename"
-                                :alt="image.alt"
-                                width="700"
-                                height="500"
-                                sizes="100vw sm:50vw md:600px  xl:1024px"
-                                class="hover-cursor object-cover"
-                            />
+                            <div class="rounded-md bg-gray-300">
+                                <NuxtImg
+                                    format="webp"
+                                    loading="lazy"
+                                    provider="storyblok"
+                                    :src="image.filename"
+                                    :alt="image.alt"
+                                    sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
+                                    class="mx-auto max-h-80 hover-cursor2"
+                                />
+                            </div>
+
                             <div
                                 class="swiper-lazy-preloader swiper-lazy-preloader-white"
                             ></div>

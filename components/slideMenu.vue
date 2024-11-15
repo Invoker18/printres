@@ -96,12 +96,20 @@
                 </li>
             </ul>
             <ul
-                class="mt-auto flex justify-between gap-3 sm:justify-end sm:gap-5"
+                class="mt-auto flex justify-end gap-3 sm:gap-5"
             >
-                <li class="">Facebook</li>
-                <li class="">Instagram</li>
-                <li class="">Whatsapp</li>
-                <li class="">Behance</li>
+                <NuxtLink
+                    to="https://www.facebook.com/printr3s/?locale=es_LA"
+                    target="_blank"
+                    class="hover-cursor cursor-pointer"
+                    >Facebook</NuxtLink
+                >
+                <NuxtLink
+                    to="https://www.instagram.com/printr3s/?hl=es-la"
+                    target="_blank"
+                    class="hover-cursor cursor-pointer"
+                    >Instagram</NuxtLink
+                >
             </ul>
         </div>
     </USlideover>
