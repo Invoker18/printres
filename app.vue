@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <NuxtLoadingIndicator :color="false" class="bg-secondary" :height="4" />
-        <NuxtLayout class="overflow-clip">
+        <NuxtLayout>
             <NuxtPage />
             <WhatsappWidget></WhatsappWidget>
             <UModals></UModals>
@@ -18,6 +18,5 @@
         </NuxtLayout>
     </div>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style></style>

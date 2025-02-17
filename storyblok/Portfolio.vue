@@ -19,24 +19,6 @@
                     <p class="hover-cursor text-gray-800">
                         {{ blok.Description }}
                     </p>
-                    <ul class="flex flex-wrap gap-3 sm:gap-5">
-                        <li
-                            @click="changeCategory(category)"
-                            v-for="category in categories"
-                            :key="category.id"
-                            class="hover-cursor flex gap-1 rounded-full px-3 py-1.5 transition-all duration-300 ease-linear hover:cursor-pointer"
-                            :class="
-                                activeCategory?.uuid === category.uuid
-                                    ? 'bg-curious-blue-500 text-white shadow-inner shadow-curious-blue-800'
-                                    : 'border-primary-950 border'
-                            "
-                        >
-                            <p>{{ category.name }}</p>
-                        </li>
-                    </ul>
-                    <!-- <p class="hover-cursor text-gray-800">
-                        {{ activeCategory.content.Description }}
-                    </p> -->
                 </div>
                 <div class="mx-auto 2xl:mx-0 2xl:ml-auto">
                     <NuxtImg
@@ -71,9 +53,9 @@
                     provider="storyblok"
                     :alt="work.alt"
                     :placeholder="[50, 25, 10, 5]"
-                    sizes="100vw sm:50vw md:400px xl:600px"
+                    sizes="100vw sm:50vw md:1980px xl:1980px"
                     format="webp"
-                    quality="50"
+                    quality="20"
                     class="hover-cursor h-48 w-full rounded-md object-cover hover:cursor-pointer md:h-60"
                     @click="showImage(work)"
                 />
@@ -82,13 +64,13 @@
                 id="pagination"
                 :to="
                     (page: number) => ({
-                        query: { category: route.query.category, page: page },
+                        query: { page: page },
                     })
                 "
                 :max="5"
                 v-model="page"
                 :page-count="perPage"
-                :total="activeWorks?.length ?? 0"
+                :total="blok.images.length"
                 :active-button="{
                     color: 'curious-blue',
                     class: 'text-gray-200 dark:text-gray-200 font-bold',
@@ -135,11 +117,11 @@
         <UModal
             :transition="false"
             :ui="{
-                container: 'items-center backdrop-blur-sm',
-                width: 'w-full max-w-xl sm:max-w-xl md:max-w-screen-md lg:max-w-screen-lg',
-                padding: 'sm:p-4 md:p-8',
+                container: 'items-center sm:items-center  backdrop-blur-sm',
+                padding: 'sm:p-16',
+                width: 'w-auto sm:max-w-screen-lg',
                 shadow: 'shadow-xl shadow-gray-800',
-                background: 'bg-gray-900 dark:bg-gray-900',
+                background: 'dark:bg-gray-300 bg-gray-300',
             }"
             v-model="isOpen"
         >
@@ -150,10 +132,10 @@
                 provider="storyblok"
                 format="webp"
                 :alt="currentImg.alt"
-                :placeholder="[50, 25, 10, 5]"
-                width="1024"
-                quality="80"
-                class="hover-cursor max-h-[70vh] rounded-md object-contain"
+                placeholder
+                width="1280"
+                quality="100"
+                class="hover-cursor max-h-[60vh] w-full rounded-md object-contain"
             />
             <span
                 v-if="imageIsLoaded && currentImg.alt.length"
@@ -165,8 +147,6 @@
 </template>
 
 <script lang="ts" setup>
-const { categories, fetchCategories } = useCategories()
-await fetchCategories()
 const props = defineProps({
     blok: {
         type: Object,
@@ -180,41 +160,20 @@ const router: any = useRouter()
 const imageIsLoaded = ref(false)
 
 const page = ref<number>(+route.query.page)
-const perPage = ref(16)
+const perPage = ref(12)
 const currentImg: any = ref({})
 const isOpen = ref(false)
 
-const activeWorks: any = computed(() => {
-    return (
-        props.blok.Categories.find(
-            (value: any) => value.Category === route.query.category
-        )?.ImagesContainer ?? []
-    )
-})
-
 const totalPages = computed(() => {
-    return Math.ceil(activeWorks.value.length / perPage.value)
-})
-
-const activeCategory: any = computed(() => {
-    return categories.value.find((category: any) => {
-        return category.uuid === route.query.category
-    })
+    return Math.ceil(props.blok.images.length / perPage.value)
 })
 
 const paginatedData = computed(() => {
     const from = route.query.page * perPage.value - perPage.value
     const to = route.query.page * perPage.value
-    return activeWorks.value?.slice(from, to)
+    return props.blok.images?.slice(from, to)
 })
 
-const changeCategory = (category: any) => {
-    page.value = 1
-    router.push({
-        path: router.path,
-        query: { category: category.uuid, page: 1 },
-    })
-}
 const showImage = (img: object) => {
     currentImg.value = img
     isOpen.value = true
@@ -233,7 +192,6 @@ const prev = () => {
     router.push({
         path: router.path,
         query: {
-            category: route.query.category,
             page: page.value,
         },
     })
@@ -248,7 +206,6 @@ const next = () => {
     router.push({
         path: router.path,
         query: {
-            category: route.query.category,
             page: page.value,
         },
     })

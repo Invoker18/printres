@@ -1,7 +1,7 @@
 <template>
     <section
         v-editable="blok"
-        class="bg-primary-950 pin relative left-0 top-0 z-30 flex h-full lg:h-screen flex-col gap-5 px-5 py-12 sm:sticky sm:py-24 lg:px-10 lg:pt-32  2xl:gap-x-20 2xl:px-28"
+        class="bg-primary-950 pin relative left-0 top-0 z-30 flex h-full flex-col gap-5 px-5 py-12 sm:sticky sm:py-24 lg:h-screen lg:px-10 lg:pt-32 2xl:gap-x-20 2xl:px-28"
         id="aboutUs"
     >
         <div
@@ -11,7 +11,7 @@
                 class="col-span-full flex flex-col gap-5 text-pretty text-base tracking-tight md:col-span-6 lg:text-lg xl:col-span-6"
             >
                 <div
-                    class="hover-cursor relative flex w-fit items-center text-3xl lg:text-4xl sm:mb-5"
+                    class="hover-cursor relative flex w-fit items-center text-3xl sm:mb-5 lg:text-4xl"
                 >
                     <h3>{{ blok.title }}</h3>
                     <div
@@ -70,7 +70,7 @@
                             height="600"
                             width="800"
                             sizes="100vw sm:50vw md:800px xl:1024px"
-                            class="hover-cursor maskImg object-cover"
+                            class="hover-cursor maskImg object-cover object-top"
                         />
                         <div
                             class="swiper-lazy-preloader swiper-lazy-preloader-white rounded-lg"
