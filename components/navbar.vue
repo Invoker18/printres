@@ -20,7 +20,7 @@
                 alt="Company Logo"
             />
             <ul
-                class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex xl:gap-20 xl:text-lg"
+                class="hover-cursor hidden items-center justify-end gap-8 text-sm sm:text-base md:flex lg:gap-20 lg:text-lg"
             >
                 <li>
                     <NuxtLink

@@ -2,12 +2,12 @@
     <TresCanvas
         window-size
         shadows
-        clearColor="#0091dc"
+        :alpha="true"
         :outputColorSpace="SRGBColorSpace"
         :toneMapping="ACESFilmicToneMapping"
         :toneMappingExposure="3"
         power-preference="high-performance"
-        class="relative z-30"
+        class="relative z-40"
     >
         <TresPerspectiveCamera
             :position="[0, 3, 10]"
