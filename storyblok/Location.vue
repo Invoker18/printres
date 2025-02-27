@@ -1,7 +1,7 @@
 <template>
     <div
         v-editable="blok"
-        class="bg-primary-950 sticky top-0 z-40 flex flex-col xl:h-[90vh]"
+        class="bg-primary-950 sticky top-0 z-40 flex flex-col md:h-[90vh]"
         id="location"
     >
         <div

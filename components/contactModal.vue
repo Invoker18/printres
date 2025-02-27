@@ -38,7 +38,7 @@
                 <UFormGroup size="xl" label="" name="name">
                     <UInput
                         :ui="{
-                            rounded: 'rounded-xl',
+                            rounded: 'rounded-lg',
                             placeholder:
                                 'placeholder-gray-200 dark:placeholder-gray-200',
                         }"
@@ -50,7 +50,7 @@
                 <UFormGroup size="xl" label="" name="email">
                     <UInput
                         :ui="{
-                            rounded: 'rounded-xl',
+                            rounded: 'rounded-lg',
                             placeholder:
                                 'placeholder-gray-200 dark:placeholder-gray-200',
                         }"
@@ -62,7 +62,7 @@
                 <UFormGroup size="xl" label="" name="message">
                     <UTextarea
                         :ui="{
-                            rounded: 'rounded-xl',
+                            rounded: 'rounded-lg',
                             placeholder:
                                 'placeholder-gray-200 dark:placeholder-gray-200',
                             color: {
@@ -108,7 +108,7 @@
                     block
                     size="xl"
                     :ui="{
-                        rounded: 'rounded-xl',
+                        rounded: 'rounded-lg',
                         color: {
                             white: {
                                 solid: 'shadow-sm ring-0 text-gray-200 dark:text-gray-200 bg-secondary hover:bg-coral-300 disabled:bg-gray dark:bg-secondary dark:hover:bg-coral-300 focus-visible:ring-0 mt-3 disabled:dark:text-gray-200',
