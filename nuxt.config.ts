@@ -95,13 +95,13 @@ export default defineNuxtConfig({
     },
 
     nodemailer: {
-        service: 'Gmail',
-        host: 'smtp.gmail.com',
+        service: 'IceWarp',
+        host: process.env.SMTP_HOST,
         port: 465,
         secure: true,
         auth: {
-            user: 'admin@printres.com.pa',
-            pass: process.env.MAIL_PASSWORD,
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD,
         },
     },
 

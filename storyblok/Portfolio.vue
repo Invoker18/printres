@@ -132,8 +132,8 @@
                 provider="storyblok"
                 format="webp"
                 :alt="currentImg.alt"
-                placeholder
                 width="1280"
+                height="720"
                 quality="100"
                 class="hover-cursor max-h-[60vh] w-full rounded-md object-contain"
             />
