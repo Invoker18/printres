@@ -1,24 +1,36 @@
 <template>
-    <div class="flex h-full w-full flex-col rounded-md">
+    <div class="flex h-full w-full flex-col">
         <NuxtLink
             :to="`/${slug}`"
-            class="overflow-hidden rounded-md border border-gray-300"
+            :aria-label="`Ver evento: ${event.Title}`"
+            class="bg-primary-950/5 group overflow-hidden rounded-xl"
         >
             <NuxtImg
-                v-if="event.Slider && event.Slider.length"
+                v-if="cover?.filename"
                 provider="storyblok"
                 loading="lazy"
-                :alt="cover.alt"
+                :alt="cover.alt || ''"
                 :src="cover.filename"
                 sizes="100vw sm:50vw md:400px xl:600px"
-                class="hover-cursor h-48 w-full rounded-md object-cover hover:cursor-pointer md:h-60"
+                class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
                 quality="80"
             />
+            <div
+                v-else
+                class="text-primary-950/60 flex aspect-[4/3] items-center justify-center text-sm"
+            >
+                Sin imagen
+            </div>
         </NuxtLink>
-        <div class="truncate text-lg">
+        <NuxtLink
+            :to="`/${slug}`"
+            class="mt-4 text-lg font-semibold leading-snug hover:text-coral-700"
+        >
             {{ event.Title }}
-        </div>
-        <div class="flex flex-wrap items-center gap-x-1 text-sm text-gray-800">
+        </NuxtLink>
+        <div
+            class="mt-1 flex flex-wrap items-center gap-x-1 text-sm text-gray-800"
+        >
             {{ event.Location }}
             -
             <span class="italic">
@@ -41,7 +53,7 @@ const props = defineProps({
     slug: String,
 })
 
-const cover = ref(props.event?.Slider?.[0])
+const cover = computed(() => props.event?.Slider?.[0])
 </script>
 
 <style></style>

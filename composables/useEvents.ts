@@ -1,6 +1,30 @@
+interface EventImage {
+    filename: string
+    alt?: string
+}
+
+interface EventStory {
+    uuid: string
+    full_slug: string
+    content: {
+        Title: string
+        Date: string
+        Location: string
+        Slider?: EventImage[]
+    }
+}
+
 const state = reactive({
-    events: [] as any,
+    events: [] as EventStory[],
 })
+
+const sortedEvents = computed(() =>
+    [...state.events].sort(
+        (a, b) =>
+            new Date(b.content.Date).getTime() -
+            new Date(a.content.Date).getTime()
+    )
+)
 
 export const useEvents = () => {
     const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
@@ -17,6 +41,7 @@ export const useEvents = () => {
     }
     return {
         ...toRefs(state),
+        sortedEvents,
         fetchEvents,
     }
 }

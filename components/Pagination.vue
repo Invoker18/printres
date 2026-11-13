@@ -1,118 +1,108 @@
 <template>
-    <UPagination
-        id="pagination"
-        :to="
-            (page: number) => ({
-                query: { category: route.query.category, page: page },
-            })
-        "
-        :max="5"
-        v-model="page"
-        :page-count="perPage"
-        :total="total"
-        :active-button="{
-            color: 'curious-blue',
-            class: 'text-gray-200 dark:text-gray-200',
-        }"
-        :inactive-button="{
-            color: 'primary',
-            activeClass: 'dark:bg-primary-950 dark:hover:bg-curious-blue-500',
-            class: 'text-gray-200 dark:text-gray-200',
-        }"
+    <nav
+        v-if="totalPages > 1"
+        aria-label="Paginación"
+        class="flex flex-wrap items-center justify-center gap-2 sm:justify-end"
     >
-        <template #prev="{ onClick }">
-            <UButton
-                icon="i-heroicons-arrow-small-left-20-solid"
-                color="primary"
-                variant="solid"
-                :ui="{
-                    rounded: 'rounded-full',
-                    variant: {
-                        solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
-                    },
-                }"
-                class="mr-2 rtl:[&_span:first-child]:rotate-180"
-                @click="prev()"
-            />
-        </template>
-        <template #next="{ onClick }">
-            <UButton
-                icon="i-heroicons-arrow-small-right-20-solid"
-                color="primary"
-                variant="solid"
-                :ui="{
-                    rounded: 'rounded-full',
-                    variant: {
-                        solid: 'bg-curious-blue-500 dark:bg-curious-blue-500 text-gray-200 dark:text-gray-200',
-                    },
-                }"
-                class="rtl:[&_span:last-child]:rotate-180"
-                @click="next()"
-            />
-        </template>
-    </UPagination>
+        <NuxtLink
+            v-if="page > 1"
+            :to="pageLink(page - 1)"
+            aria-label="Página anterior"
+            :aria-current="undefined"
+            class="page-control"
+        >
+            <span aria-hidden="true">←</span>
+        </NuxtLink>
+        <button
+            v-else
+            type="button"
+            disabled
+            aria-label="Página anterior"
+            class="page-control"
+        >
+            <span aria-hidden="true">←</span>
+        </button>
+
+        <span class="text-primary-950 px-3 text-sm font-medium sm:hidden">
+            Página {{ page }} de {{ totalPages }}
+        </span>
+        <div class="hidden items-center gap-2 sm:flex">
+            <template v-for="(item, index) in pages" :key="`${item}-${index}`">
+                <span
+                    v-if="item === '…'"
+                    class="text-primary-950/60 flex size-11 items-center justify-center"
+                    aria-hidden="true"
+                    >…</span
+                >
+                <NuxtLink
+                    v-else
+                    :to="pageLink(item)"
+                    :aria-label="`Página ${item}`"
+                    :aria-current="item === page ? 'page' : undefined"
+                    class="page-control"
+                    :class="{ 'is-current': item === page }"
+                >
+                    {{ item }}
+                </NuxtLink>
+            </template>
+        </div>
+
+        <NuxtLink
+            v-if="page < totalPages"
+            :to="pageLink(page + 1)"
+            aria-label="Página siguiente"
+            :aria-current="undefined"
+            class="page-control"
+        >
+            <span aria-hidden="true">→</span>
+        </NuxtLink>
+        <button
+            v-else
+            type="button"
+            disabled
+            aria-label="Página siguiente"
+            class="page-control"
+        >
+            <span aria-hidden="true">→</span>
+        </button>
+    </nav>
 </template>
 
 <script lang="ts" setup>
-const props: any = defineProps({
-    totalPages: {
-        type: Number,
-        default: 0,
-    },
-    total: {
-        type: Number,
-        default: 0,
-    },
-    page: {
-        type: Number,
-        default: 1,
-    },
-    perPage: Number,
+const props = defineProps<{
+    page: number
+    totalPages: number
+}>()
+const route = useRoute()
+const pageLink = (page: number) => ({
+    path: route.path,
+    query: { ...route.query, page },
+    hash: route.hash,
 })
-const route: any = useRoute()
-const router: any = useRouter()
-const page = ref(props.page)
-const prev = () => {
-    if (props.page === 1) {
-        return
-    } else {
-        props.page--
-    }
-    router.push({
-        path: router.path,
-        query: {
-            category: route.query.category,
-            page: props.page,
-        },
-    })
-}
 
-const next = () => {
-    if (props.page === props.totalPages) {
-        return
-    } else {
-        props.page++
+const pages = computed<(number | '…')[]>(() => {
+    const { page, totalPages } = props
+    if (totalPages <= 5) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1)
     }
-    router.push({
-        path: router.path,
-        query: {
-            category: route.query.category,
-            page: props.page,
-        },
-    })
-}
+    if (page <= 3) return [1, 2, 3, '…', totalPages]
+    if (page >= totalPages - 2) {
+        return [1, '…', totalPages - 2, totalPages - 1, totalPages]
+    }
+    return [1, '…', page, '…', totalPages]
+})
 </script>
 
 <style scoped>
-#pagination {
-    @apply ml-auto;
+.page-control {
+    @apply border-primary-950/20 text-primary-950 hover:border-primary-950 hover:bg-primary-950 inline-flex size-11 items-center justify-center rounded-full border bg-transparent text-sm font-semibold transition-colors hover:text-white;
 }
 
-#pagination button {
-    @apply bg-curious-blue-500 [&:nth-last-child(1)]:ml-2;
+.page-control.is-current {
+    @apply border-primary-950 bg-primary-950 text-white;
 }
 
-#pagination a {
-    @apply [&:nth-child(2)]:rounded-s-md [&:nth-last-child(2)]:rounded-e-md;
+.page-control:disabled {
+    @apply border-primary-950/10 text-primary-950/30 cursor-not-allowed;
 }
 </style>

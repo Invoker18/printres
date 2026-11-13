@@ -1,7 +1,7 @@
 <template>
     <SpeedInsights />
     <div>
-        <div class="cursor-follower"></div>
+        <BlobCursor />
         <div
             id="loader"
             class="bg-primary-950 opacity-1 fixed left-0 top-0 z-[9999] grid h-[100vh] w-full place-content-center text-5xl"
@@ -43,59 +43,9 @@ onMounted(() => {
         gsap.ticker.lagSmoothing(0)
     }
 
-    const isMobile = () => {
-        if (
-            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                navigator.userAgent
-            )
-        ) {
-            return true
-        } else {
-            return false
-        }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        initLenis()
     }
-
-    const createCursorFollower = () => {
-        const cursor = document.querySelector('.cursor-follower')
-
-        window.addEventListener('pointermove', (e) => {
-            const { target, clientX, clientY } = e
-            const isTargetLinkOrBtn = target.closest('.hover-cursor')
-            const hoverCursor2 = target.classList.contains('hover-cursor2')
-            const scale = hoverCursor2 ? 4.5 : 2.5
-            const changeCursor =
-                isTargetLinkOrBtn || hoverCursor2 ? true : false
-            gsap.to(cursor, {
-                x: clientX - 12,
-                y: clientY - 12,
-                duration: 0,
-                ease: 'none', // More easing options here: https://gsap.com/docs/v3/Eases/
-                autoAlpha: changeCursor ? '0.7' : 1,
-                transform: `scale(${changeCursor ? scale : 1})`,
-                backgroundColor: changeCursor ? '#f87c56' : '#0091dc',
-                mixBlendMode: changeCursor ? 'multiply' : 'normal',
-            })
-        })
-
-        document.querySelector('iframe')?.addEventListener('mouseenter', () => {
-            gsap.to(cursor, {
-                duration: 0.7,
-                opacity: 0,
-            })
-        })
-
-        document.addEventListener('mouseleave', (e) => {
-            gsap.to(cursor, {
-                duration: 0.7,
-                autoAlpha: 0,
-            })
-        })
-    }
-    // // Only invoke the function if isn't a touch device
-    if (!isMobile()) {
-        createCursorFollower()
-    }
-    initLenis()
 
     gsap.to('.loader', {
         autoAlpha: 0,
@@ -105,32 +55,13 @@ onMounted(() => {
         autoAlpha: 0,
         duration: 1,
     })
-    document.body.style.cursor = 'none'
 })
 </script>
 
 <style>
 html,
 body {
-    /* cursor: none; */
-    /* cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230091dc" stroke="none" width="32px" height="32px" viewBox="0 0 10.04 10.04"><circle cx="5.02" cy="5.02" r="4.52"/></svg>')
-            10 10,
-        auto; */
     @apply bg-primary-950 text-gray-200 dark:text-gray-200;
-}
-
-.cursor-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 100%;
-    opacity: 0;
-    z-index: 10000;
-    user-select: none;
-    pointer-events: none;
-    @apply bg-curious-blue-600;
 }
 
 .page-enter-active,
@@ -141,6 +72,13 @@ body {
 .page-leave-to {
     opacity: 0;
     filter: blur(1rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-enter-active,
+    .page-leave-active {
+        transition: none;
+    }
 }
 
 /* HTML: <div class="loader"></div> */
