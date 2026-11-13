@@ -89,13 +89,34 @@ if (url === 'home') {
     }
 }
 
-if (!isPreview) {
-    defineOgImageComponent('MyTemplate', {
-        title,
-        description: seoDescription,
-        headline: 'Printres',
-    })
-}
+const hero = content.body?.find(
+    (block: { component: string }) => block.component === 'Hero'
+)
+const imageTitle =
+    url === 'home'
+        ? [hero?.Phrase1, hero?.Phrase2].filter(Boolean).join(' ') ||
+          'Impresión sin límites'
+        : title
+const imageHeadline =
+    content.component === 'Event'
+        ? 'PROYECTOS Y EVENTOS'
+        : url === 'portfolio'
+          ? 'NUESTROS TRABAJOS'
+          : url === 'all-events'
+            ? 'NUESTROS EVENTOS'
+            : 'IMPRESIÓN EN PANAMÁ'
+defineOgImageComponent(
+    'MyTemplate',
+    {
+        title: imageTitle,
+        description:
+            url === 'home'
+                ? 'Impresión, proyectos y experiencias que dan vida a tu marca.'
+                : seoDescription,
+        headline: imageHeadline,
+    },
+    { width: 1200, height: 630 }
+)
 </script>
 
 <style></style>
