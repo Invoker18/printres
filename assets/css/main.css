@@ -5,6 +5,20 @@ body {
     font-family: 'Stara', 'sans-serif', 'serif';
 }
 
+.site-container {
+    @apply mx-auto w-full max-w-[1440px] px-5 lg:px-10 2xl:px-16;
+}
+
+:focus-visible {
+    outline: 2px solid #f87c56;
+    outline-offset: 4px;
+}
+
+#aboutUs,
+#contactContainer {
+    scroll-margin-top: 5rem;
+}
+
 html.lenis,
 html.lenis body {
     height: auto;
@@ -22,7 +36,7 @@ html.lenis body {
     overflow: hidden;
 }
 
-.lenis.lenis-smooth iframe {
+.lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
 

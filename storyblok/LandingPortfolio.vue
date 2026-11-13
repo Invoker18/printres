@@ -1,188 +1,53 @@
 <template>
     <section
-        v-editable="blok"
         id="projects"
-        class="text-primary-950 relative z-40 h-full bg-[#D9D9D9]"
+        v-editable="blok"
+        class="text-primary-950 relative z-40 bg-[#f4f2ee] py-20 sm:py-28"
     >
-        <div class="h-full w-full px-5 py-3 md:pt-12 lg:px-10 2xl:px-28">
+        <div class="site-container">
             <div
-                class="mt-8 grid h-full w-full grid-cols-1 gap-5 text-[#010C4A] md:grid-cols-2 lg:gap-10 2xl:gap-32"
+                class="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between"
             >
-                <div class="flex flex-col gap-5">
-                    <div class="flex items-center justify-between gap-5">
-                        <button class="">
-                            <h3
-                                class="hover-cursor text-primary-950 group relative flex w-fit items-center text-3xl lg:text-4xl"
-                            >
-                                {{ blok.Title }}
-                                <span
-                                    class="absolute -bottom-1 right-8 mt-1 h-0.5 w-[50%] bg-secondary"
-                                ></span>
-                                <UIcon
-                                    name="i-ph-arrow-up-right-bold"
-                                    class="size-8 self-end text-secondary group-hover:block"
-                                ></UIcon>
-                            </h3>
-                        </button>
-                        <NuxtImg
-                            format="webp"
-                            loading="lazy"
-                            src="/images/shapes/eventsShape.png"
-                            id="shape"
-                            alt="Events Shape"
-                            width="180"
-                            height="100"
-                            fit="inside"
-                            class="hover-cursor md:hidden"
-                        />
-                    </div>
-                    <p class="hover-cursor text-pretty">
+                <div class="max-w-2xl">
+                    <p
+                        class="text-primary-950/60 mb-4 text-xs font-bold uppercase tracking-[0.2em]"
+                    >
+                        Lo que hacemos
+                    </p>
+                    <h2
+                        class="text-4xl font-semibold tracking-tight sm:text-5xl"
+                    >
+                        {{ blok.Title }}
+                    </h2>
+                    <p
+                        class="text-primary-950/80 mt-5 max-w-xl text-base leading-relaxed sm:text-lg"
+                    >
                         {{ blok.description }}
                     </p>
-                    <Swiper
-                        :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="h-full w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
-                        :loop="true"
-                        :autoplay="{
-                            delay: 5000,
-                        }"
-                        :pagination="{
-                            el: '.custom-pagination2',
-                            clickable: true,
-                            renderBullet: function (index, className) {
-                                return `<span class='${className}'></span>`
-                            },
-                        }"
-                        :lazy="true"
-                    >
-                        <SwiperSlide
-                            v-for="image in blok.Slider1"
-                            :key="image.id"
-                        >
-                            <div class="rounded-md bg-gray-300">
-                                <NuxtImg
-                                    format="webp"
-                                    loading="lazy"
-                                    :src="image.filename"
-                                    :alt="image.alt"
-                                    sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
-                                    class="mx-auto max-h-80 hover-cursor2"
-                                />
-                            </div>
-
-                            <div
-                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                            ></div>
-                        </SwiperSlide>
-                    </Swiper>
-
-                    <div class="custom-pagination2 hover-cursor"></div>
                 </div>
-                <div class="hidden flex-col gap-8 md:flex">
-                    <Swiper
-                        :modules="[SwiperPagination, SwiperAutoplay]"
-                        class="h-full max-h-80 w-full min-w-0 rounded-md lg:max-h-96 2xl:max-h-[26rem]"
-                        :loop="true"
-                        :autoplay="{
-                            delay: 5000,
-                        }"
-                        :pagination="{
-                            el: '.custom-pagination3',
-                            clickable: true,
-                            renderBullet: function (index, className) {
-                                return `<span class='${className}'></span>`
-                            },
-                        }"
-                        :lazy="true"
-                    >
-                        <SwiperSlide
-                            v-for="image in blok.Slider2"
-                            :key="image.id"
-                            class="h-full min-h-60"
-                        >
-                            <div class="rounded-md bg-gray-300">
-                                <NuxtImg
-                                    format="webp"
-                                    loading="lazy"
-                                    provider="storyblok"
-                                    :src="image.filename"
-                                    :alt="image.alt"
-                                    sizes="100vw sm:50vw md:800px xl:1200px 2xl:1400px"
-                                    class="mx-auto max-h-80 hover-cursor2"
-                                />
-                            </div>
-
-                            <div
-                                class="swiper-lazy-preloader swiper-lazy-preloader-white"
-                            ></div>
-                        </SwiperSlide>
-                    </Swiper>
-
-                    <div
-                        class="flex w-full flex-col items-end justify-between lg:flex-row lg:items-start"
-                    >
-                        <NuxtImg
-                            format="webp"
-                            src="/images/shapes/projectsShape.png"
-                            id="shape"
-                            alt="Projects Shape"
-                            height="200"
-                            width="250"
-                            fit="inside"
-                            class="hover-cursor order-2 lg:order-1"
-                        />
-                        <div
-                            class="order-1 flex flex-shrink-0 items-center gap-5 lg:order-2"
-                        >
-                            <div
-                                class="custom-pagination3 hover-cursor w-full"
-                            ></div>
-                            <div
-                                class="border-primary-950 hover-cursor flex size-10 shrink-0 grow-0 items-center justify-center rounded-full border hover:cursor-pointer"
-                            >
-                                <UIcon
-                                    name="i-ph-arrow-up-right-bold"
-                                    class="text-primary-950 size-6 group-hover:block"
-                                ></UIcon>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <NuxtLink
+                    :to="portfolioLink"
+                    class="inline-flex min-h-11 w-fit items-center gap-3 border-b-2 border-secondary py-2 font-semibold transition-colors hover:text-coral-700"
+                >
+                    Ver todos los trabajos
+                    <span aria-hidden="true" class="text-xl">↗</span>
+                </NuxtLink>
             </div>
+            <FeaturedGallery
+                :first="blok.Slider1"
+                :second="blok.Slider2"
+                :to="portfolioLink"
+                link-label="Ver todos los trabajos"
+            />
         </div>
     </section>
 </template>
 
 <script setup>
-defineProps({
-    blok: {
-        type: Object,
-        default: () => {},
-    },
-})
+defineProps({ blok: { type: Object, default: () => ({}) } })
+const { categories } = useCategories()
+const portfolioLink = computed(() => ({
+    path: '/portfolio',
+    query: { category: categories.value[0]?.uuid, page: 1 },
+}))
 </script>
-
-<style scoped>
-:deep(.swiper-pagination-bullet-active) {
-    @apply bg-secondary text-primary opacity-100 !important;
-}
-:deep(.swiper-pagination-bullet) {
-    @apply bg-primary-950 size-2 rounded-tl-full opacity-100 xl:size-3;
-}
-
-:deep(.swiper-pagination-bullet:nth-child(2n-1)) {
-    @apply rounded-full !important;
-}
-
-:deep(.swiper-pagination-bullet:nth-child(3n-2)) {
-    @apply rounded-sm !important;
-}
-
-:deep(.swiper-pagination) {
-    @apply flex justify-start;
-}
-
-.custom-pagination3 {
-    @apply flex justify-end !important;
-}
-</style>
