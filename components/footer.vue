@@ -41,13 +41,10 @@
                         >
                             Nosotros
                         </NuxtLink>
-                        <NuxtLink :to="portfolioLink" class="footer-link"
+                        <NuxtLink to="/portfolio" class="footer-link"
                             >Trabajos</NuxtLink
                         >
-                        <NuxtLink
-                            :to="{ path: '/all-events', query: { page: 1 } }"
-                            class="footer-link"
-                        >
+                        <NuxtLink to="/all-events" class="footer-link">
                             Eventos
                         </NuxtLink>
                         <NuxtLink
@@ -86,13 +83,8 @@ import { ContactModal } from '#components'
 
 const modal = useModal()
 const { goToHomeSection } = useHomeNavigation()
-const { categories } = useCategories()
 const year = new Date().getFullYear()
 const openModal = () => modal.open(ContactModal)
-const portfolioLink = computed(() => ({
-    path: '/portfolio',
-    query: { category: categories.value[0]?.uuid, page: 1 },
-}))
 </script>
 
 <style scoped>

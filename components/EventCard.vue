@@ -9,7 +9,7 @@
                 v-if="cover?.filename"
                 provider="storyblok"
                 loading="lazy"
-                :alt="cover.alt || ''"
+                :alt="cover.alt || `Proyecto ${event.Title} de Printres`"
                 :src="cover.filename"
                 sizes="100vw sm:50vw md:400px xl:600px"
                 class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"

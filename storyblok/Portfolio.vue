@@ -115,6 +115,7 @@ const { page, totalPages } = usePageNumber(
     () => props.blok.images?.length ?? 0,
     perPage
 )
+useListingSeo(page, 'Trabajos de impresión y proyectos')
 const currentImg: any = ref({})
 const isOpen = ref(false)
 

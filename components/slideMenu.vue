@@ -53,7 +53,7 @@
                     </li>
                     <li>
                         <NuxtLink
-                            :to="portfolioLink"
+                            to="/portfolio"
                             class="mobile-link"
                             @click="slideover.close()"
                             >Trabajos</NuxtLink
@@ -61,7 +61,7 @@
                     </li>
                     <li>
                         <NuxtLink
-                            :to="{ path: '/all-events', query: { page: 1 } }"
+                            to="/all-events"
                             class="mobile-link"
                             @click="slideover.close()"
                             >Eventos</NuxtLink
@@ -85,13 +85,8 @@
 </template>
 
 <script lang="ts" setup>
-const { categories } = useCategories()
 const slideover = useSlideover()
 const { goToHomeSection } = useHomeNavigation()
-const portfolioLink = computed(() => ({
-    path: '/portfolio',
-    query: { category: categories.value[0]?.uuid, page: 1 },
-}))
 
 const goTo = async (section: 'home' | 'aboutUs' | 'contactContainer') => {
     slideover.close()

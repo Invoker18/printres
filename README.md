@@ -73,3 +73,16 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## SEO and content
+
+The canonical site URL is `https://www.printres.com.pa`. The sitemap includes
+the main pages and published Storyblok events; its event source is refreshed
+at runtime. Configure `STORYBLOK_ACCESS_TOKEN` when building. To override the
+sitemap source's token at runtime, set `NUXT_STORYBLOK_ACCESS_TOKEN` on the
+server.
+
+The event and portfolio listings use server rendering so paginated URLs have
+their own content and canonical metadata. Event detail pages are also rendered
+on the server so unpublished events do not remain in prerendered output. Deploy
+the Nuxt server rather than a static-only export.

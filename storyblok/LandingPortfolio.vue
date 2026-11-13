@@ -26,7 +26,7 @@
                     </p>
                 </div>
                 <NuxtLink
-                    :to="portfolioLink"
+                    to="/portfolio"
                     class="inline-flex min-h-11 w-fit items-center gap-3 border-b-2 border-secondary py-2 font-semibold transition-colors hover:text-coral-700"
                 >
                     Ver todos los trabajos
@@ -36,7 +36,7 @@
             <FeaturedGallery
                 :first="blok.Slider1"
                 :second="blok.Slider2"
-                :to="portfolioLink"
+                to="/portfolio"
                 link-label="Ver todos los trabajos"
             />
         </div>
@@ -45,9 +45,4 @@
 
 <script setup>
 defineProps({ blok: { type: Object, default: () => ({}) } })
-const { categories } = useCategories()
-const portfolioLink = computed(() => ({
-    path: '/portfolio',
-    query: { category: categories.value[0]?.uuid, page: 1 },
-}))
 </script>

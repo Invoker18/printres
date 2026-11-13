@@ -9,13 +9,20 @@ export default defineNuxtConfig({
 
     site: {
         url: 'https://www.printres.com.pa',
-        name: 'Mejor Imprenta de Panama',
-        description: 'Bienvenidos a la mejor imprenta de toda Panama!',
+        name: 'Printres',
+        description:
+            'Impresión digital, gran formato y offset en Panamá. En Printres damos vida a proyectos y eventos para tu marca.',
         defaultLocale: 'es', // not needed if you have @nuxtjs/i18n installed
     },
 
     seo: {
-        canonicalQueryWhitelist: ['category', 'page'],
+        canonicalQueryWhitelist: [],
+    },
+
+    sitemap: {
+        urls: ['/', '/all-events', '/portfolio'],
+        sources: ['/api/__sitemap__/urls'],
+        excludeAppSources: ['nuxt:prerender'],
     },
 
     tres: {
@@ -49,6 +56,7 @@ export default defineNuxtConfig({
         minify: true,
         prerender: {
             crawlLinks: true,
+            ignore: ['/all-events', '/portfolio', '/events/'],
         },
     },
 
@@ -74,7 +82,6 @@ export default defineNuxtConfig({
                 'width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5',
             link: [
                 { rel: 'preconnect', href: 'https://a-us.storyblok.com' },
-                { rel: 'preconnect', href: 'https://a-us.storyblok.com' },
                 { rel: 'preconnect', href: 'https://www.google.com' },
                 { rel: 'preconnect', href: 'https://www.gstatic.com' },
                 { rel: 'preconnect', href: 'https://api.iconify.design' },
@@ -87,6 +94,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         // Private keys are only available on the server
         apiSecret: '123',
+        storyblokAccessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 
         // Public keys that are exposed to the client
         public: {
