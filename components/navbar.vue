@@ -21,6 +21,7 @@
                     class="w-24 sm:w-28 md:w-32 lg:w-36"
                     width="300"
                     height="76"
+                    @click="goToHomeSection('home')"
                     alt="Printres"
                 />
             </NuxtLink>
