@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         <NuxtLink
-                            :to="portfolioLink"
+                            to="/portfolio"
                             class="nav-link"
                             :class="{
                                 'is-active':
@@ -84,7 +84,7 @@
                     </li>
                     <li>
                         <NuxtLink
-                            :to="{ path: '/all-events', query: { page: 1 } }"
+                            to="/all-events"
                             class="nav-link"
                             :class="{ 'is-active': isEventsPage }"
                             :aria-current="isEventsPage ? 'page' : undefined"
@@ -144,9 +144,7 @@ const modal = useModal()
 const slideover = useSlideover()
 const route = useRoute()
 const { goToHomeSection } = useHomeNavigation()
-const { categories, fetchCategories } = useCategories()
 const nuxtApp = useNuxtApp()
-await fetchCategories()
 
 const homeSection = ref<'home' | 'aboutUs' | null>('home')
 const updateHomeSection = () => {
@@ -178,10 +176,6 @@ onMounted(() => {
 const openModal = () => modal.open(ContactModal)
 const openSlideover = () =>
     slideover.open(SlideMenu, { onClose: slideover.close })
-const portfolioLink = computed(() => ({
-    path: '/portfolio',
-    query: { category: categories.value[0]?.uuid, page: 1 },
-}))
 const isEventsPage = computed(
     () => route.path === '/all-events' || route.path.startsWith('/events/')
 )

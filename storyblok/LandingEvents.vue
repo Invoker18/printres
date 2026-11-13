@@ -27,7 +27,7 @@
                         </p>
                     </div>
                     <NuxtLink
-                        :to="{ path: '/all-events', query: { page: 1 } }"
+                        to="/all-events"
                         class="inline-flex min-h-11 w-fit items-center gap-3 border-b-2 border-secondary py-2 font-semibold transition-colors hover:text-coral-700"
                     >
                         Ver todos los eventos

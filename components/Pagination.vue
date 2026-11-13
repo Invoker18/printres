@@ -76,7 +76,7 @@ const props = defineProps<{
 const route = useRoute()
 const pageLink = (page: number) => ({
     path: route.path,
-    query: { ...route.query, page },
+    query: page > 1 ? { page } : {},
     hash: route.hash,
 })
 

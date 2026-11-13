@@ -7,33 +7,37 @@
         <div
             class="relative flex h-full w-full flex-1 select-none flex-col items-center justify-start px-5 pt-16 font-semibold sm:items-start sm:pt-10 md:pt-[18vh] lg:px-10 2xl:px-28"
         >
-            <div
-                class="flex text-7xl text-gray-100 sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
-                id="text1"
-            >
-                <h1
-                    v-for="(letter, index) in blok.Phrase1"
-                    :key="index"
-                    class="hover-cursor2"
+            <h1 :aria-label="`${blok.Phrase1} ${blok.Phrase2}`">
+                <span
+                    id="text1"
+                    aria-hidden="true"
+                    class="flex text-7xl text-gray-100 sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 >
-                    <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
-                    {{ letter }}
-                </h1>
-            </div>
-            <div
-                class="flex text-7xl sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
-                id="text2"
-            >
-                <h1
-                    v-for="(letter, index) in blok.Phrase2"
-                    :key="index"
-                    class="hover-cursor2"
-                    :class="index > 3 ? 'text-secondary' : 'text-white'"
+                    <span
+                        v-for="(letter, index) in blok.Phrase1"
+                        :key="index"
+                        class="hero-letter hover-cursor2"
+                    >
+                        <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
+                        {{ letter }}
+                    </span>
+                </span>
+                <span
+                    id="text2"
+                    aria-hidden="true"
+                    class="flex text-7xl sm:text-8xl lg:text-[125px] xl:text-[8rem] 2xl:text-[180px]"
                 >
-                    <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
-                    {{ letter }}
-                </h1>
-            </div>
+                    <span
+                        v-for="(letter, index) in blok.Phrase2"
+                        :key="index"
+                        class="hero-letter hover-cursor2"
+                        :class="index > 3 ? 'text-secondary' : 'text-white'"
+                    >
+                        <span v-if="letter == ' '" class="ml-5 md:ml-10"></span>
+                        {{ letter }}
+                    </span>
+                </span>
+            </h1>
         </div>
         <HeroShapes></HeroShapes>
         <div
@@ -65,7 +69,7 @@ onMounted(() => {
     let mm = gsap.matchMedia()
 
     mm.add('(max-width: 640px)', () => {
-        gsap.to('#text1 h1', {
+        gsap.to('#text1 .hero-letter', {
             yPercent: '+=650',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -80,7 +84,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 h1', {
+        gsap.to('#text2 .hero-letter', {
             yPercent: '+=475',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -109,7 +113,7 @@ onMounted(() => {
             ease: 'power2.out',
             duration: 1,
         })
-        gsap.to('#text1 h1', {
+        gsap.to('#text1 .hero-letter', {
             y: '+=475',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -124,7 +128,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 h1', {
+        gsap.to('#text2 .hero-letter', {
             y: '+=300',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -154,7 +158,7 @@ onMounted(() => {
             ease: 'power2.out',
             duration: 1,
         })
-        gsap.to('#text1 h1', {
+        gsap.to('#text1 .hero-letter', {
             y: '+=750',
             rotation: 'random(100, -100)',
             scrollTrigger: {
@@ -169,7 +173,7 @@ onMounted(() => {
             },
             ease: 'power1.out',
         })
-        gsap.to('#text2 h1', {
+        gsap.to('#text2 .hero-letter', {
             y: '+=800',
             rotation: 'random(100, -100)',
             scrollTrigger: {

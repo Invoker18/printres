@@ -1,50 +1,56 @@
 <template>
-    <div
-        v-editable="blok"
-        class="relative grid min-h-[32rem] place-content-center bg-curious-blue-600 px-5 py-24 sm:min-h-screen"
+    <section
         id="contactContainer"
-        style="contain: paint"
+        v-editable="blok"
+        class="bg-primary-900 relative overflow-hidden py-20 text-white sm:py-28"
     >
-        <div class="relative z-40 w-full max-w-2xl">
-            <div
-                class="mx-auto flex h-fit w-full max-w-xl flex-col gap-5 rounded-md"
-            >
-                <div class="text-center text-lg font-medium sm:text-xl">
+        <div
+            class="site-container grid items-center gap-10 md:grid-cols-2 md:gap-12 xl:gap-20"
+        >
+            <div class="max-w-xl md:self-end">
+                <p
+                    class="text-xs font-bold uppercase tracking-[0.2em] text-coral-300"
+                >
                     {{ blok.Title }}
-                </div>
-                <div
-                    class="text-primary-950 text-center text-5xl font-semibold uppercase leading-none tracking-tight sm:text-7xl md:text-8xl"
+                </p>
+                <h2
+                    class="mt-5 text-5xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl"
                 >
-                    {{ blok.Phrase1 }}
-                    <br />
+                    {{ blok.Phrase1 }}<br />
                     {{ blok.Phrase2 }}
-                </div>
-                <div
-                    class="mx-auto mt-5 flex flex-wrap items-center justify-center gap-4"
+                </h2>
+                <p
+                    class="mt-6 max-w-md text-base leading-relaxed text-white/80 sm:text-lg"
                 >
-                    <button
-                        type="button"
-                        class="bg-primary-950 hover:bg-primary-900 inline-flex min-h-12 items-center rounded-full px-6 text-base font-semibold text-white transition-colors"
-                        @click="openModal()"
-                    >
-                        Cotizar proyecto
-                        <span aria-hidden="true" class="ml-2 text-xl">↗</span>
-                    </button>
-                    <a
-                        href="https://wa.me/50760395024"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="border-primary-950 text-primary-950 hover:bg-primary-950 inline-flex min-h-12 items-center rounded-full border px-6 font-semibold transition-colors hover:text-white"
-                    >
-                        Escribir por WhatsApp
-                    </a>
-                </div>
+                    Cuéntanos tu proyecto y encontremos juntos la mejor forma de
+                    hacerlo realidad.
+                </p>
+            </div>
+            <div class="min-w-0 md:col-start-2 md:row-span-2 md:row-start-1">
+                <BrandSculpture />
+            </div>
+            <div
+                class="flex flex-wrap items-center gap-3 md:col-start-1 md:row-start-2 md:self-start"
+            >
+                <button
+                    type="button"
+                    class="text-primary-950 inline-flex min-h-12 items-center justify-center rounded-full bg-coral-300 px-6 text-base font-semibold transition-colors hover:bg-coral-200"
+                    @click="openModal()"
+                >
+                    Cotizar proyecto
+                    <span aria-hidden="true" class="ml-2 text-xl">↗</span>
+                </button>
+                <a
+                    href="https://wa.me/50760395024"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/40 px-6 font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+                >
+                    Escribir por WhatsApp
+                </a>
             </div>
         </div>
-        <div class="hidden md:block">
-            <Threejs />
-        </div>
-    </div>
+    </section>
 </template>
 
 <script lang="ts" setup>
@@ -53,7 +59,7 @@ import { ContactModal } from '#components'
 defineProps({
     blok: {
         type: Object,
-        default: () => {},
+        default: () => ({}),
     },
 })
 
@@ -62,5 +68,3 @@ const openModal = () => {
     modal.open(ContactModal)
 }
 </script>
-
-<style scoped></style>

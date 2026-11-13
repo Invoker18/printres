@@ -8,12 +8,16 @@
 </template>
 
 <script lang="ts" setup>
-const { slug }: any = useRoute().params
-const url = slug && slug.length > 0 ? slug.join('/') : 'home'
+const { slug } = useRoute().params
+const url = Array.isArray(slug) ? slug.join('/') || 'home' : slug || 'home'
 
 const isPreview = useRuntimeConfig().public.NODE_ENV !== 'production'
 
-const { data: story, status } = await useAsyncData(`${url}`, async () => {
+const {
+    data: story,
+    status,
+    error,
+} = await useAsyncData(url, async () => {
     const { data } = await useStoryblokApi().get(
         `cdn/stories/${url.replace(/\/$/, '')}`,
         {
@@ -23,40 +27,75 @@ const { data: story, status } = await useAsyncData(`${url}`, async () => {
     return data?.story
 })
 
-if (!isPreview) {
-    if (!story.value) {
-        showError({ statusCode: 404, statusMessage: 'Page Not Found' })
-    }
-
-    defineOgImageComponent('MyTemplate', {
-        title: story.value.name,
-        description: story.value.content.description ?? 'Impresion sin limites',
-        headline: 'Printres',
+if (!story.value) {
+    throw createError({
+        statusCode: error.value?.statusCode || 404,
+        statusMessage: error.value?.statusMessage || 'Page Not Found',
     })
 }
 
-// defineOgImageComponent('Nuxt', {
-//   headline: 'Greetings',
-//   title: 'Hello OG Image 👋',
-//   description: 'Look what at me using the Nuxt template',
-// })
+const defaultDescription =
+    'Impresión digital, gran formato y offset en Panamá. En Printres damos vida a proyectos y eventos para tu marca.'
+const content = story.value.content
+const title =
+    url === 'home'
+        ? 'Imprenta y eventos en Panamá'
+        : url === 'portfolio'
+          ? 'Trabajos de impresión y proyectos'
+          : content.Title || story.value.name
+const descriptionText =
+    typeof content.Description === 'string' ? content.Description.trim() : ''
+const description =
+    url === 'home'
+        ? defaultDescription
+        : content.component === 'Event' && descriptionText.length < 50
+          ? `Conoce ${title}, un proyecto de Printres${content.Location ? ` en ${content.Location}` : ''}. Descubre nuestro trabajo de impresión y montaje para eventos.`
+          : descriptionText || defaultDescription
+const seoDescription =
+    description.length > 160
+        ? `${description.slice(0, 157).replace(/\s+\S*$/, '')}…`
+        : description
 
-// const { slug } = useRoute().params as any
+useSeoMeta({
+    title,
+    description: seoDescription,
+    ogTitle: `${title} | Printres`,
+    ogDescription: seoDescription,
+    ogLocale: 'es_PA',
+    twitterCard: 'summary_large_image',
+})
 
-// const story = await useAsyncStoryblok(
-//     slug && slug.length > 0 ? slug.join('/') : 'home',
-//     { version: 'published'}
+if (url === 'home') {
+    const location = content.body?.find(
+        (block: { component: string }) => block.component === 'Location'
+    )
+    if (location?.Address) {
+        useSchemaOrg([
+            defineLocalBusiness({
+                name: 'Printres',
+                telephone: location.Number,
+                email: location.Email,
+                address: {
+                    streetAddress: location.Address,
+                    addressCountry: 'PA',
+                },
+                image: '/OgImage.png',
+                sameAs: [
+                    'https://www.instagram.com/printr3s/',
+                    'https://www.facebook.com/printr3s/',
+                ],
+            }),
+        ])
+    }
+}
 
-// )
-
-// if (story.value.status) {
-//     throw createError({
-//         statusCode: story.value.status,
-//         statusMessage: story.value.response,
-//     })
-// }
-
-// const component = resolveComponent(story.value.content.component)
+if (!isPreview) {
+    defineOgImageComponent('MyTemplate', {
+        title,
+        description: seoDescription,
+        headline: 'Printres',
+    })
+}
 </script>
 
 <style></style>

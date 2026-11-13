@@ -67,6 +67,7 @@ await fetchEvents()
 
 const perPage = 12
 const { page, totalPages } = usePageNumber(() => events.value.length, perPage)
+useListingSeo(page, 'Todos los eventos')
 
 const paginatedData = computed(() => {
     const from = (page.value - 1) * perPage
