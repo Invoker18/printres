@@ -30,17 +30,12 @@
             >
                 <div
                     aria-hidden="true"
-                    class="absolute -left-5 -top-5 z-0 size-24 rounded-tl-[3rem] bg-coral-400 sm:-left-7 sm:-top-7 sm:size-32"
-                ></div>
-                <div
-                    aria-hidden="true"
-                    class="absolute -right-5 -top-5 z-0 size-24 rounded-full bg-sky-400 sm:-right-7 sm:-top-7 sm:size-32"
+                    class="absolute -left-5 -top-5 z-0 size-24 rounded-tl-[3rem] bg-sky-400 sm:-left-7 sm:-top-7 sm:size-32"
                 ></div>
                 <!-- <div
                     aria-hidden="true"
-                    class="absolute -bottom-5 -right-4 z-0 size-20 rounded-br-[2.5rem] border-[14px] border-sky-400 sm:-bottom-7 sm:-right-7 sm:size-28"
+                    class="absolute -right-5 -top-5 z-0 size-24 rounded-full bg-sky-400 sm:-right-7 sm:-top-7 sm:size-32"
                 ></div> -->
-
                 <div
                     class="relative z-10 min-w-0 overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-2 shadow-2xl shadow-black/20 sm:p-3"
                 >

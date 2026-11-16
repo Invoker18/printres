@@ -69,6 +69,26 @@
                     </li>
                     <li>
                         <NuxtLink
+                            to="/#servicios"
+                            class="nav-link"
+                            :class="{
+                                'is-active':
+                                    route.path === '/' &&
+                                    homeSection === 'servicios',
+                            }"
+                            :aria-current="
+                                route.path === '/' &&
+                                homeSection === 'servicios'
+                                    ? 'location'
+                                    : undefined
+                            "
+                            @click.prevent="goToHomeSection('servicios')"
+                        >
+                            Servicios
+                        </NuxtLink>
+                    </li>
+                    <li>
+                        <NuxtLink
                             to="/portfolio"
                             class="nav-link"
                             :class="{
@@ -147,19 +167,30 @@ const route = useRoute()
 const { goToHomeSection } = useHomeNavigation()
 const nuxtApp = useNuxtApp()
 
-const homeSection = ref<'home' | 'aboutUs' | null>('home')
+const homeSection = ref<'home' | 'aboutUs' | 'servicios' | null>('home')
 const updateHomeSection = () => {
     if (route.path !== '/') return
     const about = document.getElementById('aboutUs')
-    if (!about) {
-        homeSection.value = route.hash === '#aboutUs' ? 'aboutUs' : 'home'
-        return
-    }
-
+    const services = document.getElementById('servicios')
     const boundary = (document.getElementById('nav')?.offsetHeight ?? 0) + 2
-    const { top, bottom } = about.getBoundingClientRect()
-    homeSection.value =
-        top > boundary ? 'home' : bottom > boundary ? 'aboutUs' : null
+    const aboutBounds = about?.getBoundingClientRect()
+    const servicesBounds = services?.getBoundingClientRect()
+    if (
+        servicesBounds &&
+        servicesBounds.top <= boundary &&
+        servicesBounds.bottom > boundary
+    ) {
+        homeSection.value = 'servicios'
+    } else if (
+        aboutBounds &&
+        aboutBounds.top <= boundary &&
+        aboutBounds.bottom > boundary
+    ) {
+        homeSection.value = 'aboutUs'
+    } else {
+        homeSection.value =
+            !aboutBounds || aboutBounds.top > boundary ? 'home' : null
+    }
 }
 
 onMounted(() => {
