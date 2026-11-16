@@ -9,11 +9,6 @@
                 class="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between"
             >
                 <div class="max-w-2xl">
-                    <p
-                        class="text-primary-950/60 mb-4 text-xs font-bold uppercase tracking-[0.2em]"
-                    >
-                        Lo que hacemos
-                    </p>
                     <h2
                         class="text-4xl font-semibold tracking-tight sm:text-5xl"
                     >
