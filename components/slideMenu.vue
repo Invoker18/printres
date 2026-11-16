@@ -53,6 +53,14 @@
                     </li>
                     <li>
                         <NuxtLink
+                            to="/#servicios"
+                            class="mobile-link"
+                            @click.prevent="goTo('servicios')"
+                            >Servicios</NuxtLink
+                        >
+                    </li>
+                    <li>
+                        <NuxtLink
                             to="/portfolio"
                             class="mobile-link"
                             @click="slideover.close()"
@@ -88,7 +96,9 @@
 const slideover = useSlideover()
 const { goToHomeSection } = useHomeNavigation()
 
-const goTo = async (section: 'home' | 'aboutUs' | 'contactContainer') => {
+const goTo = async (
+    section: 'home' | 'aboutUs' | 'servicios' | 'contactContainer'
+) => {
     slideover.close()
     await goToHomeSection(section)
 }

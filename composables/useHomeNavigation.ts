@@ -7,7 +7,7 @@ export const useHomeNavigation = () => {
     onMounted(() => gsap.registerPlugin(ScrollToPlugin))
 
     const goToHomeSection = async (
-        section: 'home' | 'aboutUs' | 'contactContainer'
+        section: 'home' | 'aboutUs' | 'servicios' | 'contactContainer'
     ) => {
         if (route.path !== '/') {
             await navigateTo({

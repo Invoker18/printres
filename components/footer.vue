@@ -41,6 +41,13 @@
                         >
                             Nosotros
                         </NuxtLink>
+                        <NuxtLink
+                            to="/#servicios"
+                            class="footer-link"
+                            @click.prevent="goToHomeSection('servicios')"
+                        >
+                            Servicios
+                        </NuxtLink>
                         <NuxtLink to="/portfolio" class="footer-link"
                             >Trabajos</NuxtLink
                         >
